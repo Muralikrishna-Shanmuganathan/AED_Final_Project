@@ -12,15 +12,16 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author raunak
+ * @author murali
  */
 public abstract class Role {
     
     public enum RoleType{
         RestaurantAdmin("RestaurantAdmin"),
-        Customer("Customer"),
+        Volunteer("Volunteer"),
         DeliveryMan("Delivery"),
         SysAdmin("Sysadmin");
+
         
         private String value;
         private RoleType(String value){

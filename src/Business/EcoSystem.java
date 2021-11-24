@@ -6,11 +6,14 @@
 package Business;
 
 
-import Business.Customer.CustomerDirectory;
+import Business.Volunteer.VolunteerDirectory;
+
+
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Restaurant.RestaurantDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
+import Business.Volunteer.Volunteer;
 import java.util.ArrayList;
 
 /**
@@ -21,13 +24,13 @@ public class EcoSystem extends Organization{
     
     private static EcoSystem business;
     private RestaurantDirectory restaurantDirectory;
-    private CustomerDirectory customerDirectory;
+    private VolunteerDirectory volunteerDirectory;
     private DeliveryManDirectory deliveryManDirectory;
 
-    public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory) {
+    public EcoSystem(RestaurantDirectory restaurantDirectory,VolunteerDirectory volunteerDirectory , DeliveryManDirectory deliveryManDirectory) {
 
         this.restaurantDirectory = restaurantDirectory;
-        this.customerDirectory = customerDirectory;
+        this.volunteerDirectory = volunteerDirectory;
         this.deliveryManDirectory = deliveryManDirectory;
     }
     
