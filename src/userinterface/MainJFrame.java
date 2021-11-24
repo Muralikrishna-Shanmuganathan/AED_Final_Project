@@ -52,6 +52,7 @@ public class MainJFrame extends javax.swing.JFrame {
         container = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         loginJButton.setText("Login");
         loginJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +124,27 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
         // Get user name
-       
+        UserAccount ua = system.getUserAccountDirectory().authenticateUser(userNameJTextField.getText(), passwordField.getText());  
+         try {
+             if(ua==null){
+                 
+                 JOptionPane.showMessageDialog(null," Invalid User Name or Password ");
+                 userNameJTextField.setText("");
+                 passwordField.setText("");
+                 throw new Exception();
+             }
+            
+        } catch (Exception e) {
+             return;
+        }
+               
+        CardLayout layout = (CardLayout) container.getLayout();
+        container.add(ua.getRole().createWorkArea(container, ua, system));
+        layout.next(container);
+        logoutJButton.setEnabled(true);
+        userNameJTextField.setEnabled(false);
+        passwordField.setEnabled(false);
+        loginJButton.setEnabled(false);
     }//GEN-LAST:event_loginJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
