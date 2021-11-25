@@ -10,7 +10,7 @@ import Business.Volunteer.VolunteerAdminDirectory;
 
 
 import Business.DeliveryMan.DeliveryManDirectory;
-import Business.Restaurant.RestaurantDirectory;
+import Business.StoreAdmin.StoreAdminDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
 import Business.Volunteer.VolunteerAdmin;
@@ -24,14 +24,14 @@ import java.util.ArrayList;
 public class EcoSystem extends Organization{
     
     private static EcoSystem business;
-    private RestaurantDirectory restaurantDirectory;
     private VolunteerAdminDirectory volunteerDirectory;
     private DeliveryManDirectory deliveryManDirectory;
+    private StoreAdminDirectory storeAdminDirectory;
     private WorkQueue workQueue;
 
-    public EcoSystem(RestaurantDirectory restaurantDirectory,VolunteerAdminDirectory volunteerDirectory , DeliveryManDirectory deliveryManDirectory, WorkQueue workQueue) {
+    public EcoSystem(StoreAdminDirectory storeAdminDirectory,VolunteerAdminDirectory volunteerDirectory , DeliveryManDirectory deliveryManDirectory, WorkQueue workQueue) {
 
-        this.restaurantDirectory = restaurantDirectory;
+        this.storeAdminDirectory = storeAdminDirectory;
         this.volunteerDirectory = volunteerDirectory;
         this.deliveryManDirectory = deliveryManDirectory;
         

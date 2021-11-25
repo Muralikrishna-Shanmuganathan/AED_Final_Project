@@ -6,6 +6,7 @@ package Business;
 
 import Business.Employee.EmployeeDirectory;
 import Business.Role.Role;
+import Business.StoreAdmin.StoreAdminDirectory;
 import Business.UserAccount.UserAccountDirectory;
 import Business.Volunteer.VolunteerAdminDirectory;
 import Business.WorkQueue.WorkQueue;
@@ -22,6 +23,7 @@ public abstract class Organization {
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private VolunteerAdminDirectory volunteerAdminDirectory;
+    private StoreAdminDirectory storeAdminDirectory;
     private int organizationID;
     private static int counter=0;
     
@@ -29,7 +31,8 @@ public abstract class Organization {
         RestaurantAdmin("RestaurantAdmin"),
         Volunteer("Volunteer"),
         DeliveryMan("Delivery"),
-        SysAdmin("Sysadmin");
+        SysAdmin("Sysadmin"),
+        StoreAdmin("StoreAdmin");
         
         private String value;
         private Type(String value) {
@@ -46,6 +49,7 @@ public abstract class Organization {
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
         volunteerAdminDirectory = new VolunteerAdminDirectory();
+        storeAdminDirectory = new StoreAdminDirectory();
         organizationID = counter;
         ++counter;
     }
@@ -88,6 +92,14 @@ public abstract class Organization {
 
     public void setVolunteerAdminDirectory(VolunteerAdminDirectory volunteerAdminDirectory) {
         this.volunteerAdminDirectory = volunteerAdminDirectory;
+    }
+
+    public StoreAdminDirectory getStoreAdminDirectory() {
+        return storeAdminDirectory;
+    }
+
+    public void setStoreAdminDirectory(StoreAdminDirectory storeAdminDirectory) {
+        this.storeAdminDirectory = storeAdminDirectory;
     }
 
     @Override
