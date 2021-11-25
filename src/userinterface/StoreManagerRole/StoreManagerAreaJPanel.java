@@ -9,12 +9,12 @@ package userinterface.StoreManagerRole;
  *
  * @author yashwanthsridharan
  */
-public class StoreManageWorkArea extends javax.swing.JPanel {
+public class StoreManagerAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form StoreManageWorkArea
      */
-    public StoreManageWorkArea() {
+    public StoreManagerAreaJPanel() {
         initComponents();
     }
 

@@ -87,12 +87,21 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnManageAdmin" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnManageNetwork" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="btnManageVolunteer" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btnManageNetwork" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btnManageStoreAdmin" alignment="1" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="btnManageEnterprise" min="-2" pref="185" max="-2" attributes="0"/>
+                                          <Component id="btnManageContributor" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnManageEnterprise" min="-2" pref="185" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="125" max="32767" attributes="0"/>
@@ -112,9 +121,16 @@
                           <Component id="btnManageNetwork" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnManageEnterprise" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnManageAdmin" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="245" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnManageVolunteer" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnManageContributor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnManageStoreAdmin" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="157" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -153,6 +169,21 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageAdminActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnManageVolunteer">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Manage Volunteer"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnManageContributor">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Manage Contributor"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnManageStoreAdmin">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Manage Volunteer"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
