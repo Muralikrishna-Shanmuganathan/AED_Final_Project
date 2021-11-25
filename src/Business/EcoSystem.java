@@ -6,14 +6,15 @@
 package Business;
 
 
-import Business.Volunteer.VolunteerDirectory;
+import Business.Volunteer.VolunteerAdminDirectory;
 
 
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Restaurant.RestaurantDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
-import Business.Volunteer.Volunteer;
+import Business.Volunteer.VolunteerAdmin;
+import Business.WorkQueue.WorkQueue;
 import java.util.ArrayList;
 
 /**
@@ -24,14 +25,17 @@ public class EcoSystem extends Organization{
     
     private static EcoSystem business;
     private RestaurantDirectory restaurantDirectory;
-    private VolunteerDirectory volunteerDirectory;
+    private VolunteerAdminDirectory volunteerDirectory;
     private DeliveryManDirectory deliveryManDirectory;
+    private WorkQueue workQueue;
 
-    public EcoSystem(RestaurantDirectory restaurantDirectory,VolunteerDirectory volunteerDirectory , DeliveryManDirectory deliveryManDirectory) {
+    public EcoSystem(RestaurantDirectory restaurantDirectory,VolunteerAdminDirectory volunteerDirectory , DeliveryManDirectory deliveryManDirectory, WorkQueue workQueue) {
 
         this.restaurantDirectory = restaurantDirectory;
         this.volunteerDirectory = volunteerDirectory;
         this.deliveryManDirectory = deliveryManDirectory;
+        
+        this.workQueue = workQueue;
     }
     
     public static EcoSystem getInstance(){
@@ -54,7 +58,9 @@ public class EcoSystem extends Organization{
 
     
     public boolean checkIfUserIsUnique(String userName){
-       //
-       return false;
+      if(!this.getUserAccountDirectory().checkIfUsernameIsUnique(userName)){
+            return false;
+        }
+       return true;
     }
 }

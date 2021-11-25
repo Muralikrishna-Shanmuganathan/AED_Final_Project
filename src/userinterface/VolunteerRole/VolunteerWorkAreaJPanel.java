@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author raunak
  */
-public class VolunteerAreaJPanel extends javax.swing.JPanel {
+public class VolunteerWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
 
@@ -24,7 +24,7 @@ public class VolunteerAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public VolunteerAreaJPanel(JPanel userProcessContainer, UserAccount account) {
+    public VolunteerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;

@@ -7,6 +7,7 @@ package Business;
 import Business.Employee.EmployeeDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
+import Business.Volunteer.VolunteerAdminDirectory;
 import Business.WorkQueue.WorkQueue;
 import java.util.ArrayList;
 
@@ -20,12 +21,13 @@ public abstract class Organization {
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
+    private VolunteerAdminDirectory volunteerAdminDirectory;
     private int organizationID;
     private static int counter=0;
     
     public enum Type{
         RestaurantAdmin("RestaurantAdmin"),
-        Customer("Customer"),
+        Volunteer("Volunteer"),
         DeliveryMan("Delivery"),
         SysAdmin("Sysadmin");
         
@@ -43,6 +45,7 @@ public abstract class Organization {
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
+        volunteerAdminDirectory = new VolunteerAdminDirectory();
         organizationID = counter;
         ++counter;
     }
@@ -77,6 +80,14 @@ public abstract class Organization {
 
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
+    }
+
+    public VolunteerAdminDirectory getVolunteerAdminDirectory() {
+        return volunteerAdminDirectory;
+    }
+
+    public void setVolunteerAdminDirectory(VolunteerAdminDirectory volunteerAdminDirectory) {
+        this.volunteerAdminDirectory = volunteerAdminDirectory;
     }
 
     @Override

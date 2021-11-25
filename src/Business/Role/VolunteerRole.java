@@ -8,7 +8,7 @@ import Business.EcoSystem;
 
 import Business.Organization;
 import Business.UserAccount.UserAccount;
-import userinterface.VolunteerRole.VolunteerAreaJPanel;
+import userinterface.VolunteerRole.VolunteerWorkAreaJPanel;
 import javax.swing.JPanel;
 
 /**
@@ -19,7 +19,7 @@ public class VolunteerRole extends Role{
 
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new VolunteerAreaJPanel(userProcessContainer, account);
+        return new VolunteerWorkAreaJPanel(userProcessContainer, account);
     }
     
     

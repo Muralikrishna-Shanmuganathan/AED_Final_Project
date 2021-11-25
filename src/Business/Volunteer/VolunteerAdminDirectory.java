@@ -11,24 +11,24 @@ import java.util.ArrayList;
  *
  * @author murali
  */
-public class VolunteerDirectory {
+public class VolunteerAdminDirectory {
     
-   private ArrayList<Volunteer> volunteerList;
+   private ArrayList<VolunteerAdmin> volunteerList;
     
-    public VolunteerDirectory(){
-        volunteerList = new ArrayList<Volunteer>();
+    public VolunteerAdminDirectory(){
+        volunteerList = new ArrayList<VolunteerAdmin>();
     }
-    public ArrayList<Volunteer> getVolunteerList() {
+    public ArrayList<VolunteerAdmin> getVolunteerList() {
         return volunteerList;
         
     }
     
-    public ArrayList<Volunteer> addVolunteer(Volunteer v){
+    public ArrayList<VolunteerAdmin> addVolunteer(VolunteerAdmin v){
        
         volunteerList.add(v);
         return volunteerList;
     }
-     public ArrayList<Volunteer> removeVolunteer(Volunteer v){
+     public ArrayList<VolunteerAdmin> removeVolunteer(VolunteerAdmin v){
        
         volunteerList.remove(v);
         return volunteerList;
