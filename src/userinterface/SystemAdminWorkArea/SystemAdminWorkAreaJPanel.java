@@ -139,6 +139,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnManageDeliveryAgent.setText("Manage Delivery Agent");
+        btnManageDeliveryAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageDeliveryAgentActionPerformed(evt);
+            }
+        });
 
         btnManageDistributor.setText("Manage Distributor");
 
@@ -249,6 +254,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageStoreAdminActionPerformed
+
+    private void btnManageDeliveryAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDeliveryAgentActionPerformed
+        // TODO add your handling code here:
+        ManageDeliveryAgentJPanel mdajp = new ManageDeliveryAgentJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("Manage Delivery Agents", mdajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageDeliveryAgentActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
