@@ -25,19 +25,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+
+    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.ecosystem=ecosystem;
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
         populateTree();
     }
-    
-    public void populateTree(){
-        DefaultTreeModel model=(DefaultTreeModel)jTree.getModel();
-       // Add the code for draw your system structure shown by JTree
-       
+
+    public void populateTree() {
+        DefaultTreeModel model = (DefaultTreeModel) jTree.getModel();
+        // Add the code for draw your system structure shown by JTree
+
         model.reload();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,6 +118,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnManageVolunteer.setText("Manage Volunteer");
+        btnManageVolunteer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageVolunteerActionPerformed(evt);
+            }
+        });
 
         btnManageContributor.setText("Manage Contributor");
         btnManageContributor.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +132,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnManageStoreAdmin.setText("Manage StoreAdmin");
+        btnManageStoreAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageStoreAdminActionPerformed(evt);
+            }
+        });
 
         btnManageDeliveryAgent.setText("Manage Delivery Agent");
 
@@ -195,21 +207,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNetworkActionPerformed
-       
+
     }//GEN-LAST:event_btnManageNetworkActionPerformed
 
     private void btnManageEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEnterpriseActionPerformed
-        
+
     }//GEN-LAST:event_btnManageEnterpriseActionPerformed
 
     private void btnManageAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAdminActionPerformed
-       
+
     }//GEN-LAST:event_btnManageAdminActionPerformed
 
     private void jTreeValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTreeValueChanged
-        
-        DefaultMutableTreeNode selectedNode= (DefaultMutableTreeNode)jTree.getLastSelectedPathComponent();
-        if(selectedNode!=null){
+
+        DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree.getLastSelectedPathComponent();
+        if (selectedNode != null) {
             lblSelectedNode.setText(selectedNode.toString());
         }
     }//GEN-LAST:event_jTreeValueChanged
@@ -221,6 +233,22 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageContributorActionPerformed
+
+    private void btnManageVolunteerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageVolunteerActionPerformed
+        // TODO add your handling code here:
+        ManageVolunteerJPanel mvjp = new ManageVolunteerJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("Manage Volunteers", mvjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageVolunteerActionPerformed
+
+    private void btnManageStoreAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageStoreAdminActionPerformed
+        // TODO add your handling code here:
+        ManageStoreAdminJPanel msajp = new ManageStoreAdminJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("Manage Store Admins", msajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageStoreAdminActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

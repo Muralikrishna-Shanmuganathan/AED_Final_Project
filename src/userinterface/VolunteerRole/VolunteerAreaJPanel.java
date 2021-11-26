@@ -5,17 +5,29 @@
  */
 package userinterface.VolunteerRole;
 
+import Business.EcoSystem;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+
 /**
  *
  * @author yashwanthsridharan
  */
-public class VoluteerAreaJPanel extends javax.swing.JPanel {
+public class VolunteerAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form VoluteerAreaJPanel
      */
-    public VoluteerAreaJPanel() {
+    private JPanel userProcessContainer;
+    private EcoSystem business;
+    private UserAccount userAccount;
+
+    public VolunteerAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = account;
+        this.business = business;
+
     }
 
     /**
@@ -27,19 +39,30 @@ public class VoluteerAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+
+        jLabel1.setText("Welcome Volunteer!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(106, 106, 106)
+                .addComponent(jLabel1)
+                .addContainerGap(170, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addContainerGap(250, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

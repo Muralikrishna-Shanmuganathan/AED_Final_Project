@@ -5,6 +5,10 @@
  */
 package userinterface.StoreAdminRole;
 
+import Business.EcoSystem;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+
 /**
  *
  * @author yashwanthsridharan
@@ -14,8 +18,15 @@ public class StoreAdminAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form StoreAdminAreaJPanel
      */
-    public StoreAdminAreaJPanel() {
+    private JPanel userProcessContainer;
+    private EcoSystem business;
+    private UserAccount userAccount;
+
+    public StoreAdminAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = account;
+        this.business = business;
     }
 
     /**

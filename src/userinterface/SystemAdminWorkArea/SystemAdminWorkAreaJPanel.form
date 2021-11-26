@@ -185,6 +185,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Manage Volunteer"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageVolunteerActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnManageContributor">
               <Properties>
@@ -198,6 +201,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Manage StoreAdmin"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageStoreAdminActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnManageDeliveryAgent">
               <Properties>
