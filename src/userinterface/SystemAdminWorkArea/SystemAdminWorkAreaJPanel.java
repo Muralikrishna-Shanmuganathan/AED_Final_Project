@@ -60,6 +60,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageVolunteer = new javax.swing.JButton();
         btnManageContributor = new javax.swing.JButton();
         btnManageStoreAdmin = new javax.swing.JButton();
+        btnManageDeliveryAgent = new javax.swing.JButton();
+        btnManageDistributor = new javax.swing.JButton();
+        btnManageReceiver = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -115,8 +118,19 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageVolunteer.setText("Manage Volunteer");
 
         btnManageContributor.setText("Manage Contributor");
+        btnManageContributor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageContributorActionPerformed(evt);
+            }
+        });
 
-        btnManageStoreAdmin.setText("Manage Volunteer");
+        btnManageStoreAdmin.setText("Manage StoreAdmin");
+
+        btnManageDeliveryAgent.setText("Manage Delivery Agent");
+
+        btnManageDistributor.setText("Manage Distributor");
+
+        btnManageReceiver.setText("Manage Receiver");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -137,12 +151,15 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(btnManageVolunteer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnManageNetwork, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnManageStoreAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(btnManageStoreAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnManageDistributor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnManageEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnManageContributor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(125, Short.MAX_VALUE))
+                                    .addComponent(btnManageContributor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnManageDeliveryAgent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnManageReceiver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,8 +179,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(btnManageVolunteer)
                     .addComponent(btnManageContributor))
                 .addGap(18, 18, 18)
-                .addComponent(btnManageStoreAdmin)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnManageStoreAdmin)
+                    .addComponent(btnManageDeliveryAgent))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnManageDistributor)
+                    .addComponent(btnManageReceiver))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         jSplitPane.setRightComponent(jPanel2);
@@ -191,12 +214,23 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTreeValueChanged
 
+    private void btnManageContributorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageContributorActionPerformed
+        // TODO add your handling code here:
+        ManageContributorJPanel mcjp = new ManageContributorJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("Manage Contributors", mcjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageContributorActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnManageAdmin;
     private javax.swing.JButton btnManageContributor;
+    private javax.swing.JButton btnManageDeliveryAgent;
+    private javax.swing.JButton btnManageDistributor;
     private javax.swing.JButton btnManageEnterprise;
     private javax.swing.JButton btnManageNetwork;
+    private javax.swing.JButton btnManageReceiver;
     private javax.swing.JButton btnManageStoreAdmin;
     private javax.swing.JButton btnManageVolunteer;
     private javax.swing.JLabel jLabel1;

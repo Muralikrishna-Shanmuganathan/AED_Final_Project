@@ -168,10 +168,10 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(loginJButton)
                 .addGap(11, 11, 11)
                 .addComponent(loginJLabel)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
-        getContentPane().add(loginJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 689, -1));
+        getContentPane().add(loginJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 689, 450));
 
         container.setLayout(new java.awt.CardLayout());
         getContentPane().add(container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 59, 689, 370));

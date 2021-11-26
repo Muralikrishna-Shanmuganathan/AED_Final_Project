@@ -35,9 +35,10 @@ public class EcoSystem extends Organization {
     private DeliveryAgentDirectory deliveryAgentDirectory;
     private DistributorDirectory distributorDirectory;
     private ReceiverDirectory receiverDirectory;
-
-    public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory, 
-            VolunteerDirectory volunteerDirectory, ContributorDirectory contributorDirectory, StoreAdminDirectory storeAdminDirectory, 
+    
+    //Contructor
+    public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory,
+            VolunteerDirectory volunteerDirectory, ContributorDirectory contributorDirectory, StoreAdminDirectory storeAdminDirectory,
             DeliveryAgentDirectory deliveryAgentDirectory, DistributorDirectory distributorDirectory, ReceiverDirectory receiverDirectory) {
 
         this.restaurantDirectory = restaurantDirectory;
@@ -49,6 +50,7 @@ public class EcoSystem extends Organization {
         this.storeAdminDirectory = storeAdminDirectory;
         this.deliveryAgentDirectory = deliveryAgentDirectory;
         this.distributorDirectory = distributorDirectory;
+        this.receiverDirectory = receiverDirectory;
     }
 
     public static EcoSystem getInstance() {
@@ -57,6 +59,79 @@ public class EcoSystem extends Organization {
         }
         return business;
     }
+
+    public static void setInstance(EcoSystem business) {
+        EcoSystem.business = business;
+    }
+
+    public VolunteerDirectory getVolunteerDirectory() {
+        if(volunteerDirectory == null){
+            volunteerDirectory = new VolunteerDirectory();
+        }
+        return volunteerDirectory;
+    }
+
+    public void setVolunteerDirectory(VolunteerDirectory volunteerDirectory) {
+        this.volunteerDirectory = volunteerDirectory;
+    }
+
+    public ContributorDirectory getContributorDirectory() {
+        if(contributorDirectory == null){
+            contributorDirectory = new ContributorDirectory();
+        }
+        return contributorDirectory;
+    }
+
+    public void setContributorDirectory(ContributorDirectory contributorDirectory) {
+        this.contributorDirectory = contributorDirectory;
+    }
+
+    public StoreAdminDirectory getStoreAdminDirectory() {
+        if(storeAdminDirectory == null){
+            storeAdminDirectory = new StoreAdminDirectory();
+        }
+        return storeAdminDirectory;
+    }
+
+    public void setStoreAdminDirectory(StoreAdminDirectory storeAdminDirectory) {
+        this.storeAdminDirectory = storeAdminDirectory;
+    }
+
+    public DeliveryAgentDirectory getDeliveryAgentDirectory() {
+        if(deliveryAgentDirectory == null){
+            deliveryAgentDirectory = new DeliveryAgentDirectory();
+        }
+        return deliveryAgentDirectory;
+    }
+
+    public void setDeliveryAgentDirectory(DeliveryAgentDirectory deliveryAgentDirectory) {
+        this.deliveryAgentDirectory = deliveryAgentDirectory;
+    }
+
+    public DistributorDirectory getDistributorDirectory() {
+        if(distributorDirectory == null){
+            distributorDirectory = new DistributorDirectory();
+        }
+        return distributorDirectory;
+    }
+
+    public void setDistributorDirectory(DistributorDirectory distributorDirectory) {
+        this.distributorDirectory = distributorDirectory;
+    }
+
+    public ReceiverDirectory getReceiverDirectory() {
+        if(receiverDirectory == null){
+            receiverDirectory = new ReceiverDirectory();
+        }
+        return receiverDirectory;
+    }
+
+    public void setReceiverDirectory(ReceiverDirectory receiverDirectory) {
+        this.receiverDirectory = receiverDirectory;
+    }
+
+    
+
 
     @Override
     public ArrayList<Role> getSupportedRole() {

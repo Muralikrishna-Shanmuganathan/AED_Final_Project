@@ -5,6 +5,10 @@
  */
 package userinterface.ContributorRole;
 
+import Business.EcoSystem;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+
 /**
  *
  * @author yashwanthsridharan
@@ -14,9 +18,18 @@ public class ContributorAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ContributorRoleJPanel
      */
-    public ContributorAreaJPanel() {
+    
+    private JPanel userProcessContainer;
+    private EcoSystem business;
+    private UserAccount userAccount;
+    public ContributorAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = account;
+        this.business = business;
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

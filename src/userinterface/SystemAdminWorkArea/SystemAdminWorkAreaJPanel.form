@@ -94,17 +94,20 @@
                                           <Component id="btnManageVolunteer" alignment="0" max="32767" attributes="0"/>
                                           <Component id="btnManageNetwork" alignment="0" max="32767" attributes="0"/>
                                           <Component id="btnManageStoreAdmin" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="btnManageDistributor" alignment="1" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="btnManageEnterprise" min="-2" pref="185" max="-2" attributes="0"/>
                                           <Component id="btnManageContributor" max="32767" attributes="0"/>
+                                          <Component id="btnManageDeliveryAgent" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btnManageReceiver" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="125" max="32767" attributes="0"/>
+                      <EmptySpace pref="122" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -129,8 +132,16 @@
                           <Component id="btnManageContributor" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnManageStoreAdmin" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="157" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnManageStoreAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnManageDeliveryAgent" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnManageDistributor" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnManageReceiver" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="110" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -179,10 +190,28 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Manage Contributor"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageContributorActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnManageStoreAdmin">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Manage Volunteer"/>
+                <Property name="text" type="java.lang.String" value="Manage StoreAdmin"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnManageDeliveryAgent">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Manage Delivery Agent"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnManageDistributor">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Manage Distributor"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnManageReceiver">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Manage Receiver"/>
               </Properties>
             </Component>
           </SubComponents>
