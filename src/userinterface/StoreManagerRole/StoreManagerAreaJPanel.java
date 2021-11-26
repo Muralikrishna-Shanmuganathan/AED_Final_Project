@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.VolunteerRole;
+package userinterface.StoreManagerRole;
 
 /**
  *
  * @author yashwanthsridharan
  */
-public class VoluteerAreaJPanel extends javax.swing.JPanel {
+public class StoreManagerAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form VoluteerAreaJPanel
+     * Creates new form StoreManageWorkArea
      */
-    public VoluteerAreaJPanel() {
+    public StoreManagerAreaJPanel() {
         initComponents();
     }
 

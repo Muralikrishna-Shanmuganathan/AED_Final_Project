@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.Volunteer;
+package Business.DeliveryAgent;
 
 /**
  *
  * @author yashwanthsridharan
  */
-public class Volunteer {
-    int id = 201;
+public class DeliveryAgent {
+
+    int id = 401;
     private String Name;
     private String UserName;
-    
-    //Getters and Setters
+
     public int getId() {
         return id;
     }
@@ -39,7 +39,8 @@ public class Volunteer {
         this.UserName = UserName;
     }
     //Constructor
-    public Volunteer(String userName) {
+    public DeliveryAgent(String userName) {
         this.UserName = userName;
     }
+    
 }

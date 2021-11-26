@@ -25,19 +25,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+
+    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.ecosystem=ecosystem;
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
         populateTree();
     }
-    
-    public void populateTree(){
-        DefaultTreeModel model=(DefaultTreeModel)jTree.getModel();
-       // Add the code for draw your system structure shown by JTree
-       
+
+    public void populateTree() {
+        DefaultTreeModel model = (DefaultTreeModel) jTree.getModel();
+        // Add the code for draw your system structure shown by JTree
+
         model.reload();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,6 +59,12 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageNetwork = new javax.swing.JButton();
         btnManageEnterprise = new javax.swing.JButton();
         btnManageAdmin = new javax.swing.JButton();
+        btnManageVolunteer = new javax.swing.JButton();
+        btnManageContributor = new javax.swing.JButton();
+        btnManageStoreAdmin = new javax.swing.JButton();
+        btnManageDeliveryAgent = new javax.swing.JButton();
+        btnManageDistributor = new javax.swing.JButton();
+        btnManageReceiver = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -109,6 +117,43 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageVolunteer.setText("Manage Volunteer");
+        btnManageVolunteer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageVolunteerActionPerformed(evt);
+            }
+        });
+
+        btnManageContributor.setText("Manage Contributor");
+        btnManageContributor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageContributorActionPerformed(evt);
+            }
+        });
+
+        btnManageStoreAdmin.setText("Manage Store Admin");
+        btnManageStoreAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageStoreAdminActionPerformed(evt);
+            }
+        });
+
+        btnManageDeliveryAgent.setText("Manage Delivery Agent");
+        btnManageDeliveryAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageDeliveryAgentActionPerformed(evt);
+            }
+        });
+
+        btnManageDistributor.setText("Manage Distributor");
+        btnManageDistributor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageDistributorActionPerformed(evt);
+            }
+        });
+
+        btnManageReceiver.setText("Manage Receiver");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -122,12 +167,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(lblSelectedNode))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnManageAdmin)
-                            .addComponent(btnManageNetwork))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnManageEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(125, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(btnManageVolunteer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnManageNetwork, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnManageStoreAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnManageDistributor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnManageEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnManageContributor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnManageDeliveryAgent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnManageReceiver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,9 +194,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnManageNetwork)
                     .addComponent(btnManageEnterprise))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnManageAdmin)
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnManageVolunteer)
+                    .addComponent(btnManageContributor))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnManageStoreAdmin)
+                    .addComponent(btnManageDeliveryAgent))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnManageDistributor)
+                    .addComponent(btnManageReceiver))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         jSplitPane.setRightComponent(jPanel2);
@@ -151,30 +217,76 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNetworkActionPerformed
-       
+
     }//GEN-LAST:event_btnManageNetworkActionPerformed
 
     private void btnManageEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEnterpriseActionPerformed
-        
+
     }//GEN-LAST:event_btnManageEnterpriseActionPerformed
 
     private void btnManageAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAdminActionPerformed
-       
+
     }//GEN-LAST:event_btnManageAdminActionPerformed
 
     private void jTreeValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTreeValueChanged
-        
-        DefaultMutableTreeNode selectedNode= (DefaultMutableTreeNode)jTree.getLastSelectedPathComponent();
-        if(selectedNode!=null){
+
+        DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) jTree.getLastSelectedPathComponent();
+        if (selectedNode != null) {
             lblSelectedNode.setText(selectedNode.toString());
         }
     }//GEN-LAST:event_jTreeValueChanged
 
+    private void btnManageContributorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageContributorActionPerformed
+        // TODO add your handling code here:
+        ManageContributorJPanel mcjp = new ManageContributorJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("Manage Contributors", mcjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageContributorActionPerformed
+
+    private void btnManageVolunteerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageVolunteerActionPerformed
+        // TODO add your handling code here:
+        ManageVolunteerJPanel mvjp = new ManageVolunteerJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("Manage Volunteers", mvjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageVolunteerActionPerformed
+
+    private void btnManageStoreAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageStoreAdminActionPerformed
+        // TODO add your handling code here:
+        ManageStoreAdminJPanel msajp = new ManageStoreAdminJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("Manage Store Admins", msajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageStoreAdminActionPerformed
+
+    private void btnManageDeliveryAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDeliveryAgentActionPerformed
+        // TODO add your handling code here:
+        ManageDeliveryAgentJPanel mdajp = new ManageDeliveryAgentJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("Manage Delivery Agents", mdajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageDeliveryAgentActionPerformed
+
+    private void btnManageDistributorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDistributorActionPerformed
+        // TODO add your handling code here:
+        ManageDistributorJPanel mdjp = new ManageDistributorJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("Manage Distributors", mdjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageDistributorActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnManageAdmin;
+    private javax.swing.JButton btnManageContributor;
+    private javax.swing.JButton btnManageDeliveryAgent;
+    private javax.swing.JButton btnManageDistributor;
     private javax.swing.JButton btnManageEnterprise;
     private javax.swing.JButton btnManageNetwork;
+    private javax.swing.JButton btnManageReceiver;
+    private javax.swing.JButton btnManageStoreAdmin;
+    private javax.swing.JButton btnManageVolunteer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

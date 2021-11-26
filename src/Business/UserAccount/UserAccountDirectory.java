@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author raunak
  */
 public class UserAccountDirectory {
-    
+
     private ArrayList<UserAccount> userAccountList;
 
     public UserAccountDirectory() {
@@ -23,17 +23,21 @@ public class UserAccountDirectory {
     public ArrayList<UserAccount> getUserAccountList() {
         return userAccountList;
     }
-    
-    public UserAccount authenticateUser(String username, String password){
-        for (UserAccount ua : userAccountList)
-            if (ua.getUsername().equals(username) && ua.getPassword().equals(password)){
+
+    //Check if user is authentic
+    public UserAccount authenticateUser(String username, String password) {
+        for (UserAccount ua : userAccountList) {
+            if (ua.getUsername().equals(username) && ua.getPassword().equals(password)) {
                 return ua;
             }
+        }
         return null;
     }
-    
-    public UserAccount createUserAccount(String name, String username, String password, Employee employee, Role role){
+
+    //Create a new user account
+    public UserAccount createUserAccount(String name, String username, String password, Employee employee, Role role) {
         UserAccount userAccount = new UserAccount();
+        userAccount.setName(name);
         userAccount.setUsername(username);
         userAccount.setPassword(password);
         userAccount.setEmployee(employee);
@@ -41,11 +45,26 @@ public class UserAccountDirectory {
         userAccountList.add(userAccount);
         return userAccount;
     }
-    
-    public boolean checkIfUsernameIsUnique(String username){
-        for (UserAccount ua : userAccountList){
-            if (ua.getUsername().equals(username))
+
+    //Delet an useraccount
+    public void deleteUserAccount(UserAccount user) {
+        userAccountList.remove(user);
+    }
+
+    //Update an useraccount
+    public void updateUserAccount(UserAccount user, String name, String username, String password) {
+
+        user.setName(name);
+        user.setUsername(username);
+        user.setPassword(password);
+    }
+
+    //Check if username is unique
+    public boolean checkIfUsernameIsUnique(String username) {
+        for (UserAccount ua : userAccountList) {
+            if (ua.getUsername().equals(username)) {
                 return false;
+            }
         }
         return true;
     }
