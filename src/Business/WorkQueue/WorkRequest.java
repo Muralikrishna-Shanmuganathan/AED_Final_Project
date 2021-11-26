@@ -1,74 +1,126 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package Business.WorkQueue;
 
-import Business.UserAccount.UserAccount;
+import Business.DeliveryAgency.Clerk;
+import Business.DeliveryAgency.Driver;
 import java.util.Date;
 
 /**
  *
- * @author raunak
+ * @author ANIRUDH
  */
-public abstract class WorkRequest {
 
-    private String message;
-    private UserAccount sender;
-    private UserAccount receiver;
-    private String status;
-    private Date requestDate;
-    private Date resolveDate;
+
+public class WorkRequest {
     
-    public WorkRequest(){
-        requestDate = new Date();
+    int workRequestID=(int)(Math.random()*1000)+1;
+    //check for repetetion of workRequestID
+    
+    String volunteerName;
+    String DeliveryAgencyName;
+    String Status;
+    String pickUpLocation;
+    String dropOffLocation;
+    Date pickUptime;
+    Date dropOfftime;
+    String VehicleNumber;  
+    Driver driver;
+    Clerk clerk;
+   
+    public WorkRequest() {
     }
 
-    public String getMessage() {
-        return message;
+    public int getWorkRequestID() {
+        return workRequestID;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setWorkRequestID(int workRequestID) {
+        this.workRequestID = workRequestID;
     }
 
-    public UserAccount getSender() {
-        return sender;
+    public String getVolunteerName() {
+        return volunteerName;
     }
 
-    public void setSender(UserAccount sender) {
-        this.sender = sender;
+    public void setVolunteerName(String volunteerName) {
+        this.volunteerName = volunteerName;
     }
 
-    public UserAccount getReceiver() {
-        return receiver;
+    public String getDeliveryAgencyName() {
+        return DeliveryAgencyName;
     }
 
-    public void setReceiver(UserAccount receiver) {
-        this.receiver = receiver;
+    public void setDeliveryAgencyName(String DeliveryAgencyName) {
+        this.DeliveryAgencyName = DeliveryAgencyName;
     }
 
     public String getStatus() {
-        return status;
+        return Status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatus(String Status) {
+        this.Status = Status;
     }
 
-    public Date getRequestDate() {
-        return requestDate;
+    public String getPickUpLocation() {
+        return pickUpLocation;
     }
 
-    public void setRequestDate(Date requestDate) {
-        this.requestDate = requestDate;
+    public void setPickUpLocation(String pickUpLocation) {
+        this.pickUpLocation = pickUpLocation;
     }
 
-    public Date getResolveDate() {
-        return resolveDate;
+    public String getDropOffLocation() {
+        return dropOffLocation;
     }
 
-    public void setResolveDate(Date resolveDate) {
-        this.resolveDate = resolveDate;
+    public void setDropOffLocation(String dropOffLocation) {
+        this.dropOffLocation = dropOffLocation;
     }
+
+    public Date getPickUptime() {
+        return pickUptime;
+    }
+
+    public void setPickUptime(Date pickUptime) {
+        this.pickUptime = pickUptime;
+    }
+
+    public Date getDropOfftime() {
+        return dropOfftime;
+    }
+
+    public void setDropOfftime(Date dropOfftime) {
+        this.dropOfftime = dropOfftime;
+    }
+
+    public String getVehicleNumber() {
+        return VehicleNumber;
+    }
+
+    public void setVehicleNumber(String VehicleNumber) {
+        this.VehicleNumber = VehicleNumber;
+    }
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
+    public Clerk getClerk() {
+        return clerk;
+    }
+
+    public void setClerk(Clerk clerk) {
+        this.clerk = clerk;
+    }
+    
+    
 }
