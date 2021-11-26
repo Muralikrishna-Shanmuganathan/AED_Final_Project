@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Business.DeliveryAgency;
 
 import Business.WorkQueue.WorkQueue;
@@ -87,5 +86,5 @@ public class AgencyAdmin extends Person {
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
     }
-    
+
 }
