@@ -131,7 +131,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnManageStoreAdmin.setText("Manage StoreAdmin");
+        btnManageStoreAdmin.setText("Manage Store Admin");
         btnManageStoreAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageStoreAdminActionPerformed(evt);
