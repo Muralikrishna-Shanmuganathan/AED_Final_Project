@@ -25,5 +25,18 @@ public class ProductList {
     public void setProductList(ArrayList<Product> productList) {
         this.productList = productList;
     }
+    
+    public void addProducttoList(Product product)
+    {
+        productList.add(product);
+    }
+            
+    
+    public void removeProductfromList(Product product){
+        productList.remove(product);
+    }
+            
+    
+    
    
 }
