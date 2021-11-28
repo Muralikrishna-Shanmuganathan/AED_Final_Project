@@ -43,6 +43,23 @@ public class ClerkDirectory {
     }
     
     
+    public Clerk createClerk(String uname){
+      Clerk clerk=new Clerk();
+      clerk.setFirstName(uname);
+      return clerk;
+    }
+    
+   
+    
+    public void deleteClerk(String username){
+        for(int i=0;i<clerkList.size();i++){
+            if(clerkList.get(i).getUserName().equals(username)){
+                clerkList.remove(i);
+            }
+        }
+    }
+    
+    
     
     
     

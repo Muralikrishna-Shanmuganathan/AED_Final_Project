@@ -7,6 +7,7 @@ package Business;
 
 import Business.Contributor.ContributorDirectory;
 import Business.Customer.CustomerDirectory;
+import Business.DeliveryAgency.ClerkDirectory;
 import Business.DeliveryAgency.DriverDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Distributor.DistributorDirectory;
@@ -37,13 +38,15 @@ public class EcoSystem extends Organization {
     private DistributorDirectory distributorDirectory;
     private ReceiverDirectory receiverDirectory;
     private DriverDirectory driverDirectory;
+    private ClerkDirectory clerkDirectory;
+
 
     
     
     //Contructor
     public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory,
             VolunteerDirectory volunteerDirectory, ContributorDirectory contributorDirectory, StoreAdminDirectory storeAdminDirectory,
-            DeliveryAgentDirectory deliveryAgentDirectory, DistributorDirectory distributorDirectory, ReceiverDirectory receiverDirectory) {
+            DeliveryAgentDirectory deliveryAgentDirectory, DistributorDirectory distributorDirectory, ReceiverDirectory receiverDirectory, DriverDirectory driverDirectory, ClerkDirectory clerkDirectory) {
 
         this.restaurantDirectory = restaurantDirectory;
         this.customerDirectory = customerDirectory;
@@ -55,6 +58,8 @@ public class EcoSystem extends Organization {
         this.deliveryAgentDirectory = deliveryAgentDirectory;
         this.distributorDirectory = distributorDirectory;
         this.receiverDirectory = receiverDirectory;
+        this.driverDirectory=driverDirectory;
+        this.clerkDirectory=clerkDirectory;
     }
 
     public static EcoSystem getInstance() {
@@ -145,6 +150,20 @@ public class EcoSystem extends Organization {
     public void setDriverDirectory(DriverDirectory driverDirectory) {
         this.driverDirectory = driverDirectory;
     }
+    
+    
+     public ClerkDirectory getClerkDirectory() {
+         if(clerkDirectory == null){
+            clerkDirectory = new ClerkDirectory();
+        }
+        return clerkDirectory;
+    }
+
+    public void setClerkDirectory(ClerkDirectory clerkDirectory) {
+        this.clerkDirectory = clerkDirectory;
+    }
+    
+
 
 
     @Override

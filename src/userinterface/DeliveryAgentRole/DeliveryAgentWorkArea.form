@@ -17,21 +17,20 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="217" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                      <Component id="btnEmployees" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="btnWorkRequests" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      <Component id="btnPayment" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace pref="322" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="217" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+              <Component id="btnDrivers" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+              <Component id="btnClerks" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="115" max="32767" attributes="0"/>
+              <Component id="btnWorkRequests" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+              <Component id="btnPayment" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -42,9 +41,10 @@
               <Component id="jLabel1" min="-2" pref="32" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnEmployees" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnDrivers" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnWorkRequests" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnPayment" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnClerks" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="495" max="32767" attributes="0"/>
           </Group>
@@ -57,12 +57,12 @@
         <Property name="text" type="java.lang.String" value="Welcome Delivery Agency"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnEmployees">
+    <Component class="javax.swing.JButton" name="btnDrivers">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Employees"/>
+        <Property name="text" type="java.lang.String" value="Drivers"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEmployeesActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDriversActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnWorkRequests">
@@ -77,6 +77,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Payment "/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnClerks">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Clerks"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClerksActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
