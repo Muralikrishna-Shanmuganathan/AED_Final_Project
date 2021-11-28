@@ -7,6 +7,7 @@ package Business;
 
 import Business.Contributor.ContributorDirectory;
 import Business.Customer.CustomerDirectory;
+import Business.DeliveryAgency.DriverDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Distributor.DistributorDirectory;
 import Business.Receiver.ReceiverDirectory;
@@ -35,6 +36,9 @@ public class EcoSystem extends Organization {
     private DeliveryAgentDirectory deliveryAgentDirectory;
     private DistributorDirectory distributorDirectory;
     private ReceiverDirectory receiverDirectory;
+    private DriverDirectory driverDirectory;
+
+    
     
     //Contructor
     public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory,
@@ -130,7 +134,17 @@ public class EcoSystem extends Organization {
         this.receiverDirectory = receiverDirectory;
     }
 
-    
+    public DriverDirectory getDriverDirectory() {
+        
+        if(driverDirectory == null){
+            driverDirectory = new DriverDirectory();
+        }
+        return driverDirectory;
+    }
+
+    public void setDriverDirectory(DriverDirectory driverDirectory) {
+        this.driverDirectory = driverDirectory;
+    }
 
 
     @Override
