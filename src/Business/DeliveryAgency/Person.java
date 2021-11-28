@@ -14,12 +14,21 @@ public class Person {
     public String FirstName; 
     public String LastName; 
     public String AptNumber;
+    public String UserName;
     public String StreetName; 
     public String CommunityName; 
     public String City; 
     public String State;
     public String PhoneNumber;
     public String role;
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String UserName) {
+        this.UserName = UserName;
+    }
     
     
 
