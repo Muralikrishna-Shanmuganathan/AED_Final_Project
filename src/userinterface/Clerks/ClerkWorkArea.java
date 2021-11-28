@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.Driver;
+package userinterface.Clerks;
 
+import userinterface.Driver.*;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
@@ -13,7 +14,7 @@ import javax.swing.JPanel;
  *
  * @author ANIRUDH
  */
-public class DriverWorkArea extends javax.swing.JPanel {
+public class ClerkWorkArea extends javax.swing.JPanel {
 
     /**
      * Creates new form DriverWorkArea
@@ -25,7 +26,7 @@ public class DriverWorkArea extends javax.swing.JPanel {
     private UserAccount userAccount;
     
     
-    public DriverWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+    public ClerkWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
@@ -43,7 +44,7 @@ public class DriverWorkArea extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setText("Welcome Driver ");
+        jLabel1.setText("Welcome Clerk! ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
