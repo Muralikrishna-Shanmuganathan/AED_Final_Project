@@ -7,12 +7,14 @@ package userinterface.DeliveryAgentRole;
 
 import Business.DeliveryAgency.Clerk;
 import Business.DeliveryAgency.Driver;
+import Business.DeliveryAgency.Person;
 import userinterface.SystemAdminWorkArea.*;
 import Business.DeliveryAgent.DeliveryAgent;
 import Business.EcoSystem;
 import Business.Role.ClerkRole;
 import Business.Role.DeliveryAgentRole;
 import Business.Role.DriverRole;
+import Business.Role.FleetManagerRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -25,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author yashwanthsridharan
  */
-public class AddClerkJPanel extends javax.swing.JPanel {
+public class AddFleetManagerJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageDeliveryAgentJPanel
@@ -33,11 +35,11 @@ public class AddClerkJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     UserAccount user;
-    public AddClerkJPanel(JPanel userProcessContainer, EcoSystem system) {
+    public AddFleetManagerJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-        populateClerkTable();
+        populateFleetManagerTable();
     }
 
     /**
@@ -50,7 +52,7 @@ public class AddClerkJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblClerks = new javax.swing.JTable();
+        tblFleetManagers = new javax.swing.JTable();
         btnCreate = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
@@ -69,7 +71,7 @@ public class AddClerkJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblClerks.setModel(new javax.swing.table.DefaultTableModel(
+        tblFleetManagers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -95,7 +97,7 @@ public class AddClerkJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblClerks);
+        jScrollPane1.setViewportView(tblFleetManagers);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 404, 91));
 
@@ -293,24 +295,23 @@ public class AddClerkJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "  User Name already exists ");
         } else {
 
-            UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, uname, password, null, new ClerkRole());           
-            Clerk clerk = system.getClerkDirectory().createClerk(uname);
+            UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, uname, password, null, new FleetManagerRole());           
+            Person fleetManager = system.getFleetManagerDirectory().createPerson(uname);
 
             txtName.setText("");
             txtUserName.setText("");
             txtPassword.setText("");
-
-            populateClerkTable();
+            populateFleetManagerTable();
         }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
-        int selectRow = tblClerks.getSelectedRow();
+        int selectRow = tblFleetManagers.getSelectedRow();
 
         if (selectRow >= 0) {
-            String username = (String) tblClerks.getValueAt(selectRow, 1);
-            String pwd = (String) tblClerks.getValueAt(selectRow, 2);
+            String username = (String) tblFleetManagers.getValueAt(selectRow, 1);
+            String pwd = (String) tblFleetManagers.getValueAt(selectRow, 2);
             user = system.getUserAccountDirectory().authenticateUser(username, pwd);
 
             txtName.setText(user.getName() + "");
@@ -325,7 +326,7 @@ public class AddClerkJPanel extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        int selectRow = tblClerks.getSelectedRow();
+        int selectRow = tblFleetManagers.getSelectedRow();
 
         if (selectRow < 0) {
             JOptionPane.showMessageDialog(this, "Please select a row to update");
@@ -391,7 +392,7 @@ public class AddClerkJPanel extends javax.swing.JPanel {
             return;
         }
         system.getUserAccountDirectory().updateUserAccount(user, name, uname, password);
-        populateClerkTable();
+        populateFleetManagerTable();
         txtName.setText("");
         txtUserName.setText("");
         txtPassword.setText("");
@@ -399,20 +400,20 @@ public class AddClerkJPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblClerks.getSelectedRow();
+        int selectedRow = tblFleetManagers.getSelectedRow();
         if (selectedRow >= 0) {
             int selectionButton = JOptionPane.YES_NO_OPTION;
             int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure to delete??", "Warning", selectionButton);
             if (selectionResult == JOptionPane.YES_OPTION) {
-                String username = (String) tblClerks.getValueAt(selectedRow, 1);
-                String pwd = (String) tblClerks.getValueAt(selectedRow, 2);
+                String username = (String) tblFleetManagers.getValueAt(selectedRow, 1);
+                String pwd = (String) tblFleetManagers.getValueAt(selectedRow, 2);
                 UserAccount user = system.getUserAccountDirectory().authenticateUser(username, pwd);
 
                 //UserAccount user = (UserAccount) networkJTable.getValueAt(selectedRow, 0);
                 system.getUserAccountDirectory().deleteUserAccount(user);
-                system.getDriverDirectory().deleteDriver(user.getUsername());
+                system.getFleetManagerDirectory().deletePerson(user.getUsername());
 
-                populateClerkTable();
+                populateFleetManagerTable();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Please select a Row!!");
@@ -431,7 +432,7 @@ public class AddClerkJPanel extends javax.swing.JPanel {
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
-        populateClerkTable();
+        populateFleetManagerTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
@@ -453,21 +454,21 @@ public class AddClerkJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblClerks;
+    private javax.swing.JTable tblFleetManagers;
     private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 
-    private void populateClerkTable() {
-    DefaultTableModel model = (DefaultTableModel) tblClerks.getModel();
+    private void populateFleetManagerTable() {
+    DefaultTableModel model = (DefaultTableModel) tblFleetManagers.getModel();
 
         model.setRowCount(0);
 
         // Updating the contributorTable
         for (UserAccount user : system.getUserAccountDirectory().getUserAccountList()) {
 
-            if ("Business.Role.ClerkRole".equals(user.getRole().getClass().getName())) {
+            if ("Business.Role.FleetManagerRole".equals(user.getRole().getClass().getName())) {
                 Object[] row = new Object[3];
 
                 row[0] = user.getName();
@@ -476,7 +477,10 @@ public class AddClerkJPanel extends javax.swing.JPanel {
 
                 model.addRow(row);
             }
+            
+         
+        }
 
-        }    
+        
     }
 }

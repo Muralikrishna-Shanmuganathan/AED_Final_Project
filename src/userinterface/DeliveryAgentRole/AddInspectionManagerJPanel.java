@@ -7,12 +7,14 @@ package userinterface.DeliveryAgentRole;
 
 import Business.DeliveryAgency.Clerk;
 import Business.DeliveryAgency.Driver;
+import Business.DeliveryAgency.Person;
 import userinterface.SystemAdminWorkArea.*;
 import Business.DeliveryAgent.DeliveryAgent;
 import Business.EcoSystem;
 import Business.Role.ClerkRole;
 import Business.Role.DeliveryAgentRole;
 import Business.Role.DriverRole;
+import Business.Role.InspectionManagerRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -25,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author yashwanthsridharan
  */
-public class AddClerkJPanel extends javax.swing.JPanel {
+public class AddInspectionManagerJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageDeliveryAgentJPanel
@@ -33,11 +35,11 @@ public class AddClerkJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     UserAccount user;
-    public AddClerkJPanel(JPanel userProcessContainer, EcoSystem system) {
+    public AddInspectionManagerJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-        populateClerkTable();
+        populateInspectionManagerTable();
     }
 
     /**
@@ -293,14 +295,14 @@ public class AddClerkJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "  User Name already exists ");
         } else {
 
-            UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, uname, password, null, new ClerkRole());           
-            Clerk clerk = system.getClerkDirectory().createClerk(uname);
+            UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, uname, password, null, new InspectionManagerRole());           
+            Person inspectionManager = system.getInspectionManagerDirectory().createPerson(uname);
 
             txtName.setText("");
             txtUserName.setText("");
             txtPassword.setText("");
 
-            populateClerkTable();
+            populateInspectionManagerTable();
         }
     }//GEN-LAST:event_btnCreateActionPerformed
 
@@ -391,7 +393,7 @@ public class AddClerkJPanel extends javax.swing.JPanel {
             return;
         }
         system.getUserAccountDirectory().updateUserAccount(user, name, uname, password);
-        populateClerkTable();
+        populateInspectionManagerTable();
         txtName.setText("");
         txtUserName.setText("");
         txtPassword.setText("");
@@ -410,9 +412,9 @@ public class AddClerkJPanel extends javax.swing.JPanel {
 
                 //UserAccount user = (UserAccount) networkJTable.getValueAt(selectedRow, 0);
                 system.getUserAccountDirectory().deleteUserAccount(user);
-                system.getDriverDirectory().deleteDriver(user.getUsername());
+                system.getInspectionManagerDirectory().deletePerson(user.getUsername());
 
-                populateClerkTable();
+                populateInspectionManagerTable();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Please select a Row!!");
@@ -431,7 +433,7 @@ public class AddClerkJPanel extends javax.swing.JPanel {
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
-        populateClerkTable();
+        populateInspectionManagerTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
@@ -459,7 +461,7 @@ public class AddClerkJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 
-    private void populateClerkTable() {
+    private void populateInspectionManagerTable() {
     DefaultTableModel model = (DefaultTableModel) tblClerks.getModel();
 
         model.setRowCount(0);
@@ -467,7 +469,7 @@ public class AddClerkJPanel extends javax.swing.JPanel {
         // Updating the contributorTable
         for (UserAccount user : system.getUserAccountDirectory().getUserAccountList()) {
 
-            if ("Business.Role.ClerkRole".equals(user.getRole().getClass().getName())) {
+            if ("Business.Role.InspectionManagerRole".equals(user.getRole().getClass().getName())) {
                 Object[] row = new Object[3];
 
                 row[0] = user.getName();
