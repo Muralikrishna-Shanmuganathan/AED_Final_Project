@@ -35,7 +35,7 @@ public class AddDriverJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-        populateDeliveryAgentTable();
+        populateDriverTable();
     }
 
     /**
@@ -298,7 +298,7 @@ public class AddDriverJPanel extends javax.swing.JPanel {
             txtUserName.setText("");
             txtPassword.setText("");
 
-            populateDeliveryAgentTable();
+            populateDriverTable();
         }
     }//GEN-LAST:event_btnCreateActionPerformed
 
@@ -389,7 +389,7 @@ public class AddDriverJPanel extends javax.swing.JPanel {
             return;
         }
         system.getUserAccountDirectory().updateUserAccount(user, name, uname, password);
-        populateDeliveryAgentTable();
+        populateDriverTable();
         txtName.setText("");
         txtUserName.setText("");
         txtPassword.setText("");
@@ -408,9 +408,9 @@ public class AddDriverJPanel extends javax.swing.JPanel {
 
                 //UserAccount user = (UserAccount) networkJTable.getValueAt(selectedRow, 0);
                 system.getUserAccountDirectory().deleteUserAccount(user);
-                system.getDeliveryAgentDirectory().deleteDeliveryAgent(user.getUsername());
+                system.getDriverDirectory().deleteDriver(user.getUsername());
 
-                populateDeliveryAgentTable();
+                populateDriverTable();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Please select a Row!!");
@@ -429,7 +429,7 @@ public class AddDriverJPanel extends javax.swing.JPanel {
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
-        populateDeliveryAgentTable();
+        populateDriverTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
@@ -457,7 +457,7 @@ public class AddDriverJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 
-    private void populateDeliveryAgentTable() {
+    private void populateDriverTable() {
     DefaultTableModel model = (DefaultTableModel) tblDrivers.getModel();
 
         model.setRowCount(0);
