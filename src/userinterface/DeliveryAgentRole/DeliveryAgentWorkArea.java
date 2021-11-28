@@ -7,7 +7,9 @@ package userinterface.DeliveryAgentRole;
 
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
+import userinterface.SystemAdminWorkArea.ManageDeliveryAgentJPanel;
 
 /**
  *
@@ -19,14 +21,14 @@ public class DeliveryAgentWorkArea extends javax.swing.JPanel {
      * Creates new form DeliveryAgentWorkArea
      */
     private JPanel userProcessContainer;
-    private EcoSystem business;
+    private EcoSystem ecosystem;
     private UserAccount userAccount;
 
-    public DeliveryAgentWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+    public DeliveryAgentWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
-        this.business = business;
+        this.ecosystem = ecosystem;
     }
 
     /**
@@ -39,29 +41,77 @@ public class DeliveryAgentWorkArea extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        btnEmployees = new javax.swing.JButton();
+        btnWorkRequests = new javax.swing.JButton();
+        btnPayment = new javax.swing.JButton();
 
-        jLabel1.setText("Welcome Delivery Agent!");
+        jLabel1.setText("Welcome Delivery Agency");
+
+        btnEmployees.setText("Employees");
+        btnEmployees.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmployeesActionPerformed(evt);
+            }
+        });
+
+        btnWorkRequests.setText("Work Requests");
+        btnWorkRequests.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnWorkRequestsActionPerformed(evt);
+            }
+        });
+
+        btnPayment.setText("Payment ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(jLabel1)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(271, 271, 271)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(btnEmployees)
+                        .addGap(45, 45, 45)
+                        .addComponent(btnWorkRequests)
+                        .addGap(53, 53, 53)
+                        .addComponent(btnPayment)))
+                .addContainerGap(322, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jLabel1)
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEmployees)
+                    .addComponent(btnWorkRequests)
+                    .addComponent(btnPayment))
+                .addContainerGap(495, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnWorkRequestsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWorkRequestsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnWorkRequestsActionPerformed
+
+    private void btnEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeesActionPerformed
+        // TODO add your handling code here:
+        AddDriverJPanel aDjp = new AddDriverJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("Manage Delivery Agents", aDjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnEmployeesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEmployees;
+    private javax.swing.JButton btnPayment;
+    private javax.swing.JButton btnWorkRequests;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

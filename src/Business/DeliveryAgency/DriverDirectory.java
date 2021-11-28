@@ -35,6 +35,12 @@ public class DriverDirectory {
         count++;
     }
     
+    public Driver createDriver(String uname){
+        Driver driver=new Driver();
+        driver.setFirstName(uname);
+        return driver;
+    }
+    
     public void removeDriverfromList(Driver driver)
     {
         driverList.remove(driver);
