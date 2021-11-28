@@ -9,6 +9,8 @@ import Business.Contributor.ContributorDirectory;
 import Business.Customer.CustomerDirectory;
 import Business.DeliveryAgency.ClerkDirectory;
 import Business.DeliveryAgency.DriverDirectory;
+import Business.DeliveryAgency.FleetManagerDirectory;
+import Business.DeliveryAgency.InspectionManagerDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Distributor.DistributorDirectory;
 import Business.Receiver.ReceiverDirectory;
@@ -39,6 +41,8 @@ public class EcoSystem extends Organization {
     private ReceiverDirectory receiverDirectory;
     private DriverDirectory driverDirectory;
     private ClerkDirectory clerkDirectory;
+    private FleetManagerDirectory fleetManagerDirectory;
+    private InspectionManagerDirectory inspectionManagerDirectory;
 
 
     
@@ -46,7 +50,8 @@ public class EcoSystem extends Organization {
     //Contructor
     public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory,
             VolunteerDirectory volunteerDirectory, ContributorDirectory contributorDirectory, StoreAdminDirectory storeAdminDirectory,
-            DeliveryAgentDirectory deliveryAgentDirectory, DistributorDirectory distributorDirectory, ReceiverDirectory receiverDirectory, DriverDirectory driverDirectory, ClerkDirectory clerkDirectory) {
+            DeliveryAgentDirectory deliveryAgentDirectory, DistributorDirectory distributorDirectory, ReceiverDirectory receiverDirectory, DriverDirectory driverDirectory, ClerkDirectory clerkDirectory,
+            FleetManagerDirectory fleetManagerDirectory,InspectionManagerDirectory inspectionManagerDirectory) {
 
         this.restaurantDirectory = restaurantDirectory;
         this.customerDirectory = customerDirectory;
@@ -60,7 +65,10 @@ public class EcoSystem extends Organization {
         this.receiverDirectory = receiverDirectory;
         this.driverDirectory=driverDirectory;
         this.clerkDirectory=clerkDirectory;
+        this.fleetManagerDirectory= fleetManagerDirectory;
+        this.inspectionManagerDirectory=inspectionManagerDirectory;
     }
+
 
     public static EcoSystem getInstance() {
         if (business == null) {
@@ -163,9 +171,30 @@ public class EcoSystem extends Organization {
         this.clerkDirectory = clerkDirectory;
     }
     
+    
+    public FleetManagerDirectory getFleetManagerDirectory() {
+        if(fleetManagerDirectory == null){
+            fleetManagerDirectory = new FleetManagerDirectory();
+        }
+        return fleetManagerDirectory;
+    }
 
+    public void setFleetManagerDirectory(FleetManagerDirectory fleetManagerDirectory) {
+        this.fleetManagerDirectory = fleetManagerDirectory;
+    }
 
+    public InspectionManagerDirectory getInspectionManagerDirectory() {
+        if(inspectionManagerDirectory == null){
+            inspectionManagerDirectory = new InspectionManagerDirectory();
+        }
+        return inspectionManagerDirectory;
+    }
 
+    public void setInspectionManagerDirectory(InspectionManagerDirectory inspectionManagerDirectory) {
+        this.inspectionManagerDirectory = inspectionManagerDirectory;
+    }
+    
+    
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roleList = new ArrayList<Role>();
