@@ -41,16 +41,17 @@ public class DeliveryAgentWorkArea extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnEmployees = new javax.swing.JButton();
+        btnDrivers = new javax.swing.JButton();
         btnWorkRequests = new javax.swing.JButton();
         btnPayment = new javax.swing.JButton();
+        btnClerks = new javax.swing.JButton();
 
         jLabel1.setText("Welcome Delivery Agency");
 
-        btnEmployees.setText("Employees");
-        btnEmployees.addActionListener(new java.awt.event.ActionListener() {
+        btnDrivers.setText("Drivers");
+        btnDrivers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmployeesActionPerformed(evt);
+                btnDriversActionPerformed(evt);
             }
         });
 
@@ -63,23 +64,31 @@ public class DeliveryAgentWorkArea extends javax.swing.JPanel {
 
         btnPayment.setText("Payment ");
 
+        btnClerks.setText("Clerks");
+        btnClerks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClerksActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(271, 271, 271)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(btnEmployees)
-                        .addGap(45, 45, 45)
-                        .addComponent(btnWorkRequests)
-                        .addGap(53, 53, 53)
-                        .addComponent(btnPayment)))
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addGap(271, 271, 271)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(btnDrivers)
+                .addGap(80, 80, 80)
+                .addComponent(btnClerks)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addComponent(btnWorkRequests)
+                .addGap(105, 105, 105)
+                .addComponent(btnPayment)
+                .addGap(125, 125, 125))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,9 +97,10 @@ public class DeliveryAgentWorkArea extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEmployees)
+                    .addComponent(btnDrivers)
                     .addComponent(btnWorkRequests)
-                    .addComponent(btnPayment))
+                    .addComponent(btnPayment)
+                    .addComponent(btnClerks))
                 .addContainerGap(495, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -99,17 +109,28 @@ public class DeliveryAgentWorkArea extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnWorkRequestsActionPerformed
 
-    private void btnEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeesActionPerformed
+    private void btnDriversActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDriversActionPerformed
         // TODO add your handling code here:
         AddDriverJPanel aDjp = new AddDriverJPanel(userProcessContainer, ecosystem);
-        userProcessContainer.add("Manage Delivery Agents", aDjp);
+        userProcessContainer.add("Manage Drivers", aDjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnEmployeesActionPerformed
+    }//GEN-LAST:event_btnDriversActionPerformed
+
+    private void btnClerksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClerksActionPerformed
+        // TODO add your handling code here:
+        AddClerkJPanel aDjp = new AddClerkJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("Manage Clerks", aDjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+        
+    }//GEN-LAST:event_btnClerksActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEmployees;
+    private javax.swing.JButton btnClerks;
+    private javax.swing.JButton btnDrivers;
     private javax.swing.JButton btnPayment;
     private javax.swing.JButton btnWorkRequests;
     private javax.swing.JLabel jLabel1;
