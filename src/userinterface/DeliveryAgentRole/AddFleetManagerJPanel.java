@@ -5,6 +5,7 @@
  */
 package userinterface.DeliveryAgentRole;
 
+import Business.DeliveryAgency.AgencyAdmin;
 import Business.DeliveryAgency.Clerk;
 import Business.DeliveryAgency.Driver;
 import Business.DeliveryAgency.Person;
@@ -295,7 +296,7 @@ public class AddFleetManagerJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "  User Name already exists ");
         } else {
 
-            UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, uname, password, null, new FleetManagerRole());           
+            UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, uname, password, null, new FleetManagerRole()); 
             Person fleetManager = system.getFleetManagerDirectory().createPerson(uname);
 
             txtName.setText("");
