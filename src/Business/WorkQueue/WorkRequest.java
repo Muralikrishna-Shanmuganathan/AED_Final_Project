@@ -7,6 +7,7 @@ package Business.WorkQueue;
 
 import Business.DeliveryAgency.Clerk;
 import Business.DeliveryAgency.Driver;
+import Business.Products.ProductList;
 import java.util.Date;
 import Business.UserAccount.UserAccount;
 
@@ -31,7 +32,14 @@ public class WorkRequest {
     private String VehicleNumber;  
     private Driver driver;
     private Clerk clerk;
+    private ProductList productList;
 
+
+    public WorkRequest() {
+        productList=new ProductList();
+        requestDate = new Date();
+    }
+    
     public String getMessage() {
         return message;
     }
@@ -79,11 +87,7 @@ public class WorkRequest {
     private Date requestDate;
     private Date resolveDate;
     
-    
    
-    public WorkRequest() {
-        requestDate = new Date();
-    }
 
     public int getWorkRequestID() {
         return workRequestID;
@@ -172,6 +176,16 @@ public class WorkRequest {
     public void setClerk(Clerk clerk) {
         this.clerk = clerk;
     }
+    
+    public ProductList getProductList() {
+        return productList;
+    }
+
+    public void setProductList(ProductList productList) {
+        this.productList = productList;
+    }
+
+    
     
     
 }

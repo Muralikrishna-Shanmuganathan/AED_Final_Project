@@ -5,6 +5,7 @@
  */
 package Business.DeliveryAgency;
 
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**

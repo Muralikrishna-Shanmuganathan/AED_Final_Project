@@ -137,6 +137,12 @@ public class DeliveryAgentWorkArea extends javax.swing.JPanel {
 
     private void btnWorkRequestsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWorkRequestsActionPerformed
         // TODO add your handling code here:
+        ViewWorkRequestsJPanel aDjp = new ViewWorkRequestsJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("Manage Work Requests", aDjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+        
     }//GEN-LAST:event_btnWorkRequestsActionPerformed
 
     private void btnDriversActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDriversActionPerformed

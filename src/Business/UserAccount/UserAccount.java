@@ -21,6 +21,8 @@ public class UserAccount {
     private Role role;
     private WorkQueue workQueue;
 
+    
+
     public UserAccount() {
         workQueue = new WorkQueue();
     }
@@ -67,7 +69,16 @@ public class UserAccount {
     }
 
     public WorkQueue getWorkQueue() {
+        if(workQueue==null)
+        {
+            workQueue=new WorkQueue();
+        }
         return workQueue;
+    }
+    
+    
+    public void setWorkQueue(WorkQueue workQueue) {
+        this.workQueue = workQueue;
     }
 
     
