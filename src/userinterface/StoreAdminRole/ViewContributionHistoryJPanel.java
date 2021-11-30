@@ -5,10 +5,13 @@
  */
 package userinterface.StoreAdminRole;
 
+import Business.Contribution.Contribution;
 import Business.EcoSystem;
+import Business.StoreAdmin.StoreAdmin;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,11 +26,14 @@ public class ViewContributionHistoryJPanel extends javax.swing.JPanel {
     private EcoSystem system;
     UserAccount user;
     
-    public ViewContributionHistoryJPanel(JPanel userProcessContainer, EcoSystem system) {
+    public ViewContributionHistoryJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.system = system;
+        this.user = account;
+        
+        populateHistoryTable();
     }
 
     /**
@@ -41,6 +47,8 @@ public class ViewContributionHistoryJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblHistory = new javax.swing.JTable();
 
         jLabel1.setText("View Contribution History");
 
@@ -51,6 +59,27 @@ public class ViewContributionHistoryJPanel extends javax.swing.JPanel {
             }
         });
 
+        tblHistory.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Store Name", "Item", "Quantity", "Expiry Date"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblHistory);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -60,9 +89,14 @@ public class ViewContributionHistoryJPanel extends javax.swing.JPanel {
                 .addComponent(btnBack)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(276, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(244, 244, 244))
+                .addContainerGap(127, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(244, 244, 244))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(102, 102, 102))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,7 +105,9 @@ public class ViewContributionHistoryJPanel extends javax.swing.JPanel {
                 .addComponent(btnBack)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addGap(67, 67, 67)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(141, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -86,5 +122,29 @@ public class ViewContributionHistoryJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblHistory;
     // End of variables declaration//GEN-END:variables
+
+    private void populateHistoryTable() {
+        
+        DefaultTableModel model = (DefaultTableModel) tblHistory.getModel();
+        
+        model.setRowCount(0);
+         
+         for (StoreAdmin admin:system.getStoreAdminDirectory().getStoreAdminDirectory()){
+           
+            if (admin.getUserName().equals(user.getUsername())) {
+               for(Contribution contribution:admin.getContribution()){
+                Object[] row = new Object[4];
+                row[0] = contribution;
+                row[1] = contribution.getItem();
+                row[2] = contribution.getQuantity();
+                row[3] = contribution.getExpiryDate();
+                model.addRow(row);
+               }
+                
+            }
+    }
+}
 }
