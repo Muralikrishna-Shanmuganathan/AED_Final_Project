@@ -90,7 +90,7 @@ public class StoreAdminAreaJPanel extends javax.swing.JPanel {
 
     private void btnAddContributionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddContributionActionPerformed
         // TODO add your handling code here:
-        AddContributionJPanel acjp = new AddContributionJPanel(userProcessContainer, ecosystem);
+        AddContributionJPanel acjp = new AddContributionJPanel(userProcessContainer, userAccount, ecosystem);
         userProcessContainer.add("Add Contribution", acjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -98,7 +98,7 @@ public class StoreAdminAreaJPanel extends javax.swing.JPanel {
 
     private void btnViewContributionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewContributionActionPerformed
         // TODO add your handling code here:
-        ViewContributionHistoryJPanel vchjp = new ViewContributionHistoryJPanel(userProcessContainer, ecosystem);
+        ViewContributionHistoryJPanel vchjp = new ViewContributionHistoryJPanel(userProcessContainer, userAccount, ecosystem);
         userProcessContainer.add("View Contribution History", vchjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

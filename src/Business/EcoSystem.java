@@ -21,6 +21,10 @@ import Business.StoreAdmin.StoreAdminDirectory;
 import Business.Volunteer.VolunteerDirectory;
 import Business.DeliveryAgent.DeliveryAgentDirectory;
 import java.util.ArrayList;
+import Business.Contribution.Contribution;
+import Business.WorkQueue.WorkQueue;
+
+
 
 /**
  *
@@ -43,6 +47,9 @@ public class EcoSystem extends Organization {
     private ClerkDirectory clerkDirectory;
     private FleetManagerDirectory fleetManagerDirectory;
     private InspectionManagerDirectory inspectionManagerDirectory;
+    private Contribution contribution;
+    
+    private WorkQueue workQueue;
 
 
     
@@ -51,7 +58,7 @@ public class EcoSystem extends Organization {
     public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory,
             VolunteerDirectory volunteerDirectory, ContributorDirectory contributorDirectory, StoreAdminDirectory storeAdminDirectory,
             DeliveryAgentDirectory deliveryAgentDirectory, DistributorDirectory distributorDirectory, ReceiverDirectory receiverDirectory, DriverDirectory driverDirectory, ClerkDirectory clerkDirectory,
-            FleetManagerDirectory fleetManagerDirectory,InspectionManagerDirectory inspectionManagerDirectory) {
+            FleetManagerDirectory fleetManagerDirectory,InspectionManagerDirectory inspectionManagerDirectory, Contribution contribution) {
 
         this.restaurantDirectory = restaurantDirectory;
         this.customerDirectory = customerDirectory;
@@ -67,6 +74,7 @@ public class EcoSystem extends Organization {
         this.clerkDirectory=clerkDirectory;
         this.fleetManagerDirectory= fleetManagerDirectory;
         this.inspectionManagerDirectory=inspectionManagerDirectory;
+        this.contribution=contribution;
     }
 
 
@@ -194,6 +202,10 @@ public class EcoSystem extends Organization {
         this.inspectionManagerDirectory = inspectionManagerDirectory;
     }
     
+
+    public void setContribution(Contribution contribution) {
+        this.contribution = contribution;
+    }
     
     @Override
     public ArrayList<Role> getSupportedRole() {

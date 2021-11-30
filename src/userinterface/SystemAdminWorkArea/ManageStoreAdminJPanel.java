@@ -247,7 +247,8 @@ public class ManageStoreAdminJPanel extends javax.swing.JPanel {
 
             return;
         }
-
+            
+        
         try {
             if (uname == null || uname.isEmpty()) {
                 throw new NullPointerException("User Name field is Empty");
@@ -292,6 +293,9 @@ public class ManageStoreAdminJPanel extends javax.swing.JPanel {
             UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, uname, password, null, new StoreAdminRole());
             StoreAdmin storeAdmin = system.getStoreAdminDirectory().createStoreAdmin(uname);
 
+            storeAdmin.setName(name);
+            storeAdmin.setUserName(uname);
+            
             txtName.setText("");
             txtUserName.setText("");
             txtPassword.setText("");

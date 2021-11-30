@@ -108,7 +108,7 @@ public class VolunteerAreaJPanel extends javax.swing.JPanel {
 
     private void btnAppRejStoreContributionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppRejStoreContributionActionPerformed
         // TODO add your handling code here:
-        ApproveRejectStoreContributionJPanel arscjp = new ApproveRejectStoreContributionJPanel(userProcessContainer, ecosystem);
+        ApproveRejectStoreContributionJPanel arscjp = new ApproveRejectStoreContributionJPanel(userProcessContainer, userAccount, ecosystem);
         userProcessContainer.add("Manage Store Contribution", arscjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

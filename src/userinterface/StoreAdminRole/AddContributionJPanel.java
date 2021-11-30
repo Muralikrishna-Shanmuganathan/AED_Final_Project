@@ -5,9 +5,17 @@
  */
 package userinterface.StoreAdminRole;
 
+import Business.Contribution.Contribution;
 import Business.EcoSystem;
+import Business.StoreAdmin.StoreAdmin;
 import Business.UserAccount.UserAccount;
+import com.toedter.calendar.JDateChooser;
 import java.awt.CardLayout;
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -22,13 +30,17 @@ public class AddContributionJPanel extends javax.swing.JPanel {
     
     private JPanel userProcessContainer;
     private EcoSystem system;
-    UserAccount user;
+    UserAccount account;
+    Contribution contribution;
     
-    public AddContributionJPanel(JPanel userProcessContainer, EcoSystem system) {
+    public AddContributionJPanel(JPanel userProcessContainer,UserAccount account, EcoSystem system) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.system = system;
+        this.account = account;
+        
+        System.out.println(contribution);
     }
 
     /**
@@ -42,6 +54,16 @@ public class AddContributionJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtStoreName = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtqty = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jDateChooser = new com.toedter.calendar.JDateChooser();
+        btnAdd = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtItem = new javax.swing.JTextField();
 
         jLabel1.setText("Add Contribution");
 
@@ -52,27 +74,93 @@ public class AddContributionJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setText("Item:");
+
+        jLabel7.setText("Quantity:");
+
+        jLabel8.setText("Expiry Date:");
+
+        btnAdd.setText("ADD");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
+        btnReset.setText("RESET");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Store Name:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(311, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(300, 300, 300))
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(btnBack)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btnBack))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(225, 225, 225)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnAdd)
+                                .addGap(34, 34, 34)
+                                .addComponent(btnReset))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel2))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtStoreName)
+                                    .addComponent(txtqty, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtItem))))))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(btnBack)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtStoreName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtqty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8)))
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdd)
+                    .addComponent(btnReset))
+                .addGap(75, 75, 75))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -83,9 +171,75 @@ public class AddContributionJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // TODO add your handling code here:
+        txtStoreName.setText("");
+        txtqty.setText("");
+        JDateChooser dateChooser = new JDateChooser();
+        dateChooser.setCalendar(null);
+    }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        if ( txtStoreName.getText().trim().isEmpty() || txtItem.getText().trim().isEmpty() || txtqty.getText().trim().isEmpty() || jDateChooser==null){
+            JOptionPane.showMessageDialog(null, "Please enter all fields");
+        }
+        
+        String storeName = txtStoreName.getText();
+        String item = txtItem.getText();
+        String qty = txtqty.getText();
+        Date date = jDateChooser.getDate();
+        String strDate = DateFormat.getDateInstance().format(date);
+        
+        try {
+            if (item == null || item.isEmpty()) {
+                throw new NullPointerException(" Item Name is Empty");
+
+            } else if (Pattern.matches("^[A-Za-z]+$", item) == false) {
+                throw new Exception("Please enter valid Item Name");
+
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, " Item Name is Empty");
+
+            return;
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "  Item Name is Empty");
+
+            return;
+        }
+        
+        if ( item.trim().isEmpty() || txtqty.getText().trim().isEmpty() || jDateChooser==null){
+            JOptionPane.showMessageDialog(null, "Please enter all fields");
+        }
+        
+        for(StoreAdmin admin : system.getStoreAdminDirectory().getStoreAdminDirectory()){
+           if(admin.getUserName().equals(account.getUsername())){
+                system.getStoreAdminDirectory().AddContribution(admin, storeName, item, qty, strDate, "New Request");
+            }   
+        }
+        
+        JOptionPane.showMessageDialog(null, "Item added");
+        txtStoreName.setText("");
+        txtqty.setText("");
+        JDateChooser dateChooser = new JDateChooser();
+        dateChooser.setCalendar(null);
+    }//GEN-LAST:event_btnAddActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnReset;
+    private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField txtItem;
+    private javax.swing.JTextField txtStoreName;
+    private javax.swing.JTextField txtqty;
     // End of variables declaration//GEN-END:variables
 }
