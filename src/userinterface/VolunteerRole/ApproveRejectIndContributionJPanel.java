@@ -5,11 +5,14 @@
  */
 package userinterface.VolunteerRole;
 
+import Business.Contribution.Contribution;
+import Business.Contributor.Contributor;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
@@ -23,11 +26,15 @@ public class ApproveRejectIndContributionJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private EcoSystem system;
-    UserAccount user;
-    public ApproveRejectIndContributionJPanel(JPanel userProcessContainer, EcoSystem system) {
+    private UserAccount user;
+    
+    public ApproveRejectIndContributionJPanel(JPanel userProcessContainer,UserAccount user, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
+        this.user = user;
+        
+        populateIndividualContribution();
     }
 
     /**
@@ -44,9 +51,12 @@ public class ApproveRejectIndContributionJPanel extends javax.swing.JPanel {
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblStoreContribution = new javax.swing.JTable();
+        tblIndividualContribution = new javax.swing.JTable();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Manage Individual Contribution");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(298, 55, -1, -1));
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -54,62 +64,28 @@ public class ApproveRejectIndContributionJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
         btnApprove.setText("Approve");
+        add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, -1, -1));
 
         btnReject.setText("Reject");
+        add(btnReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, -1, -1));
 
-        tblStoreContribution.setModel(new javax.swing.table.DefaultTableModel(
+        tblIndividualContribution.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Name", "Item", "Quantity", "Expiry Date", "Status", "Rejection Reason"
+                "Name", "Item", "Quantity", "Expiry Date", "Status"
             }
         ));
-        jScrollPane1.setViewportView(tblStoreContribution);
+        jScrollPane1.setViewportView(tblIndividualContribution);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(272, 272, 272))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(btnBack))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(289, 289, 289)
-                        .addComponent(btnApprove)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnReject))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(82, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(48, 48, 48)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnApprove)
-                    .addComponent(btnReject))
-                .addContainerGap(90, Short.MAX_VALUE))
-        );
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 119, 614, 150));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -126,6 +102,30 @@ public class ApproveRejectIndContributionJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnReject;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblStoreContribution;
+    private javax.swing.JTable tblIndividualContribution;
     // End of variables declaration//GEN-END:variables
+
+    private void populateIndividualContribution() {
+        
+        DefaultTableModel model = (DefaultTableModel) tblIndividualContribution.getModel();
+        
+        model.setRowCount(0);
+       
+        for (Contributor admin:system.getContributorDirectory().getContributorList()){
+
+               if ("Business.Role.VolunteerRole".equals(user.getRole().getClass().getName())) {
+               for(Contribution contribution:admin.getContribution()){
+                Object[] row = new Object[5];
+                row[0] = contribution;
+                row[1] = contribution.getItem();
+                row[2] = contribution.getQuantity();
+                row[3] = contribution.getExpiryDate();
+                row[4] = contribution.getStatus();
+                model.addRow(row);
+               }
+                
+            }
+    }
+        
+    }
 }

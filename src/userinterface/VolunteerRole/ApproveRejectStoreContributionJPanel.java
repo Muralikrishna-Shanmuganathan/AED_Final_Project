@@ -26,14 +26,15 @@ public class ApproveRejectStoreContributionJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private EcoSystem system;
-    UserAccount user;
+    private UserAccount user;
     
-    public ApproveRejectStoreContributionJPanel(JPanel userProcessContainer,UserAccount userAccount, EcoSystem system) {
+    public ApproveRejectStoreContributionJPanel(JPanel userProcessContainer,UserAccount user, EcoSystem system) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-        this.user = userAccount;
+        this.user = user;
+       
         
         populateStoreContribution();
     }
@@ -53,8 +54,6 @@ public class ApproveRejectStoreContributionJPanel extends javax.swing.JPanel {
         tblStoreContribution = new javax.swing.JTable();
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
-        btnApprove1 = new javax.swing.JButton();
-        btnReject1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -82,19 +81,13 @@ public class ApproveRejectStoreContributionJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblStoreContribution);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 127, 618, 229));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 127, 618, 160));
 
         btnApprove.setText("Approve");
-        add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, -1, -1));
+        add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, -1, -1));
 
         btnReject.setText("Reject");
-        add(btnReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, -1, -1));
-
-        btnApprove1.setText("Approve");
-        add(btnApprove1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, -1));
-
-        btnReject1.setText("Reject");
-        add(btnReject1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, -1));
+        add(btnReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -107,10 +100,8 @@ public class ApproveRejectStoreContributionJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApprove;
-    private javax.swing.JButton btnApprove1;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnReject;
-    private javax.swing.JButton btnReject1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblManagaStoreContribution;
     private javax.swing.JTable tblStoreContribution;

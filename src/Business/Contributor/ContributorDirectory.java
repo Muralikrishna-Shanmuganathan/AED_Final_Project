@@ -5,7 +5,9 @@
  */
 package Business.Contributor;
 
+import Business.Contribution.Contribution;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 public class ContributorDirectory {
     private ArrayList<Contributor> contributorList;
     private Contributor contributor;
+    private Contribution contribution;
     
     //Getters and Setters
     public ArrayList<Contributor> getContributorList() {
@@ -30,6 +33,14 @@ public class ContributorDirectory {
 
     public void setContributor(Contributor contributor) {
         this.contributor = contributor;
+    }
+    
+    public Contribution AddContribution( Contributor contributor,String storeName, String item, String qty, String date, String status){
+        contribution=new Contribution(storeName, item, qty, date, status);
+        
+        contributor.addContribution(contribution);
+        JOptionPane.showMessageDialog(null, "inside contributor direcotry");
+        return contribution;
     }
     
     //Contructors
