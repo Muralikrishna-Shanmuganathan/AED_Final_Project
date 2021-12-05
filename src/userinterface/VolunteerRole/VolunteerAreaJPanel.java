@@ -42,7 +42,7 @@ public class VolunteerAreaJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         btnAppRejStoreContribution = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnAppRejIndContribution = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         jLabel1.setText("Welcome Volunteer!");
@@ -54,10 +54,10 @@ public class VolunteerAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Approve/Reject Individual Contribution");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAppRejIndContribution.setText("Approve/Reject Individual Contribution");
+        btnAppRejIndContribution.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAppRejIndContributionActionPerformed(evt);
             }
         });
 
@@ -79,7 +79,7 @@ public class VolunteerAreaJPanel extends javax.swing.JPanel {
                         .addGap(20, 20, 20)
                         .addComponent(btnAppRejStoreContribution)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btnAppRejIndContribution, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(219, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -98,7 +98,7 @@ public class VolunteerAreaJPanel extends javax.swing.JPanel {
                         .addGap(110, 110, 110)
                         .addComponent(btnAppRejStoreContribution)
                         .addGap(30, 30, 30)
-                        .addComponent(jButton2))
+                        .addComponent(btnAppRejIndContribution))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addComponent(jButton4)))
@@ -114,13 +114,13 @@ public class VolunteerAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnAppRejStoreContributionActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAppRejIndContributionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppRejIndContributionActionPerformed
         // TODO add your handling code here:
-        ApproveRejectIndContributionJPanel aricjp = new ApproveRejectIndContributionJPanel(userProcessContainer, ecosystem);
+        ApproveRejectIndContributionJPanel aricjp = new ApproveRejectIndContributionJPanel(userProcessContainer, userAccount, ecosystem);
         userProcessContainer.add("Manage Individual Contribution", aricjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAppRejIndContributionActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -132,8 +132,8 @@ public class VolunteerAreaJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAppRejIndContribution;
     private javax.swing.JButton btnAppRejStoreContribution;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

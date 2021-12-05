@@ -7,6 +7,7 @@ package userinterface.ContributorRole;
 
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -20,14 +21,14 @@ public class ContributorAreaJPanel extends javax.swing.JPanel {
      */
     
     private JPanel userProcessContainer;
-    private EcoSystem business;
+    private EcoSystem ecosystem;
     private UserAccount userAccount;
-    public ContributorAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+    public ContributorAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
-        this.business = business;
+        this.ecosystem = ecosystem;
     }
 
 
@@ -41,8 +42,24 @@ public class ContributorAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        btnAddContribution = new javax.swing.JButton();
+        btnViewContribution = new javax.swing.JButton();
 
         jLabel1.setText("Hello There Contributor!");
+
+        btnAddContribution.setText("Add Contribution");
+        btnAddContribution.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddContributionActionPerformed(evt);
+            }
+        });
+
+        btnViewContribution.setText("View Contribution History");
+        btnViewContribution.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewContributionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -51,19 +68,51 @@ public class ContributorAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(122, 122, 122)
                 .addComponent(jLabel1)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(429, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(236, 236, 236)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnAddContribution, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnViewContribution, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(237, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addContainerGap(395, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(144, 144, 144)
+                    .addComponent(btnAddContribution, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(41, 41, 41)
+                    .addComponent(btnViewContribution, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(145, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAddContributionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddContributionActionPerformed
+        // TODO add your handling code here:
+        AddContribution2JPanel acjp = new AddContribution2JPanel(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("Add Contribution", acjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnAddContributionActionPerformed
+
+    private void btnViewContributionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewContributionActionPerformed
+        // TODO add your handling code here:
+        ViewContribution2JPanel vcjp = new ViewContribution2JPanel(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("View Contribution History", vcjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnViewContributionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddContribution;
+    private javax.swing.JButton btnViewContribution;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
