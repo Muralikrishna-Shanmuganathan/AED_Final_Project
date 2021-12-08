@@ -22,8 +22,8 @@ public class WorkRequest {
     int workRequestID=(int)(Math.random()*1000)+1;
     //check for repetetion of workRequestID
     
-    private String volunteerName;
-    private String DeliveryAgencyName;
+    private String volunteerUName;
+    private String DeliveryAgencyAdminName;
     private String Status;
     private String pickUpLocation;
     private String dropOffLocation;
@@ -39,6 +39,9 @@ public class WorkRequest {
         productList=new ProductList();
         requestDate = new Date();
     }
+    
+    
+    
     
     public String getMessage() {
         return message;
@@ -97,20 +100,20 @@ public class WorkRequest {
         this.workRequestID = workRequestID;
     }
 
-    public String getVolunteerName() {
-        return volunteerName;
+    public String getVolunteerUName() {
+        return volunteerUName;
     }
 
     public void setVolunteerName(String volunteerName) {
-        this.volunteerName = volunteerName;
+        this.volunteerUName = volunteerName;
     }
 
-    public String getDeliveryAgencyName() {
-        return DeliveryAgencyName;
+    public String getDeliveryAgencyAdminName() {
+        return DeliveryAgencyAdminName;
     }
 
-    public void setDeliveryAgencyName(String DeliveryAgencyName) {
-        this.DeliveryAgencyName = DeliveryAgencyName;
+    public void setDeliveryAgencyAdminName(String DeliveryAgencyName) {
+        this.DeliveryAgencyAdminName = DeliveryAgencyName;
     }
 
     public String getStatus() {

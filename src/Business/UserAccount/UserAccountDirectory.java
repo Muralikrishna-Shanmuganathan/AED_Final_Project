@@ -36,6 +36,7 @@ public class UserAccountDirectory {
 
     //Create a new user account
     public UserAccount createUserAccount(String name, String username, String password, Employee employee, Role role) {
+        System.out.println("reached create user account function");
         UserAccount userAccount = new UserAccount();
         userAccount.setName(name);
         userAccount.setUsername(username);
@@ -67,5 +68,17 @@ public class UserAccountDirectory {
             }
         }
         return true;
+    }
+    
+    
+    public UserAccount searchUser(String username)
+    {
+        UserAccount uaccnt=null;
+        for (UserAccount ua : userAccountList) {
+            if (ua.getUsername().equals(username)) {
+                uaccnt=ua;
+            }
+        }
+        return uaccnt;
     }
 }

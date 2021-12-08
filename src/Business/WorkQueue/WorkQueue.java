@@ -38,4 +38,19 @@ public class WorkQueue {
     }
     
     
+    public WorkRequest searchworkReq(int workid,WorkRequest workre)
+    {
+        WorkRequest workreq=new WorkRequest();
+        for(WorkRequest wr: workQueue)
+        {
+            if(wr.getWorkRequestID()==workid)
+            {
+                workreq=wr;
+                workreq.setStatus(workre.getStatus());
+            }
+        }
+        return workreq;
+    }
+    
+    
 }

@@ -5,6 +5,8 @@
  */
 package Business.Volunteer;
 
+import Business.WorkQueue.WorkQueue;
+
 /**
  *
  * @author yashwanthsridharan
@@ -13,6 +15,7 @@ public class Volunteer {
     int id = 201;
     private String Name;
     private String UserName;
+    WorkQueue workqueue;
     
     //Getters and Setters
     public int getId() {
@@ -21,6 +24,18 @@ public class Volunteer {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public WorkQueue getWorkqueue() {
+        if(workqueue==null)
+        {
+            workqueue=new WorkQueue();
+        }
+        return workqueue;
+    }
+
+    public void setWorkqueue(WorkQueue workqueue) {
+        this.workqueue = workqueue;
     }
 
     public String getName() {

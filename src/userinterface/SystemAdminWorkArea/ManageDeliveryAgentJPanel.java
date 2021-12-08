@@ -5,6 +5,7 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.DeliveryAgency.AgencyAdmin;
 import Business.DeliveryAgent.DeliveryAgent;
 import Business.EcoSystem;
 import Business.Role.DeliveryAgentRole;
@@ -290,7 +291,13 @@ public class ManageDeliveryAgentJPanel extends javax.swing.JPanel {
 
             UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, uname, password, null, 
                     new DeliveryAgentRole());           
-            DeliveryAgent deliveryAgent = system.getDeliveryAgentDirectory().createDeliveryAgent(uname);
+           // DeliveryAgent deliveryAgent = system.getDeliveryAgentDirectory().createDeliveryAgent(uname);
+            AgencyAdmin deliveryadmin=new AgencyAdmin();
+            deliveryadmin.setFirstName(name);
+            deliveryadmin.setUserName(uname);
+            deliveryadmin.setPassword(password);
+            system.getDeliveryAgentDirectory().addAgencyAdmintoList(deliveryadmin);
+            System.out.println(system.getDeliveryAgentDirectory().getDeliveryagencyAdminList().size()+" delivery agent admins size");
 
             txtName.setText("");
             txtUserName.setText("");
@@ -406,7 +413,8 @@ public class ManageDeliveryAgentJPanel extends javax.swing.JPanel {
 
                 //UserAccount user = (UserAccount) networkJTable.getValueAt(selectedRow, 0);
                 system.getUserAccountDirectory().deleteUserAccount(user);
-                system.getDeliveryAgentDirectory().deleteDeliveryAgent(user.getUsername());
+                //system.getDeliveryAgentDirectory().deleteDeliveryAgent(user.getUsername());
+                system.getDeliveryAgentDirectory().getDeliveryagencyAdminList().remove(user);
 
                 populateDeliveryAgentTable();
             }

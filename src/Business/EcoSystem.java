@@ -7,6 +7,7 @@ package Business;
 
 import Business.Contributor.ContributorDirectory;
 import Business.Customer.CustomerDirectory;
+import Business.DeliveryAgency.AgencyAdminDirectory;
 import Business.DeliveryAgency.ClerkDirectory;
 import Business.DeliveryAgency.DriverDirectory;
 import Business.DeliveryAgency.FleetManagerDirectory;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
  *
  * @author MyPC1
  */
+
 public class EcoSystem extends Organization {
 
     private static EcoSystem business;
@@ -36,13 +38,14 @@ public class EcoSystem extends Organization {
     private VolunteerDirectory volunteerDirectory;
     private ContributorDirectory contributorDirectory;
     private StoreAdminDirectory storeAdminDirectory;
-    private DeliveryAgentDirectory deliveryAgentDirectory;
+    private AgencyAdminDirectory deliveryAgentDirectory;
     private DistributorDirectory distributorDirectory;
     private ReceiverDirectory receiverDirectory;
     private DriverDirectory driverDirectory;
     private ClerkDirectory clerkDirectory;
     private FleetManagerDirectory fleetManagerDirectory;
     private InspectionManagerDirectory inspectionManagerDirectory;
+    
 
 
     
@@ -50,7 +53,7 @@ public class EcoSystem extends Organization {
     //Contructor
     public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory,
             VolunteerDirectory volunteerDirectory, ContributorDirectory contributorDirectory, StoreAdminDirectory storeAdminDirectory,
-            DeliveryAgentDirectory deliveryAgentDirectory, DistributorDirectory distributorDirectory, ReceiverDirectory receiverDirectory, DriverDirectory driverDirectory, ClerkDirectory clerkDirectory,
+            AgencyAdminDirectory deliveryAgentDirectory, DistributorDirectory distributorDirectory, ReceiverDirectory receiverDirectory, DriverDirectory driverDirectory, ClerkDirectory clerkDirectory,
             FleetManagerDirectory fleetManagerDirectory,InspectionManagerDirectory inspectionManagerDirectory) {
 
         this.restaurantDirectory = restaurantDirectory;
@@ -114,14 +117,14 @@ public class EcoSystem extends Organization {
         this.storeAdminDirectory = storeAdminDirectory;
     }
 
-    public DeliveryAgentDirectory getDeliveryAgentDirectory() {
+    public AgencyAdminDirectory getDeliveryAgentDirectory() {
         if(deliveryAgentDirectory == null){
-            deliveryAgentDirectory = new DeliveryAgentDirectory();
+            deliveryAgentDirectory = new AgencyAdminDirectory();
         }
         return deliveryAgentDirectory;
     }
 
-    public void setDeliveryAgentDirectory(DeliveryAgentDirectory deliveryAgentDirectory) {
+    public void setDeliveryAgentDirectory(AgencyAdminDirectory deliveryAgentDirectory) {
         this.deliveryAgentDirectory = deliveryAgentDirectory;
     }
 

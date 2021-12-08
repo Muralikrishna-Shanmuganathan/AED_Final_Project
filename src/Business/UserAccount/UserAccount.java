@@ -4,6 +4,8 @@
  */
 package Business.UserAccount;
 
+import Business.DeliveryAgency.ClerkDirectory;
+import Business.DeliveryAgency.DriverDirectory;
 import Business.Employee.Employee;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
@@ -20,6 +22,8 @@ public class UserAccount {
     private Employee employee;
     private Role role;
     private WorkQueue workQueue;
+    private DriverDirectory driverList;
+    private ClerkDirectory clerkList;
 
     
 
@@ -81,11 +85,50 @@ public class UserAccount {
         this.workQueue = workQueue;
     }
 
+    public DriverDirectory getDriverList() {
+        if(driverList==null)
+        {
+            driverList=new DriverDirectory();
+        }
+        return driverList;
+    }
+
+    public void setDriverList(DriverDirectory driverList) {
+        this.driverList = driverList;
+    }
+
+
+    public ClerkDirectory getClerkList() {
+        if(clerkList==null)
+        {
+            clerkList=new ClerkDirectory();
+        }
+        return clerkList;
+    }
+
+    public void setClerkList(ClerkDirectory clerkList) {
+        this.clerkList = clerkList;
+    }
     
     
-    @Override
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    /*@Override
     public String toString() {
         return username;
+    }*/
+
+    public Object getDriverDirectory() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

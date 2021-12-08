@@ -5,6 +5,7 @@
  */
 package Business.DeliveryAgency;
 
+import Business.WorkQueue.WorkRequest;
 import java.util.ArrayList;
 
 /**
@@ -56,6 +57,62 @@ public class ClerkDirectory {
             if(clerkList.get(i).getUserName().equals(username)){
                 clerkList.remove(i);
             }
+        }
+    }
+    
+    
+    public Clerk createClerk(String name,String uname, String password){
+        Clerk clerk=new Clerk();
+        clerk.setUserName(uname);
+        clerk.setFirstName(name);
+        clerk.setPassword(password);
+        clerkList.add(clerk);
+        return clerk;
+    }
+    
+   
+   
+    public boolean checkifUserNameExists(String username)
+    {
+        for(Clerk clerk:clerkList)
+        {
+            if(clerk.getUserName().equals(username))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+    
+    
+    public void updateClerkAccount(String oldusername, String name, String username, String password) {
+        
+        Clerk clerk=null;
+        for(Clerk cle:clerkList)
+        {
+            if(cle.getUserName().equals(oldusername))
+            {
+                clerk=cle;
+            }
+        }
+
+        clerk.setFirstName(name);
+        clerk.setUserName(username);
+        clerk.setPassword(password);
+    }
+    
+    
+    public void addWorkRequesttoClerk(Clerk clerk,WorkRequest workreq)
+    {
+        for(int i=0;i<clerkList.size();i++)
+        {
+            if(clerkList.get(i).getUserName().equals(clerk.getUserName()))
+            {
+                clerkList.get(i).getWorkQueue().addWorkRequesttoQueue(workreq);
+            }
+                
         }
     }
     

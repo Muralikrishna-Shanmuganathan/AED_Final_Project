@@ -24,6 +24,7 @@ public class Driver extends Person {
     Date JoiningDate;
     Date SeperationDate;
     WorkQueue workQueue;
+    String status = "available";
     //add timesheet
     //add workque
 
@@ -96,10 +97,22 @@ public class Driver extends Person {
     }
 
     public WorkQueue getWorkQueue() {
+        if(workQueue==null)
+        {
+            workQueue=new WorkQueue();
+        }
         return workQueue;
     }
 
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }    
 }
