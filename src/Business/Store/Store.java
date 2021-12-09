@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.StoreAdmin;
-
-import Business.Contribution.Contribution;
+package Business.Store;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import Business.Contribution.Contribution;
 
 /**
  *
- * @author yashwanthsridharan
+ * @author murali
  */
-public class StoreAdmin {
+public class Store {
     int id = 301;
     private String Name;
     private String UserName;
@@ -21,7 +20,7 @@ public class StoreAdmin {
     private ArrayList<Contribution> Contribution;
     
     //Constructor
-    public StoreAdmin(String userName) {
+    public Store(String userName) {
         this.UserName = userName;
         Contribution=new ArrayList<>();
     }
@@ -75,6 +74,5 @@ public class StoreAdmin {
         }
         
     }
-    
     
 }
