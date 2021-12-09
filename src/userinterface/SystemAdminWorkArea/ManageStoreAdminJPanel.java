@@ -7,6 +7,7 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
 import Business.Role.StoreAdminRole;
+import Business.Role.StoreRole;
 import Business.StoreAdmin.StoreAdmin;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -464,7 +465,6 @@ public class ManageStoreAdminJPanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
 
-        // for()
         for (UserAccount user : system.getUserAccountDirectory().getUserAccountList()) {
             System.out.println(user.getRole().getClass().getName());
             if ("Business.Role.StoreAdminRole".equals(user.getRole().getClass().getName())) {

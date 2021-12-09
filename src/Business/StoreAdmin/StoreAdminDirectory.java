@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author yashwanthsridharan
  */
 public class StoreAdminDirectory {
-     private ArrayList<StoreAdmin> storeAdminDirectory;
+    private ArrayList<StoreAdmin> storeAdminDirectory;
     private StoreAdmin storeAdmin;
     private Contribution contribution;
 

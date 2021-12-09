@@ -8,7 +8,6 @@ package userinterface.StoreAdminRole;
 import Business.Contribution.Contribution;
 import Business.EcoSystem;
 import Business.Store.Store;
-//import Business.StoreAdmin.StoreAdmin;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -18,23 +17,21 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author murali
  */
-public class ViewContributionHistoryJPanel extends javax.swing.JPanel {
+public class ViewStoreAdminJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewHistoryJPanel
+     * Creates new form ViewStoreAdminJPanel
      */
     private JPanel userProcessContainer;
     private EcoSystem system;
-    UserAccount user;
-    
-    public ViewContributionHistoryJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
+    UserAccount account; 
+    public ViewStoreAdminJPanel(JPanel userProcessContainer,UserAccount account, EcoSystem system) {
         initComponents();
-        
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-        this.user = account;
+        this.account = account;
         
-        populateStoreHistoryTable();
+        populateStoreTable();
     }
 
     /**
@@ -49,9 +46,9 @@ public class ViewContributionHistoryJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblStoreHistory = new javax.swing.JTable();
+        tblStore = new javax.swing.JTable();
 
-        jLabel1.setText("View Contribution History");
+        jLabel1.setText("View Stores");
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -60,55 +57,46 @@ public class ViewContributionHistoryJPanel extends javax.swing.JPanel {
             }
         });
 
-        tblStoreHistory.setModel(new javax.swing.table.DefaultTableModel(
+        tblStore.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Store Name", "Item", "Quantity", "Expiry Date"
+                "Store Name", "User Name", "Password"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tblStoreHistory);
+        ));
+        jScrollPane1.setViewportView(tblStore);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(btnBack)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(127, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(244, 244, 244))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(102, 102, 102))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(239, 239, 239)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(23, 23, 23)
                 .addComponent(btnBack)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(67, 67, 67)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(101, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -124,28 +112,28 @@ public class ViewContributionHistoryJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblStoreHistory;
+    private javax.swing.JTable tblStore;
     // End of variables declaration//GEN-END:variables
 
-    private void populateStoreHistoryTable() {
+    private void populateStoreTable() {
         
-        DefaultTableModel model = (DefaultTableModel) tblStoreHistory.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblStore.getModel();
         
         model.setRowCount(0);
          
-         for (Store admin:system.getStoreDirectory().getStoreDirectory()){
-           
-            if (admin.getUserName().equals(user.getUsername())) {
-               for(Contribution contribution:admin.getContribution()){
-                Object[] row = new Object[4];
-                row[0] = contribution;
-                row[1] = contribution.getItem();
-                row[2] = contribution.getQuantity();
-                row[3] = contribution.getExpiryDate();
+         for (UserAccount user : system.getUserAccountDirectory().getUserAccountList()) {
+
+            if ("Business.Role.StoreRole".equals(user.getRole().getClass().getName())) {
+                Object[] row = new Object[3];
+
+                row[0] = user.getName();
+                row[1] = user.getUsername();
+                row[2] = user.getPassword();
+
                 model.addRow(row);
-               }
-                
             }
+
+        }
+    
     }
-}
 }

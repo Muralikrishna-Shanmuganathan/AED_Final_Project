@@ -8,6 +8,7 @@ package userinterface.StoreAdminRole;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -40,22 +41,38 @@ public class StoreAdminAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnAddContribution = new javax.swing.JButton();
-        btnViewContribution = new javax.swing.JButton();
+        btnDeleteStoreAdmin = new javax.swing.JButton();
+        btnUpdateStoreAdmin = new javax.swing.JButton();
+        btnViewAllStoreAdmin = new javax.swing.JButton();
+        btnAddStoreAdmin = new javax.swing.JButton();
 
         jLabel1.setText("Welcom Store Admin");
 
-        btnAddContribution.setText("Add Contribution");
-        btnAddContribution.addActionListener(new java.awt.event.ActionListener() {
+        btnDeleteStoreAdmin.setText("Delete Store");
+        btnDeleteStoreAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddContributionActionPerformed(evt);
+                btnDeleteStoreAdminActionPerformed(evt);
             }
         });
 
-        btnViewContribution.setText("View Contribution History");
-        btnViewContribution.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdateStoreAdmin.setText("Update Store");
+        btnUpdateStoreAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewContributionActionPerformed(evt);
+                btnUpdateStoreAdminActionPerformed(evt);
+            }
+        });
+
+        btnViewAllStoreAdmin.setText("View All Stores");
+        btnViewAllStoreAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewAllStoreAdminActionPerformed(evt);
+            }
+        });
+
+        btnAddStoreAdmin.setText("Add Store");
+        btnAddStoreAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddStoreAdminActionPerformed(evt);
             }
         });
 
@@ -69,45 +86,70 @@ public class StoreAdminAreaJPanel extends javax.swing.JPanel {
                         .addGap(46, 46, 46)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(252, 252, 252)
+                        .addGap(291, 291, 291)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAddContribution, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnViewContribution, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(263, Short.MAX_VALUE))
+                            .addComponent(btnViewAllStoreAdmin)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnUpdateStoreAdmin)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnDeleteStoreAdmin)
+                                    .addComponent(btnAddStoreAdmin))))))
+                .addContainerGap(318, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
-                .addGap(128, 128, 128)
-                .addComponent(btnAddContribution, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(btnViewContribution, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100)
+                .addComponent(btnAddStoreAdmin)
+                .addGap(18, 18, 18)
+                .addComponent(btnDeleteStoreAdmin)
+                .addGap(18, 18, 18)
+                .addComponent(btnUpdateStoreAdmin)
+                .addGap(18, 18, 18)
+                .addComponent(btnViewAllStoreAdmin)
                 .addContainerGap(279, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddContributionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddContributionActionPerformed
+    private void btnDeleteStoreAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteStoreAdminActionPerformed
         // TODO add your handling code here:
-        AddContributionJPanel acjp = new AddContributionJPanel(userProcessContainer, userAccount, ecosystem);
-        userProcessContainer.add("Add Contribution", acjp);
+        DeleteStoreAdminJPanel acjp = new DeleteStoreAdminJPanel(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("Add Store", acjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnAddContributionActionPerformed
+    }//GEN-LAST:event_btnDeleteStoreAdminActionPerformed
 
-    private void btnViewContributionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewContributionActionPerformed
+    private void btnUpdateStoreAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateStoreAdminActionPerformed
         // TODO add your handling code here:
-        ViewContributionHistoryJPanel vchjp = new ViewContributionHistoryJPanel(userProcessContainer, userAccount, ecosystem);
-        userProcessContainer.add("View Contribution History", vchjp);
+        UpdateStoreAdminJPanel acjp = new UpdateStoreAdminJPanel(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("Add Store", acjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnViewContributionActionPerformed
+    }//GEN-LAST:event_btnUpdateStoreAdminActionPerformed
+
+    private void btnAddStoreAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStoreAdminActionPerformed
+
+        AddStoreAdminJPanel acjp = new AddStoreAdminJPanel(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("Add Store", acjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnAddStoreAdminActionPerformed
+
+    private void btnViewAllStoreAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllStoreAdminActionPerformed
+        ViewStoreAdminJPanel acjp = new ViewStoreAdminJPanel(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("View Store", acjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnViewAllStoreAdminActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddContribution;
-    private javax.swing.JButton btnViewContribution;
+    private javax.swing.JButton btnAddStoreAdmin;
+    private javax.swing.JButton btnDeleteStoreAdmin;
+    private javax.swing.JButton btnUpdateStoreAdmin;
+    private javax.swing.JButton btnViewAllStoreAdmin;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

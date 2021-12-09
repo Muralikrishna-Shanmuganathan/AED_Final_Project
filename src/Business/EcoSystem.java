@@ -23,6 +23,8 @@ import Business.DeliveryAgent.DeliveryAgentDirectory;
 import java.util.ArrayList;
 import Business.Contribution.Contribution;
 import Business.WorkQueue.WorkQueue;
+import Business.Store.Store;
+import Business.Store.StoreDirectory;
 
 
 
@@ -48,7 +50,7 @@ public class EcoSystem extends Organization {
     private FleetManagerDirectory fleetManagerDirectory;
     private InspectionManagerDirectory inspectionManagerDirectory;
     private Contribution contribution;
-    
+    private StoreDirectory storeDirectory;
     private WorkQueue workQueue;
 
 
@@ -58,7 +60,7 @@ public class EcoSystem extends Organization {
     public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory,
             VolunteerDirectory volunteerDirectory, ContributorDirectory contributorDirectory, StoreAdminDirectory storeAdminDirectory,
             DeliveryAgentDirectory deliveryAgentDirectory, DistributorDirectory distributorDirectory, ReceiverDirectory receiverDirectory, DriverDirectory driverDirectory, ClerkDirectory clerkDirectory,
-            FleetManagerDirectory fleetManagerDirectory,InspectionManagerDirectory inspectionManagerDirectory, Contribution contribution) {
+            FleetManagerDirectory fleetManagerDirectory,InspectionManagerDirectory inspectionManagerDirectory, Contribution contribution, StoreDirectory storeDirectory) {
 
         this.restaurantDirectory = restaurantDirectory;
         this.customerDirectory = customerDirectory;
@@ -75,6 +77,7 @@ public class EcoSystem extends Organization {
         this.fleetManagerDirectory= fleetManagerDirectory;
         this.inspectionManagerDirectory=inspectionManagerDirectory;
         this.contribution=contribution;
+        this.storeDirectory = storeDirectory;
     }
 
 
@@ -201,11 +204,24 @@ public class EcoSystem extends Organization {
     public void setInspectionManagerDirectory(InspectionManagerDirectory inspectionManagerDirectory) {
         this.inspectionManagerDirectory = inspectionManagerDirectory;
     }
+
+    public StoreDirectory getStoreDirectory() {
+        if(storeDirectory == null){
+            storeDirectory = new StoreDirectory();
+        }
+        return storeDirectory;
+    }
+
+    public void setStoreDirectory(StoreDirectory storeDirectory) {
+        this.storeDirectory = storeDirectory;
+    }
+    
     
 
     public void setContribution(Contribution contribution) {
         this.contribution = contribution;
     }
+    
     
     @Override
     public ArrayList<Role> getSupportedRole() {

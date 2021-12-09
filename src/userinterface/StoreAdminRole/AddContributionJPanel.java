@@ -7,6 +7,7 @@ package userinterface.StoreAdminRole;
 
 import Business.Contribution.Contribution;
 import Business.EcoSystem;
+import Business.Store.Store;
 import Business.StoreAdmin.StoreAdmin;
 import Business.UserAccount.UserAccount;
 import com.toedter.calendar.JDateChooser;
@@ -214,9 +215,9 @@ public class AddContributionJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter all fields");
         }
         
-        for(StoreAdmin admin : system.getStoreAdminDirectory().getStoreAdminDirectory()){
+        for(Store admin : system.getStoreDirectory().getStoreDirectory()){
            if(admin.getUserName().equals(account.getUsername())){
-                system.getStoreAdminDirectory().AddContribution(admin, storeName, item, qty, strDate, "New Request");
+                system.getStoreDirectory().AddContribution(admin, storeName, item, qty, strDate, "New Request");
             }   
         }
         

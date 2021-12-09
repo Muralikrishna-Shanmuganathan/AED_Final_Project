@@ -7,6 +7,7 @@ package userinterface.VolunteerRole;
 
 import Business.Contribution.Contribution;
 import Business.EcoSystem;
+import Business.Store.Store;
 import Business.StoreAdmin.StoreAdmin;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -113,7 +114,7 @@ public class ApproveRejectStoreContributionJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
        
-        for (StoreAdmin admin:system.getStoreAdminDirectory().getStoreAdminDirectory()){
+        for (Store admin:system.getStoreDirectory().getStoreDirectory()){
 
 
                if ("Business.Role.VolunteerRole".equals(user.getRole().getClass().getName())) {
