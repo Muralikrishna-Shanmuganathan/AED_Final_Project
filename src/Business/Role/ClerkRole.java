@@ -12,9 +12,8 @@ package Business.Role;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.Clerks.ClerkWorkArea;
+import userinterface.Clerks.ClerkWorkAreaJPanel1;
 import userinterface.DeliveryAgentRole.DeliveryAgentWorkArea;
-import userinterface.Driver.DriverWorkArea;
 
 /**
  *
@@ -23,7 +22,7 @@ import userinterface.Driver.DriverWorkArea;
 public class ClerkRole extends Role {
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new ClerkWorkArea(userProcessContainer, account, business);
+        return new ClerkWorkAreaJPanel1(userProcessContainer, account, business);
     
 }
 
