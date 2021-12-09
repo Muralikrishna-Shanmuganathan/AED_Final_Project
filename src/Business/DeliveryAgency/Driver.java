@@ -24,8 +24,17 @@ public class Driver extends Person {
     Date JoiningDate;
     Date SeperationDate;
     WorkQueue workQueue;
+    String Status;
     //add timesheet
     //add workque
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
+    }
 
 
     public Driver() {
@@ -96,6 +105,10 @@ public class Driver extends Person {
     }
 
     public WorkQueue getWorkQueue() {
+        if(workQueue==null)
+        {
+            workQueue=new WorkQueue();
+        }
         return workQueue;
     }
 

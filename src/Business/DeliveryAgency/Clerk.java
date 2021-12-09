@@ -22,8 +22,11 @@ public class Clerk  extends Person {
     Date JoiningDate;
     Date SeperationDate;
     WorkQueue workQueue;
+    String Status="Available";
     //add timesheet
     //add workque
+    
+    
 
     public long getSsn() {
         return ssn;
@@ -90,12 +93,26 @@ public class Clerk  extends Person {
     }
 
     public WorkQueue getWorkQueue() {
+        if(workQueue==null)
+        {
+            workQueue=new WorkQueue();
+        }
         return workQueue;
     }
 
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
     }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
+    }
+    
+    
 
     
     

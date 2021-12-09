@@ -68,4 +68,16 @@ public class UserAccountDirectory {
         }
         return true;
     }
+    
+    
+    public UserAccount searchUser(String username)
+    {
+        UserAccount uaccnt=null;
+        for (UserAccount ua : userAccountList) {
+            if (ua.getUsername().equals(username)) {
+                uaccnt=ua;
+            }
+        }
+        return uaccnt;
+    }
 }

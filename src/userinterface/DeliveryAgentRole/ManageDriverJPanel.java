@@ -5,13 +5,16 @@
  */
 package userinterface.DeliveryAgentRole;
 
+import Business.DeliveryAgency.AgencyAdmin;
 import Business.DeliveryAgency.Driver;
+import Business.DeliveryAgency.DriverDirectory;
 import userinterface.SystemAdminWorkArea.*;
 import Business.DeliveryAgent.DeliveryAgent;
 import Business.EcoSystem;
 import Business.Role.DeliveryAgentRole;
 import Business.Role.DriverRole;
 import Business.UserAccount.UserAccount;
+import Business.UserAccount.UserAccountDirectory;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.regex.Pattern;
@@ -23,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author yashwanthsridharan
  */
-public class AddDriverJPanel extends javax.swing.JPanel {
+public class ManageDriverJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageDeliveryAgentJPanel
@@ -31,10 +34,13 @@ public class AddDriverJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     UserAccount user;
-    public AddDriverJPanel(JPanel userProcessContainer, EcoSystem system) {
+    Driver driver;
+    
+    public ManageDriverJPanel(JPanel userProcessContainer, EcoSystem system, UserAccount user) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
+        this.user=user;
         populateDriverTable();
     }
 
@@ -287,17 +293,40 @@ public class AddDriverJPanel extends javax.swing.JPanel {
             return;
         }
 
-        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname) == false) {
+        if (user.getDriverList().checkifUserNameExists(uname) == true) {
             JOptionPane.showMessageDialog(null, "  User Name already exists ");
-        } else {
-
-            UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, uname, password, null, new DriverRole());           
-            Driver driver = system.getDriverDirectory().createDriver(uname);
-
+        } 
+        
+        else {
+            int i=0;
+            Driver driver=new Driver();
+            driver.setFirstName(name);
+            driver.setUserName(uname);
+            driver.setPassword(password);
+            user.getDriverList().createDriver(name, uname, password);
+            system.getUserAccountDirectory().createUserAccount(name, uname, password, null, new DriverRole());
+            system.getDriverDirectory().addDrivertoList(driver);
+                    
+            
+            /*for(UserAccount admin:system.getUserAccountDirectory().getUserAccountList())
+            {
+               
+                if(admin.getUsername().equals(user.getUsername()))
+                {
+                    //UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, uname, password, null, new DriverRole());           
+                    //system.getDriverDirectory().addDrivertoList(driver);
+                    //system.getDeliveryAgentDirectory().getDeliveryagencyAdminList().get(i).getDriverList().addDrivertoList(driver);
+                    //System.out.println(system.getDriverDirectory().getDriverList().size()+" system driver directory"); 
+                    
+                    //system.getDriverDirectory().addDrivertoList(driver);
+                    //system.getDriverDirectory().getDriverList().add(driver);
+                }
+                i++;
+            }*/
+            
             txtName.setText("");
             txtUserName.setText("");
             txtPassword.setText("");
-
             populateDriverTable();
         }
     }//GEN-LAST:event_btnCreateActionPerformed
@@ -309,14 +338,23 @@ public class AddDriverJPanel extends javax.swing.JPanel {
         if (selectRow >= 0) {
             String username = (String) tblDrivers.getValueAt(selectRow, 1);
             String pwd = (String) tblDrivers.getValueAt(selectRow, 2);
-            user = system.getUserAccountDirectory().authenticateUser(username, pwd);
 
-            txtName.setText(user.getName() + "");
-            txtUserName.setText(user.getUsername() + "");
-            txtPassword.setText(user.getPassword() + "");
-            // system.getUserAccountDirectory().deleteUserAccount(user);
-
-        } else {
+            for (UserAccount admin : system.getUserAccountDirectory().getUserAccountList()) {
+               if(admin.getUsername().equals(user.getUsername())) {
+                for(Driver driver1: user.getDriverList().getDriverList())
+                   {
+                    if(driver1.getUserName().equals(username)) 
+                    {
+                    txtName.setText(driver1.getFirstName() + "");
+                    txtUserName.setText(driver1.getUserName() + "");
+                    txtPassword.setText(driver1.getPassword() + "");
+                   }
+                   }
+             }
+            }
+        }
+        
+        else {
             JOptionPane.showMessageDialog(null, "Please select a row");
         }
     }//GEN-LAST:event_btnViewActionPerformed
@@ -329,9 +367,12 @@ public class AddDriverJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select a row to update");
             return;
         }
+        
         String name = txtName.getText();
         String uname = txtUserName.getText();
         String password = String.valueOf(txtPassword.getPassword());
+        String oldusername = (String) tblDrivers.getValueAt(selectRow, 1);
+        UserAccount ua=system.getUserAccountDirectory().searchUser(oldusername);
 
         try {
             if (name == null || name.isEmpty()) {
@@ -375,7 +416,8 @@ public class AddDriverJPanel extends javax.swing.JPanel {
 
             if (password == null || password.isEmpty()) {
                 throw new NullPointerException("Pwd field is Empty");
-            } else if (Pattern.matches("^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,30}$", password) == false) {
+            }
+            else if (Pattern.matches("^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,30}$", password) == false) {
                 throw new Exception("Invalid Password");
             }
 
@@ -388,7 +430,10 @@ public class AddDriverJPanel extends javax.swing.JPanel {
 
             return;
         }
-        system.getUserAccountDirectory().updateUserAccount(user, name, uname, password);
+        
+        system.getUserAccountDirectory().updateUserAccount(ua, name, uname, password);
+        user.getDriverList().updateDriverAccount(oldusername, name, uname, password);
+        
         populateDriverTable();
         txtName.setText("");
         txtUserName.setText("");
@@ -402,17 +447,21 @@ public class AddDriverJPanel extends javax.swing.JPanel {
             int selectionButton = JOptionPane.YES_NO_OPTION;
             int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure to delete??", "Warning", selectionButton);
             if (selectionResult == JOptionPane.YES_OPTION) {
+                
                 String username = (String) tblDrivers.getValueAt(selectedRow, 1);
                 String pwd = (String) tblDrivers.getValueAt(selectedRow, 2);
-                UserAccount user = system.getUserAccountDirectory().authenticateUser(username, pwd);
-
-                //UserAccount user = (UserAccount) networkJTable.getValueAt(selectedRow, 0);
-                system.getUserAccountDirectory().deleteUserAccount(user);
-                system.getDriverDirectory().deleteDriver(user.getUsername());
-
+                
+               for (UserAccount admin : system.getUserAccountDirectory().getUserAccountList()) {
+               if(admin.getUsername().equals(user.getUsername())) {
+                   user.getDriverList().deleteDriver(username);
+                   //system.getUserAccountDirectory().deleteUserAccount();
+             }
+            }
+                
                 populateDriverTable();
             }
-        } else {
+        } 
+        else {
             JOptionPane.showMessageDialog(null, "Please select a Row!!");
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
@@ -461,18 +510,25 @@ public class AddDriverJPanel extends javax.swing.JPanel {
     DefaultTableModel model = (DefaultTableModel) tblDrivers.getModel();
 
         model.setRowCount(0);
-
-        // Updating the contributorTable
-        for (UserAccount user : system.getUserAccountDirectory().getUserAccountList()) {
-
-            if ("Business.Role.DriverRole".equals(user.getRole().getClass().getName())) {
+        
+          for (UserAccount admin : system.getUserAccountDirectory().getUserAccountList()) {
+               
+               if(admin.getUsername().equals(user.getUsername())) {
+                  //System.out.println(admin.getUsername()+" "+user.getUsername());
+    
                 Object[] row = new Object[3];
-
-                row[0] = user.getName();
-                row[1] = user.getUsername();
-                row[2] = user.getPassword();
+                
+                //System.out.println(user.getDriverList().getDriverList().size());
+                for(Driver driver1: user.getDriverList().getDriverList())
+                {
+                //System.out.println(driver1.getFirstName());
+                row[0] = driver1.getFirstName();
+                row[1] = driver1.getUserName();
+                row[2] = driver1.getPassword();
 
                 model.addRow(row);
+                
+                }
             }
 
         }    

@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author yashwanthsridharan
  */
-public class AddClerkJPanel extends javax.swing.JPanel {
+public class ManageClerkJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageDeliveryAgentJPanel
@@ -33,10 +33,13 @@ public class AddClerkJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     UserAccount user;
-    public AddClerkJPanel(JPanel userProcessContainer, EcoSystem system) {
+    Clerk clerk;
+    
+    public ManageClerkJPanel(JPanel userProcessContainer, EcoSystem system, UserAccount user) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
+        this.user=user;
         populateClerkTable();
     }
 
@@ -288,19 +291,42 @@ public class AddClerkJPanel extends javax.swing.JPanel {
 
             return;
         }
-
-        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname) == false) {
+        
+        if (user.getClerkList().checkifUserNameExists(uname) == true) {
             JOptionPane.showMessageDialog(null, "  User Name already exists ");
-        } else {
-
-            UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, uname, password, null, new ClerkRole());           
-            Clerk clerk = system.getClerkDirectory().createClerk(uname);
-
+        } 
+        
+        else {
+            Clerk clerk=new Clerk();
+            clerk.setFirstName(name);
+            clerk.setUserName(uname);
+            clerk.setPassword(password);
+            
+            
+            user.getClerkList().createClerk(name, uname, password);
+            system.getUserAccountDirectory().createUserAccount(name, uname, password, null, new ClerkRole());
+            system.getClerkDirectory().addClerktoList(clerk);
+            
+            
+            /*for(UserAccount admin:system.getUserAccountDirectory().getUserAccountList())
+            {
+                if(admin.getUsername().equals(user.getUsername()))
+                {
+                    //UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, uname, password, null, new DriverRole());           
+                    //system.getDriverDirectory().addDrivertoList(driver);
+                    user.getClerkList().createClerk(name, uname, password);
+                    //system.getDeliveryAgentDirectory().getDeliveryagencyAdminList().get(i).getDriverList().addDrivertoList(driver);
+                    //System.out.println(system.getDriverDirectory().getDriverList().size()+" system driver directory"); 
+                    system.getUserAccountDirectory().createUserAccount(name, uname, password, null, new ClerkRole());
+                    //system.getDriverDirectory().getDriverList().add(driver);
+                }
+            }*/
+            
+            populateClerkTable();
             txtName.setText("");
             txtUserName.setText("");
             txtPassword.setText("");
-
-            populateClerkTable();
+           
         }
     }//GEN-LAST:event_btnCreateActionPerformed
 
@@ -311,13 +337,21 @@ public class AddClerkJPanel extends javax.swing.JPanel {
         if (selectRow >= 0) {
             String username = (String) tblClerks.getValueAt(selectRow, 1);
             String pwd = (String) tblClerks.getValueAt(selectRow, 2);
-            user = system.getUserAccountDirectory().authenticateUser(username, pwd);
-
-            txtName.setText(user.getName() + "");
-            txtUserName.setText(user.getUsername() + "");
-            txtPassword.setText(user.getPassword() + "");
-            // system.getUserAccountDirectory().deleteUserAccount(user);
-
+            
+            for (UserAccount admin : system.getUserAccountDirectory().getUserAccountList()) {
+               if(admin.getUsername().equals(user.getUsername())) {
+                for(Clerk clerk1: user.getClerkList().getClerkList())
+                   {
+                    if(clerk1.getUserName().equals(username)) 
+                    {
+                    txtName.setText(clerk1.getFirstName() + "");
+                    txtUserName.setText(clerk1.getUserName() + "");
+                    txtPassword.setText(clerk1.getPassword() + "");
+                   }
+                   }
+             }
+            }
+    
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row");
         }
@@ -331,10 +365,13 @@ public class AddClerkJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select a row to update");
             return;
         }
+        
         String name = txtName.getText();
         String uname = txtUserName.getText();
         String password = String.valueOf(txtPassword.getPassword());
-
+        String oldusername = (String) tblClerks.getValueAt(selectRow, 1);
+        UserAccount ua=system.getUserAccountDirectory().searchUser(oldusername);
+        
         try {
             if (name == null || name.isEmpty()) {
                 throw new NullPointerException(" Name field is Empty");
@@ -390,7 +427,10 @@ public class AddClerkJPanel extends javax.swing.JPanel {
 
             return;
         }
-        system.getUserAccountDirectory().updateUserAccount(user, name, uname, password);
+        
+        system.getUserAccountDirectory().updateUserAccount(ua, name, uname, password);
+        user.getClerkList().updateClerkAccount(oldusername, name, uname, password);
+        
         populateClerkTable();
         txtName.setText("");
         txtUserName.setText("");
@@ -403,16 +443,18 @@ public class AddClerkJPanel extends javax.swing.JPanel {
         if (selectedRow >= 0) {
             int selectionButton = JOptionPane.YES_NO_OPTION;
             int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure to delete??", "Warning", selectionButton);
+           
             if (selectionResult == JOptionPane.YES_OPTION) {
+            
                 String username = (String) tblClerks.getValueAt(selectedRow, 1);
                 String pwd = (String) tblClerks.getValueAt(selectedRow, 2);
-                UserAccount user = system.getUserAccountDirectory().authenticateUser(username, pwd);
-
-                //UserAccount user = (UserAccount) networkJTable.getValueAt(selectedRow, 0);
-                system.getUserAccountDirectory().deleteUserAccount(user);
-                system.getDriverDirectory().deleteDriver(user.getUsername());
-
-                populateClerkTable();
+                
+                for (UserAccount admin : system.getUserAccountDirectory().getUserAccountList()) {
+               if(admin.getUsername().equals(user.getUsername())) {
+                   user.getClerkList().deleteClerk(username);
+             }
+            }
+             populateClerkTable();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Please select a Row!!");
@@ -465,18 +507,27 @@ public class AddClerkJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
 
         // Updating the contributorTable
-        for (UserAccount user : system.getUserAccountDirectory().getUserAccountList()) {
-
-            if ("Business.Role.ClerkRole".equals(user.getRole().getClass().getName())) {
+           for (UserAccount admin : system.getUserAccountDirectory().getUserAccountList()) {
+               
+               if(admin.getUsername().equals(user.getUsername())) {
+                  // System.out.println(admin.getUsername()+" "+user.getUsername());
+    
                 Object[] row = new Object[3];
+                
+                //System.out.println(user.getClerkList().getClerkList().size());
+                for(Clerk clerk1: user.getClerkList().getClerkList())
 
-                row[0] = user.getName();
-                row[1] = user.getUsername();
-                row[2] = user.getPassword();
+                {
+                //System.out.println(clerk1.getFirstName());
+                row[0] = clerk1.getFirstName();
+                row[1] = clerk1.getUserName();
+                row[2] = clerk1.getPassword();
 
                 model.addRow(row);
+                
+                }
             }
 
-        }    
+        }   
     }
 }
