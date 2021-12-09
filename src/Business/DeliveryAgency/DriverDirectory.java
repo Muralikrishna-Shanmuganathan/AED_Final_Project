@@ -5,6 +5,8 @@
  */
 package Business.DeliveryAgency;
 
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.WorkRequest;
 import java.util.ArrayList;
 
 /**
@@ -40,9 +42,12 @@ public class DriverDirectory {
         driverList.remove(driver);
     }
     
-    public Driver createDriver(String uname){
+    public Driver createDriver(String name,String uname, String password){
         Driver driver=new Driver();
-        driver.setFirstName(uname);
+        driver.setUserName(uname);
+        driver.setFirstName(name);
+        driver.setPassword(password);
+        driverList.add(driver);
         return driver;
     }
     
@@ -53,6 +58,64 @@ public class DriverDirectory {
             if(driverList.get(i).getUserName().equals(username)){
                 driverList.remove(i);
             }
+        }
+    }
+    
+    
+    public boolean checkifUserNameExists(String username)
+    {
+        for(Driver driver:driverList)
+        {
+            if(driver.getUserName().equals(username))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+    public Driver ReturnexistingDriver(String username)
+    {
+        for(Driver driver:driverList)
+        {
+            if(driver.getUserName().equals(username))
+            {
+                return driver;
+            }
+        }
+        return null;
+    }
+    
+    
+    
+    
+    public void updateDriverAccount(String oldusername, String name, String username, String password) {
+        
+        Driver driver=null;
+        for(Driver dri:driverList)
+        {
+            if(dri.getUserName().equals(oldusername))
+            {
+                driver=dri;
+            }
+        }
+
+        driver.setFirstName(name);
+        driver.setUserName(username);
+        driver.setPassword(password);
+    }
+    
+    
+    public void addWorkRequesttoDriver(Driver driver,WorkRequest workreq)
+    {
+        for(int i=0;i<driverList.size();i++)
+        {
+            if(driverList.get(i).getUserName().equals(driver.getUserName()))
+            {
+                driverList.get(i).getWorkQueue().addWorkRequesttoQueue(workreq);
+            }
+                
         }
     }
     

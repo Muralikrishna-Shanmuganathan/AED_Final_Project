@@ -9,7 +9,7 @@ import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.DeliveryAgentRole.DeliveryAgentWorkArea;
-import userinterface.Driver.DriverWorkArea;
+import userinterface.Driver.DriverWorkAreaJPanel;
 
 /**
  *
@@ -18,7 +18,7 @@ import userinterface.Driver.DriverWorkArea;
 public class DriverRole extends Role {
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new DriverWorkArea(userProcessContainer, account, business);
+        return new DriverWorkAreaJPanel(userProcessContainer, account, business);
     
 }
 

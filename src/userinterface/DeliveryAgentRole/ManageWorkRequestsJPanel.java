@@ -17,10 +17,6 @@ import Business.UserAccount.UserAccount;
 import Business.Volunteer.Volunteer;
 import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
-<<<<<<< HEAD:src/userinterface/DeliveryAgentRole/ViewWorkRequestsJPanel.java
-//import com.sun.corba.se.spi.orbutil.threadpool.WorkQueue;
-=======
->>>>>>> 4623331e4fd42815028a5818208a2d1bc676d306:src/userinterface/DeliveryAgentRole/ManageWorkRequestsJPanel.java
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.regex.Pattern;
