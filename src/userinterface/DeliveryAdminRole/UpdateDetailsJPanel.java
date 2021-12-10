@@ -209,9 +209,14 @@ public class UpdateDetailsJPanel extends javax.swing.JPanel {
         workRequest.setProductList(productList);
         workRequest.setDropOffLocation(cmbDrop.getSelectedItem().toString());
         workRequest.setPickUpLocation(cmbPickup.getSelectedItem().toString());
-        //WorkQueue workQueue = new WorkQueue();
-        system.getWorkQueue().addWorkRequesttoQueue(workRequest);
-        JOptionPane.showMessageDialog(null,system.getWorkQueue().getWorkQueue().size());
+    
+        String dropLocation = cmbDrop.getSelectedItem().toString();
+        String pickLocation = cmbPickup.getSelectedItem().toString();
+        
+        AssignDeliveryAgencyJPanel adajp = new AssignDeliveryAgencyJPanel(userProcessContainer, account, system, contribution, workRequest);
+        userProcessContainer.add("Assign Delivery Agency", adajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
