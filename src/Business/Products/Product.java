@@ -14,7 +14,7 @@ import java.util.Date;
 public class Product {
     
     String ProductName;
-    Date ExpiryDate;
+    String ExpiryDate;
 
     public String getProductName() {
         return ProductName;
@@ -24,11 +24,11 @@ public class Product {
         this.ProductName = ProductName;
     }
 
-    public Date getExpiryDate() {
+    public String getExpiryDate() {
         return ExpiryDate;
     }
 
-    public void setExpiryDate(Date ExpiryDate) {
+    public void setExpiryDate(String ExpiryDate) {
         this.ExpiryDate = ExpiryDate;
     }
 
