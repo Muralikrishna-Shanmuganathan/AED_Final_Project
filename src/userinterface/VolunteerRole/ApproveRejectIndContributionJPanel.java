@@ -11,6 +11,7 @@ import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
@@ -27,13 +28,13 @@ public class ApproveRejectIndContributionJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     private UserAccount user;
-    
-    public ApproveRejectIndContributionJPanel(JPanel userProcessContainer,UserAccount user, EcoSystem system) {
+
+    public ApproveRejectIndContributionJPanel(JPanel userProcessContainer, UserAccount user, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         this.user = user;
-        
+
         populateIndividualContribution();
     }
 
@@ -67,9 +68,19 @@ public class ApproveRejectIndContributionJPanel extends javax.swing.JPanel {
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
         btnApprove.setText("Approve");
+        btnApprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApproveActionPerformed(evt);
+            }
+        });
         add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, -1, -1));
 
         btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
         add(btnReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, -1, -1));
 
         tblIndividualContribution.setModel(new javax.swing.table.DefaultTableModel(
@@ -95,6 +106,40 @@ public class ApproveRejectIndContributionJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
+        // TODO add your handling code here:
+        int selectRow = tblIndividualContribution.getSelectedRow();
+        Contribution contribution = (Contribution) tblIndividualContribution.getValueAt(selectRow, 0);
+        if (selectRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table to view details", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            if (contribution.getStatus().equals("Approved")) {
+                JOptionPane.showMessageDialog(null, "Order already approved", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                contribution.setStatus("Approved");
+            }
+        }
+        populateIndividualContribution();
+    }//GEN-LAST:event_btnApproveActionPerformed
+
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+        int selectRow = tblIndividualContribution.getSelectedRow();
+        Contribution contribution = (Contribution) tblIndividualContribution.getValueAt(selectRow, 0);
+        if (selectRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table to view details", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            if (contribution.getStatus().equals("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Order already rejected", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                contribution.setStatus("Rejected");
+            }
+        }
+        populateIndividualContribution();
+    }//GEN-LAST:event_btnRejectActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApprove;
@@ -106,26 +151,26 @@ public class ApproveRejectIndContributionJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateIndividualContribution() {
-        
-        DefaultTableModel model = (DefaultTableModel) tblIndividualContribution.getModel();
-        
-        model.setRowCount(0);
-       
-        for (Contributor admin:system.getContributorDirectory().getContributorList()){
 
-               if ("Business.Role.VolunteerRole".equals(user.getRole().getClass().getName())) {
-               for(Contribution contribution:admin.getContribution()){
-                Object[] row = new Object[5];
-                row[0] = contribution;
-                row[1] = contribution.getItem();
-                row[2] = contribution.getQuantity();
-                row[3] = contribution.getExpiryDate();
-                row[4] = contribution.getStatus();
-                model.addRow(row);
-               }
-                
+        DefaultTableModel model = (DefaultTableModel) tblIndividualContribution.getModel();
+
+        model.setRowCount(0);
+
+        for (Contributor admin : system.getContributorDirectory().getContributorList()) {
+
+            if ("Business.Role.VolunteerRole".equals(user.getRole().getClass().getName())) {
+                for (Contribution contribution : admin.getContribution()) {
+                    Object[] row = new Object[5];
+                    row[0] = contribution;
+                    row[1] = contribution.getItem();
+                    row[2] = contribution.getQuantity();
+                    row[3] = contribution.getExpiryDate();
+                    row[4] = contribution.getStatus();
+                    model.addRow(row);
+                }
+
             }
-    }
-        
+        }
+
     }
 }

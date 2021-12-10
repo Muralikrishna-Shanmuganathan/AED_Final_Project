@@ -52,7 +52,6 @@ public class AddContribution2JPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         txtqty = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jDateChooser = new com.toedter.calendar.JDateChooser();
         btnAdd = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -61,6 +60,7 @@ public class AddContribution2JPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtStoreName = new javax.swing.JTextField();
+        jDateChooser = new com.toedter.calendar.JDateChooser();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -70,7 +70,6 @@ public class AddContribution2JPanel extends javax.swing.JPanel {
 
         jLabel8.setText("Expiry Date:");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 246, -1, -1));
-        add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 236, 143, -1));
 
         btnAdd.setText("ADD");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +105,7 @@ public class AddContribution2JPanel extends javax.swing.JPanel {
         jLabel2.setText("Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
         add(txtStoreName, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 140, -1));
+        add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 140, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed

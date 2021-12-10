@@ -28,15 +28,14 @@ public class ApproveRejectStoreContributionJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     private UserAccount user;
-    
-    public ApproveRejectStoreContributionJPanel(JPanel userProcessContainer,UserAccount user, EcoSystem system) {
+
+    public ApproveRejectStoreContributionJPanel(JPanel userProcessContainer, UserAccount user, EcoSystem system) {
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         this.user = user;
-       
-        
+
         populateStoreContribution();
     }
 
@@ -85,9 +84,19 @@ public class ApproveRejectStoreContributionJPanel extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 127, 618, 160));
 
         btnApprove.setText("Approve");
+        btnApprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApproveActionPerformed(evt);
+            }
+        });
         add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, -1, -1));
 
         btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
         add(btnReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -97,6 +106,40 @@ public class ApproveRejectStoreContributionJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+        int selectRow = tblStoreContribution.getSelectedRow();
+        Contribution contribution = (Contribution) tblStoreContribution.getValueAt(selectRow, 0);
+        if (selectRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table to view details", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            if (contribution.getStatus().equals("Rejected")) {
+                JOptionPane.showMessageDialog(null, "Order already rejected", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                contribution.setStatus("Rejected");
+            }
+        }
+        populateStoreContribution();
+    }//GEN-LAST:event_btnRejectActionPerformed
+
+    private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
+        // TODO add your handling code here:
+        int selectRow = tblStoreContribution.getSelectedRow();
+        Contribution contribution = (Contribution) tblStoreContribution.getValueAt(selectRow, 0);
+        if (selectRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table to view details", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            if (contribution.getStatus().equals("Approved")) {
+                JOptionPane.showMessageDialog(null, "Order already approved", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                contribution.setStatus("Approved");
+            }
+        }
+        populateStoreContribution();
+    }//GEN-LAST:event_btnApproveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -109,26 +152,25 @@ public class ApproveRejectStoreContributionJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateStoreContribution() {
-         
+
         DefaultTableModel model = (DefaultTableModel) tblStoreContribution.getModel();
-        
+
         model.setRowCount(0);
-       
-        for (Store admin:system.getStoreDirectory().getStoreDirectory()){
 
+        for (Store admin : system.getStoreDirectory().getStoreDirectory()) {
 
-               if ("Business.Role.VolunteerRole".equals(user.getRole().getClass().getName())) {
-               for(Contribution contribution:admin.getContribution()){
-                Object[] row = new Object[5];
-                row[0] = contribution;
-                row[1] = contribution.getItem();
-                row[2] = contribution.getQuantity();
-                row[3] = contribution.getExpiryDate();
-                row[4] = contribution.getStatus();
-                model.addRow(row);
-               }
-                
+            if ("Business.Role.VolunteerRole".equals(user.getRole().getClass().getName())) {
+                for (Contribution contribution : admin.getContribution()) {
+                    Object[] row = new Object[5];
+                    row[0] = contribution;
+                    row[1] = contribution.getItem();
+                    row[2] = contribution.getQuantity();
+                    row[3] = contribution.getExpiryDate();
+                    row[4] = contribution.getStatus();
+                    model.addRow(row);
+                }
+
             }
-    }
+        }
     }
 }
