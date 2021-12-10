@@ -5,9 +5,13 @@
  */
 package userinterface.DistributorRole;
 
+import Business.Distributor.Distributor;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.WorkRequest;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,6 +30,7 @@ public class DistributorAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
+        populateDistributorTable();
     }
 
     /**
@@ -37,30 +42,69 @@ public class DistributorAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblDistributor = new javax.swing.JTable();
+        btnAssign = new javax.swing.JToggleButton();
 
-        jLabel1.setText("Welcome Distributor!");
+        tblDistributor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Item Name", "Expiry Date", "Location", "Status", "Receiver"
+            }
+        ));
+        jScrollPane1.setViewportView(tblDistributor);
+
+        btnAssign.setText("Assign To Me");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(btnAssign)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel1)
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addGap(118, 118, 118)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(btnAssign)
+                .addContainerGap(165, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JToggleButton btnAssign;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblDistributor;
     // End of variables declaration//GEN-END:variables
+
+    private void populateDistributorTable() {
+        DefaultTableModel model = (DefaultTableModel) tblDistributor.getModel();
+
+        model.setRowCount(0);
+        JOptionPane.showMessageDialog(null, business.getWorkQueue().getWorkQueue());
+        for(WorkRequest admin: business.getWorkQueue().getWorkQueue()){
+             Object[] row = new Object[4];
+                row[0] = admin.getProductList();
+                row[1] = null;
+                row[2] = null;
+                row[3] = null;
+                model.addRow(row);
+        }
+    }
 }

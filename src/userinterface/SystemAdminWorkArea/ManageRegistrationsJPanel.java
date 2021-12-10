@@ -6,10 +6,12 @@
 package userinterface.SystemAdminWorkArea;
 
 import Business.Contributor.Contributor;
+import Business.DeliveryAdmin.DeliveryAdmin;
 import Business.Distributor.Distributor;
 import Business.EcoSystem;
 import Business.Registration.Registration;
 import Business.Role.ContributorRole;
+import Business.Role.DeliveryAdminRole;
 import Business.Role.DistributorRole;
 import Business.Role.VolunteerRole;
 import Business.UserAccount.UserAccount;
@@ -162,6 +164,10 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
                 else if ( roleType.equals("Distributor")){
                     UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(reg.getName(), reg.getUserName(), reg.getPassword(), null, new DistributorRole());
                     Distributor distributor = system.getDistributorDirectory().createDistributor(reg.getUserName());
+                }
+                else if(roleType.equals("Delivery Admin")){
+                    UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(reg.getName(), reg.getUserName(), reg.getPassword(), null, new DeliveryAdminRole());
+                    DeliveryAdmin deliveryAdmin = system.getDeliveryAdminDirectory().createDeliveryAdmin(reg.getName(), reg.getRole(), reg.getUserName(), reg.getPassword(), reg.getEmail(), reg.getPhone(), reg.getCarrier(), reg.getLocation(), reg.getPhoto());
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "No relevant role found");

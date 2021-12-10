@@ -17,15 +17,31 @@ import java.util.Date;
  * @author yashwanthsridharan
  */
 public class DeliveryAdmin {
+
     private String Name;
     private String UserName;
+    private String password;
+    private String email;
+    private String carrier;
+    private String phone;
+    private String photo;
+    private String role;
+    private String location;
+    private String status;
     private String pickupTime;
     private String pickupLocation;
     private ArrayList<Contribution> contributionList;
     private ArrayList<WorkRequest> workRequestList;
 
-    public DeliveryAdmin(String UserName) {
-        this.UserName = UserName;
+    public DeliveryAdmin(String name, String role, String userName, String password, String email, String phone, String carrier, String location, String imgPath) {
+        this.UserName = userName;
+        this.Name = name;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.carrier = carrier;
+        this.location = location;
+        this.photo = imgPath;
     }
 
     public void addWorkRequest(String storeName, String item, Date expDate, Date pickupTime, String pickupLocation) {
@@ -53,6 +69,78 @@ public class DeliveryAdmin {
 
     public void setUserName(String UserName) {
         this.UserName = UserName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCarrier() {
+        return carrier;
+    }
+
+    public void setCarrier(String carrier) {
+        this.carrier = carrier;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public ArrayList<Contribution> getContributionList() {
+        return contributionList;
+    }
+
+    public void setContributionList(ArrayList<Contribution> contributionList) {
+        this.contributionList = contributionList;
     }
 
     public ArrayList<WorkRequest> getWorkRequestList() {

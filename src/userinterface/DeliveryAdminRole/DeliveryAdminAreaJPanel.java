@@ -6,6 +6,7 @@
 package userinterface.DeliveryAdminRole;
 
 import Business.Contribution.Contribution;
+import Business.Contributor.Contributor;
 import Business.EcoSystem;
 import Business.Store.Store;
 import Business.UserAccount.UserAccount;
@@ -84,6 +85,9 @@ public class DeliveryAdminAreaJPanel extends javax.swing.JPanel {
             if (contribution.getStatus().equals("Assigned to Agency")) {
                 JOptionPane.showMessageDialog(null, "Already Assigned ", "Warning", JOptionPane.WARNING_MESSAGE);
             }
+            else if(contribution.getStatus().equals("New Request")){
+                JOptionPane.showMessageDialog(null, "Waiting for approval from Volunteer", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
             else{
                 UpdateDetailsJPanel udjp = new UpdateDetailsJPanel(userProcessContainer, user, contribution, system);
                 userProcessContainer.add("UpdateDetailsJPanel", udjp);
@@ -117,7 +121,21 @@ public class DeliveryAdminAreaJPanel extends javax.swing.JPanel {
                     row[4] = contribution.getStatus();
                     model.addRow(row);
                 }
-
+                
+            }
+        }
+        for (Contributor admin: system.getContributorDirectory().getContributorList()){
+            if ("Business.Role.DeliveryAdminRole".equals(user.getRole().getClass().getName())) {
+                for (Contribution contribution : admin.getContribution()) {
+                    Object[] row = new Object[5];
+                    row[0] = contribution;
+                    row[1] = contribution.getItem();
+                    row[2] = contribution.getQuantity();
+                    row[3] = contribution.getExpiryDate();
+                    row[4] = contribution.getStatus();
+                    model.addRow(row);
+                }
+                
             }
         }
     }

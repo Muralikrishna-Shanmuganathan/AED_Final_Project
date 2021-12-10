@@ -354,6 +354,7 @@ public class RegistrationJPanel extends javax.swing.JPanel {
         comboRole.addItem("Volunteer");
         comboRole.addItem("Contributor");
         comboRole.addItem("Distributor");
+        comboRole.addItem("Delivery Admin");
         
     }
 
