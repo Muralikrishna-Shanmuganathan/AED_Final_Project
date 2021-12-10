@@ -37,8 +37,8 @@ public class DeliveryAdminDirectory {
         deliveryAdminDirectory = new ArrayList<DeliveryAdmin>();
     }
 
-    public DeliveryAdmin createDeliveryAdmin(String uName) {
-        deliveryAdmin = new DeliveryAdmin(uName);
+    public DeliveryAdmin createDeliveryAdmin(String name, String role, String userName, String password, String email,String phone,String carrier,String location,String imgPath) {
+        deliveryAdmin = new DeliveryAdmin(name, role, userName, password, email, phone, carrier, location, imgPath);
         deliveryAdminDirectory.add(deliveryAdmin);
         return deliveryAdmin;
     }

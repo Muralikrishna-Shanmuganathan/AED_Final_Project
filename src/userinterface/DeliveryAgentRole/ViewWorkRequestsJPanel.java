@@ -14,6 +14,7 @@ import Business.Role.ClerkRole;
 import Business.Role.DeliveryAgentRole;
 import Business.Role.DriverRole;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 //import com.sun.corba.se.spi.orbutil.threadpool.WorkQueue;
 import java.awt.CardLayout;
@@ -243,10 +244,10 @@ public class ViewWorkRequestsJPanel extends javax.swing.JPanel {
     DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
 
         model.setRowCount(0);
+                
+        Business.WorkQueue.WorkQueue workQueue= user.getWorkQueue();
         
-        //Business.WorkQueue.WorkQueue workQueue= user.getWorkQueue();
-        
-        Business.WorkQueue.WorkQueue workQueue=new Business.WorkQueue.WorkQueue();
+        //Business.WorkQueue.WorkQueue workQueue=new Business.WorkQueue.WorkQueue();
         
         if(workQueue.getWorkQueue().size()>0)
         {

@@ -14,6 +14,7 @@ import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
@@ -208,8 +209,9 @@ public class UpdateDetailsJPanel extends javax.swing.JPanel {
         workRequest.setProductList(productList);
         workRequest.setDropOffLocation(cmbDrop.getSelectedItem().toString());
         workRequest.setPickUpLocation(cmbPickup.getSelectedItem().toString());
-        WorkQueue workQueue = new WorkQueue();
-        workQueue.addWorkRequesttoQueue(workRequest);
+        //WorkQueue workQueue = new WorkQueue();
+        system.getWorkQueue().addWorkRequesttoQueue(workRequest);
+        JOptionPane.showMessageDialog(null,system.getWorkQueue().getWorkQueue().size());
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
