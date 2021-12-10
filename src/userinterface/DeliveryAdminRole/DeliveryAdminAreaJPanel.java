@@ -27,9 +27,10 @@ public class DeliveryAdminAreaJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     UserAccount user;
+
     public DeliveryAdminAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
-         this.userProcessContainer = userProcessContainer;
+        this.userProcessContainer = userProcessContainer;
         this.user = account;
         this.system = system;
 
@@ -82,13 +83,13 @@ public class DeliveryAdminAreaJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row from the table to view details", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             Contribution contribution = (Contribution) tblStoreContribution.getValueAt(selectedRow, 0);
-            if (contribution.getStatus().equals("Assigned to Agency")) {
-                JOptionPane.showMessageDialog(null, "Already Assigned ", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
-            else if(contribution.getStatus().equals("New Request")){
+            if (contribution.getStatus().equals("New Request")) {
                 JOptionPane.showMessageDialog(null, "Waiting for approval from Volunteer", "Warning", JOptionPane.WARNING_MESSAGE);
             }
-            else{
+//else if (contribution.getStatus().equals("Assigned to Agency")) {
+//                JOptionPane.showMessageDialog(null, "Already Assigned ", "Warning", JOptionPane.WARNING_MESSAGE);
+//            } 
+                else {
                 UpdateDetailsJPanel udjp = new UpdateDetailsJPanel(userProcessContainer, user, contribution, system);
                 userProcessContainer.add("UpdateDetailsJPanel", udjp);
                 CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -105,7 +106,7 @@ public class DeliveryAdminAreaJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateContributionTable() {
-         DefaultTableModel model = (DefaultTableModel) tblStoreContribution.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblStoreContribution.getModel();
 
         model.setRowCount(0);
 
@@ -121,10 +122,10 @@ public class DeliveryAdminAreaJPanel extends javax.swing.JPanel {
                     row[4] = contribution.getStatus();
                     model.addRow(row);
                 }
-                
+
             }
         }
-        for (Contributor admin: system.getContributorDirectory().getContributorList()){
+        for (Contributor admin : system.getContributorDirectory().getContributorList()) {
             if ("Business.Role.DeliveryAdminRole".equals(user.getRole().getClass().getName())) {
                 for (Contribution contribution : admin.getContribution()) {
                     Object[] row = new Object[5];
@@ -135,7 +136,7 @@ public class DeliveryAdminAreaJPanel extends javax.swing.JPanel {
                     row[4] = contribution.getStatus();
                     model.addRow(row);
                 }
-                
+
             }
         }
     }
