@@ -39,7 +39,6 @@ public class ContributorDirectory {
         contribution=new Contribution(storeName, item, qty, date, status);
         
         contributor.addContribution(contribution);
-        JOptionPane.showMessageDialog(null, "inside contributor direcotry");
         return contribution;
     }
     
@@ -49,8 +48,8 @@ public class ContributorDirectory {
     }
     
     //Create Contributor
-    public Contributor createContributor(String uName){
-        contributor = new Contributor(uName);
+    public Contributor createContributor(String name, String role, String userName, String password, String email,String phone,String carrier,String location,String imgPath){
+        contributor = new Contributor(name, role, userName, password, email, phone, carrier, location, imgPath);
         contributorList.add(contributor);
         return contributor;
     }

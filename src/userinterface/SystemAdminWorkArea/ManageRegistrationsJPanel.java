@@ -102,7 +102,7 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
                 .addComponent(btnBack)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
+                .addContainerGap(82, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -129,7 +129,7 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnApprove)
                     .addComponent(btnReject))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -145,6 +145,7 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblRegistrations.getModel();
         String roleType = (String) model.getValueAt(selectedRowIndex, 0);
         String userName = (String) model.getValueAt(selectedRowIndex, 2);
+        String curStatus = (String) model.getValueAt(selectedRowIndex, 4);
 
         for (Registration reg : system.getRegistrationDirectory().getRegistrationList()){
 
@@ -152,11 +153,11 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
 
                 if ( roleType.equals("Volunteer")){
                     UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(reg.getName(), reg.getUserName(), reg.getPassword(), null, new VolunteerRole());
-                    Volunteer volunteer = system.getVolunteerDirectory().createVolunteer(reg.getUserName());
+                    Volunteer volunteer = system.getVolunteerDirectory().createVolunteer(reg.getName(), reg.getRole(), reg.getUserName(), reg.getPassword(), reg.getEmail(), reg.getPhone(), reg.getCarrier(), reg.getLocation(), reg.getPhoto());
                 }
                 else if ( roleType.equals("Contributor")){
                     UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(reg.getName(), reg.getUserName(), reg.getPassword(), null, new ContributorRole());
-                    Contributor contributor = system.getContributorDirectory().createContributor(reg.getUserName());
+                    Contributor contributor = system.getContributorDirectory().createContributor(reg.getName(), reg.getRole(), reg.getUserName(), reg.getPassword(), reg.getEmail(), reg.getPhone(), reg.getCarrier(), reg.getLocation(), reg.getPhoto());
                 }
                 else if ( roleType.equals("Distributor")){
                     UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(reg.getName(), reg.getUserName(), reg.getPassword(), null, new DistributorRole());
@@ -165,7 +166,10 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
                 else{
                     JOptionPane.showMessageDialog(null, "No relevant role found");
                 }
-
+                if( curStatus.equals("Approved")){
+                    JOptionPane.showMessageDialog(null, "User already Approved");
+                    return;
+                }
                 reg.setStatus("Approved");
                 populateRegistrations();
             }

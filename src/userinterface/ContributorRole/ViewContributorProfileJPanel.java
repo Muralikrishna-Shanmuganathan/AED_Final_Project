@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.VolunteerRole;
+package userinterface.ContributorRole;
 
+import Business.Contributor.Contributor;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
-import Business.Volunteer.Volunteer;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
@@ -16,22 +16,21 @@ import javax.swing.JPanel;
  *
  * @author murali
  */
-public class ViewVolunteerProfileJPanel extends javax.swing.JPanel {
+public class ViewContributorProfileJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewProfileJPanel
+     * Creates new form ViewContributorProfileJPanel
      */
-    private JPanel userProcessContainer;
+     private JPanel userProcessContainer;
     private EcoSystem system;
     UserAccount user;
-    
-    public ViewVolunteerProfileJPanel(JPanel userProcessContainer, UserAccount user, EcoSystem system) {
+    public ViewContributorProfileJPanel(JPanel userProcessContainer, UserAccount user, EcoSystem system) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         this.user = user;
-        populateVolunteer();
+        populateContributor();
     }
 
     /**
@@ -46,20 +45,20 @@ public class ViewVolunteerProfileJPanel extends javax.swing.JPanel {
         lblProfile = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtUserName = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         txtPhone = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
         lblPhoto = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtCarrier = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         txtLocation = new javax.swing.JTextField();
+        txtUserName = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
-        lblProfile.setText("Volunteer Profile");
+        lblProfile.setText("Contributor Profile");
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +71,8 @@ public class ViewVolunteerProfileJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Name");
 
+        jLabel12.setText("Location");
+
         jLabel3.setText("UserName");
 
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
@@ -80,24 +81,19 @@ public class ViewVolunteerProfileJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel10.setText("Email");
-
-        jLabel12.setText("Location");
-
         jLabel13.setText("Carrier");
+
+        jLabel10.setText("Email");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(btnBack))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(297, 297, 297)
-                        .addComponent(lblProfile)))
+                .addGap(33, 33, 33)
+                .addComponent(btnBack)
+                .addGap(123, 123, 123)
+                .addComponent(lblProfile)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,18 +130,18 @@ public class ViewVolunteerProfileJPanel extends javax.swing.JPanel {
                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(119, 119, 119)
                 .addComponent(lblPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 167, Short.MAX_VALUE))
+                .addGap(0, 26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblProfile)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnBack)
+                    .addComponent(lblProfile))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
+                        .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -164,7 +160,7 @@ public class ViewVolunteerProfileJPanel extends javax.swing.JPanel {
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel10))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                        .addGap(41, 41, 41)
                         .addComponent(lblPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,7 +176,7 @@ public class ViewVolunteerProfileJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -214,9 +210,9 @@ public class ViewVolunteerProfileJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 
-    private void populateVolunteer() {
+    private void populateContributor() {
         
-                txtName.setEditable(false);
+        txtName.setEditable(false);
                 txtUserName.setEditable(false);
                 txtEmail.setEditable(false);
                 txtPhone.setEditable(false);
@@ -225,14 +221,14 @@ public class ViewVolunteerProfileJPanel extends javax.swing.JPanel {
         
                 String userName = user.getUsername();
                 
-                for( Volunteer vol : system.getVolunteerDirectory().getVolunteerList()){
-                    if( vol.getUserName().equals(userName)){
-                        txtName.setText(vol.getName());
-                        txtUserName.setText(vol.getUserName());
-                        txtEmail.setText(vol.getEmail());
-                        txtPhone.setText(vol.getPhone());
-                        txtCarrier.setText(vol.getCarrier());
-                        txtLocation.setText(vol.getLocation());
+                for( Contributor con : system.getContributorDirectory().getContributorList()){
+                    if( con.getUserName().equals(userName)){
+                        txtName.setText(con.getName());
+                        txtUserName.setText(con.getUserName());
+                        txtEmail.setText(con.getEmail());
+                        txtPhone.setText(con.getPhone());
+                        txtCarrier.setText(con.getCarrier());
+                        txtLocation.setText(con.getLocation());
                     }
             }
     }

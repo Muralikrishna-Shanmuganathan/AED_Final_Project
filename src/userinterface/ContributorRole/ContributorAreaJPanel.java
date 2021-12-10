@@ -44,6 +44,7 @@ public class ContributorAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnAddContribution = new javax.swing.JButton();
         btnViewContribution = new javax.swing.JButton();
+        btnViewProfile = new javax.swing.JButton();
 
         jLabel1.setText("Hello There Contributor!");
 
@@ -61,6 +62,13 @@ public class ContributorAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewProfile.setText("View Profile");
+        btnViewProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewProfileActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -69,6 +77,10 @@ public class ContributorAreaJPanel extends javax.swing.JPanel {
                 .addGap(122, 122, 122)
                 .addComponent(jLabel1)
                 .addContainerGap(429, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnViewProfile)
+                .addGap(133, 133, 133))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(236, 236, 236)
@@ -82,7 +94,9 @@ public class ContributorAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addContainerGap(395, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnViewProfile)
+                .addContainerGap(348, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(144, 144, 144)
@@ -109,10 +123,19 @@ public class ContributorAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnViewContributionActionPerformed
 
+    private void btnViewProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewProfileActionPerformed
+        // TODO add your handling code here:
+        ViewContributorProfileJPanel vvpjp = new ViewContributorProfileJPanel(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("View Profile", vvpjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnViewProfileActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddContribution;
     private javax.swing.JButton btnViewContribution;
+    private javax.swing.JButton btnViewProfile;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

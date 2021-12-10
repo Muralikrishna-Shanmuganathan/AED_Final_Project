@@ -37,8 +37,8 @@ public class VolunteerDirectory {
     }
     
     //Create Contributor
-    public Volunteer createVolunteer(String uName){
-        volunteer = new Volunteer(uName);
+    public Volunteer createVolunteer(String name, String role, String userName, String password, String email,String phone,String carrier,String location,String imgPath){
+        volunteer = new Volunteer(name, role, userName, password, email, phone, carrier, location, imgPath);
         volunteerList.add(volunteer);
         return volunteer;
     }

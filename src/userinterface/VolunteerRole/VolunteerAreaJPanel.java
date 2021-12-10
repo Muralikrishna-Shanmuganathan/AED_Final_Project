@@ -43,7 +43,7 @@ public class VolunteerAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnAppRejStoreContribution = new javax.swing.JButton();
         btnAppRejIndContribution = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnViewProfile = new javax.swing.JButton();
 
         jLabel1.setText("Welcome Volunteer!");
 
@@ -61,10 +61,10 @@ public class VolunteerAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setText("View Profile");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnViewProfile.setText("View Profile");
+        btnViewProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnViewProfileActionPerformed(evt);
             }
         });
 
@@ -85,7 +85,7 @@ public class VolunteerAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(135, 135, 135)
-                .addComponent(jButton4)
+                .addComponent(btnViewProfile)
                 .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
@@ -101,7 +101,7 @@ public class VolunteerAreaJPanel extends javax.swing.JPanel {
                         .addComponent(btnAppRejIndContribution))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(jButton4)))
+                        .addComponent(btnViewProfile)))
                 .addContainerGap(135, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -122,19 +122,19 @@ public class VolunteerAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnAppRejIndContributionActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnViewProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewProfileActionPerformed
         // TODO add your handling code here:
-        ViewVolunteerProfileJPanel vvpjp = new ViewVolunteerProfileJPanel(userProcessContainer, ecosystem);
+        ViewVolunteerProfileJPanel vvpjp = new ViewVolunteerProfileJPanel(userProcessContainer, userAccount, ecosystem);
         userProcessContainer.add("View Profile", vvpjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnViewProfileActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAppRejIndContribution;
     private javax.swing.JButton btnAppRejStoreContribution;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnViewProfile;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
