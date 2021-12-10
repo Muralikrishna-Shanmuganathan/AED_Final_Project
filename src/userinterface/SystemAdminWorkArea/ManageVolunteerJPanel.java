@@ -15,6 +15,13 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import java.io.File;
+import java.util.regex.Pattern;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,11 +35,14 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     UserAccount user;
+    private String imgPath;
     public ManageVolunteerJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         populateVolunteerTable();
+        populateCarrier();
+        populateLocation();
     }
 
     /**
@@ -52,24 +62,25 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JPasswordField();
-        jPanel2 = new javax.swing.JPanel();
-        txtName = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        txtUserName = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        txtUserName1 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        txtPassword1 = new javax.swing.JPasswordField();
-        jPanel5 = new javax.swing.JPanel();
-        txtName1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        comboLocation = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        txtPhone = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        cPasswordField = new javax.swing.JPasswordField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        btnUploadPhoto = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        comboCarrier = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtUserName = new javax.swing.JTextField();
 
         tblVolunteers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -141,50 +152,32 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Password");
+        jLabel5.setText("Confirm Password");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
+        jLabel9.setText("Carrier");
+
+        jLabel10.setText("Email");
+
+        jLabel11.setText("Phone Number");
+
+        jLabel12.setText("Location");
+
+        jLabel13.setText("Photo");
+
+        btnUploadPhoto.setText("Upload Image");
+        btnUploadPhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUploadPhotoActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("Location");
 
         jLabel2.setText("Name");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 28, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
+        jLabel1.setText("Password");
+
+        jLabel3.setText("UserName");
 
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,140 +185,75 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setText("UserName");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-
-        txtUserName1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserName1ActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setText("UserName");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUserName1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUserName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-
-        jLabel4.setText("Password");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-
-        jLabel5.setText("Name");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 28, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtName1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(btnBack)
-                .addGap(293, 293, 293)
-                .addComponent(btnRefresh))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(btnCreate)
-                .addGap(26, 26, 26)
-                .addComponent(btnView)
-                .addGap(25, 25, 25)
-                .addComponent(btnUpdate)
-                .addGap(22, 22, 22)
-                .addComponent(btnDelete))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(230, 230, 230)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(230, 230, 230)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(230, 230, 230)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(240, 240, 240)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(240, 240, 240)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(240, 240, 240)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(btnBack)
+                        .addGap(293, 293, 293)
+                        .addComponent(btnRefresh))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(btnCreate)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnView)
+                        .addGap(25, 25, 25)
+                        .addComponent(btnUpdate)
+                        .addGap(22, 22, 22)
+                        .addComponent(btnDelete)))
+                .addContainerGap(163, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel2)
+                        .addGap(14, 14, 14)
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel10)
+                        .addGap(36, 36, 36)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel3)
+                        .addGap(6, 6, 6)
+                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel11)
+                        .addGap(8, 8, 8)
+                        .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel13)
+                        .addGap(4, 4, 4)
+                        .addComponent(btnUploadPhoto))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel1)
+                        .addGap(11, 11, 11)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel9)
+                        .addGap(28, 28, 28)
+                        .addComponent(comboCarrier, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(6, 6, 6)
+                        .addComponent(cPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel14))
+                        .addGap(16, 16, 16)
+                        .addComponent(comboLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,27 +270,70 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
                     .addComponent(btnView)
                     .addComponent(btnUpdate)
                     .addComponent(btnDelete))
-                .addGap(31, 31, 31)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))))
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel11))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel13))
+                    .addComponent(btnUploadPhoto))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel1))
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(comboCarrier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel5))
+                    .addComponent(cPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel14)
+                    .addComponent(comboLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
 
         String name = txtName.getText();
-        String uname = txtUserName.getText();
-        String password = String.valueOf(txtPassword.getPassword());
+        String userName = txtUserName.getText();
+        
+        char[] passwordCharArray = txtPassword.getPassword();
+        String password = String.valueOf(passwordCharArray);
+        
+        char[] passwordCharArray1 = cPasswordField.getPassword();
+        String cpassword = String.valueOf(passwordCharArray1);
+        
+        String email = txtEmail.getText();
+        String phone = txtPhone.getText();
+        String role = "Contributor";
+        String carrier = String.valueOf(comboCarrier.getSelectedItem());
+        String location = String.valueOf(comboLocation.getSelectedItem());
 
         try {
             if (name == null || name.isEmpty()) {
@@ -384,10 +355,10 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
         }
 
         try {
-            if (uname == null || uname.isEmpty()) {
+            if (userName == null || userName.isEmpty()) {
                 throw new NullPointerException("User Name field is Empty");
 
-            } else if (uname.length() < 5) {
+            } else if (userName.length() < 5) {
                 throw new Exception("Please enter valid User Name");
 
             }
@@ -420,51 +391,91 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
             return;
         }
 
-        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname) == false) {
+        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(userName) == false) {
             JOptionPane.showMessageDialog(null, "  User Name already exists ");
         } else {
 
-            UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, uname, password, null, new VolunteerRole());
-            Volunteer volunteer = system.getVolunteerDirectory().createVolunteer(uname);
+            UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, userName, password, null, new VolunteerRole());
+            Volunteer volunteer = system.getVolunteerDirectory().createVolunteer(name, role, userName, password, email, phone, carrier, location, imgPath);
 
             txtName.setText("");
             txtUserName.setText("");
             txtPassword.setText("");
 
             populateVolunteerTable();
+            populateCarrier();
+            populateLocation();
         }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
+//        int selectRow = tblVolunteers.getSelectedRow();
+//
+//        if (selectRow >= 0) {
+//            String username = (String) tblVolunteers.getValueAt(selectRow, 1);
+//            String pwd = (String) tblVolunteers.getValueAt(selectRow, 2);
+//            user = system.getUserAccountDirectory().authenticateUser(username, pwd);
+//
+//            txtName.setText(user.getName() + "");
+//            txtUserName.setText(user.getUsername() + "");
+//            txtPassword.setText(user.getPassword() + "");
+//            // system.getUserAccountDirectory().deleteUserAccount(user);
+//
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Please select a row");
+//        }
         int selectRow = tblVolunteers.getSelectedRow();
-
+        txtUserName.setEditable(false);
+        
         if (selectRow >= 0) {
             String username = (String) tblVolunteers.getValueAt(selectRow, 1);
             String pwd = (String) tblVolunteers.getValueAt(selectRow, 2);
             user = system.getUserAccountDirectory().authenticateUser(username, pwd);
-
-            txtName.setText(user.getName() + "");
-            txtUserName.setText(user.getUsername() + "");
-            txtPassword.setText(user.getPassword() + "");
-            // system.getUserAccountDirectory().deleteUserAccount(user);
-
+            
+            
+            for( Volunteer vol : system.getVolunteerDirectory().getVolunteerList()){
+                if( username.equals(vol.getUserName())){
+                txtName.setText(vol.getName());
+                txtUserName.setText(vol.getUserName());
+                txtPassword.setText(vol.getPassword());
+                cPasswordField.setText(vol.getPassword());
+                txtEmail.setText(vol.getEmail());
+                txtPhone.setText(vol.getPhone());
+                comboCarrier.setSelectedItem(vol.getCarrier());
+                comboLocation.setSelectedItem(vol.getLocation());
+            }
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row");
         }
+
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         int selectRow = tblVolunteers.getSelectedRow();
-
         if (selectRow < 0) {
             JOptionPane.showMessageDialog(this, "Please select a row to update");
             return;
         }
+
         String name = txtName.getText();
         String uname = txtUserName.getText();
-        String password = String.valueOf(txtPassword.getPassword());
+        
+        char[] passwordCharArray = txtPassword.getPassword();
+        String password = String.valueOf(passwordCharArray);
+        
+        char[] passwordCharArray1 = cPasswordField.getPassword();
+        String cpassword = String.valueOf(passwordCharArray1);
+        
+        String email = txtEmail.getText();
+        String phone = txtPhone.getText();
+        String role = "Volunteer";
+        String carrier = String.valueOf(comboCarrier.getSelectedItem());
+        String location = String.valueOf(comboLocation.getSelectedItem());
+        
+        txtUserName.setEditable(false);
 
         try {
             if (name == null || name.isEmpty()) {
@@ -521,11 +532,37 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
 
             return;
         }
+        if ( password.equals(cpassword)){
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Passwords dont match");
+            return;
+        }
+        
         system.getUserAccountDirectory().updateUserAccount(user, name, uname, password);
-        populateVolunteerTable();
+        for( Volunteer vol : system.getVolunteerDirectory().getVolunteerList()){
+            if( uname.equals(vol.getUserName())){
+                
+            vol.setName(name);
+            vol.setCarrier(carrier);
+            vol.setEmail(email);
+            vol.setLocation(location);
+            vol.setPassword(password);
+            vol.setPhone(phone);
+            vol.setPhoto(phone);
+            }
+            }
+        
         txtName.setText("");
         txtUserName.setText("");
         txtPassword.setText("");
+        cPasswordField.setText("");
+        txtEmail.setText("");
+        txtPhone.setText("");
+        populateCarrier();
+        populateLocation();
+
+        populateVolunteerTable();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -565,13 +602,34 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
         populateVolunteerTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
+    private void btnUploadPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadPhotoActionPerformed
+
+        JFileChooser uploadImageFile = new JFileChooser();
+        //Filter image extension
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("IMAGES","png","jpg","jpeg");
+        uploadImageFile.addChoosableFileFilter(filter);
+        try{
+            int showOpenDialogue = uploadImageFile.showOpenDialog(null);
+            if ( showOpenDialogue == JFileChooser.APPROVE_OPTION ){
+                File selectedImageFile = uploadImageFile.getSelectedFile();
+                String selectedImagePath = selectedImageFile.getAbsolutePath();
+                if (selectedImagePath == null){
+                    JOptionPane.showMessageDialog(null, "Please upload a photo");
+                    return;
+                }
+                else
+                imgPath = selectedImagePath;
+
+                JOptionPane.showMessageDialog(null, selectedImagePath);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Error uploading photo");
+        }
+    }//GEN-LAST:event_btnUploadPhotoActionPerformed
+
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserNameActionPerformed
-
-    private void txtUserName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserName1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserName1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -580,27 +638,28 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnUploadPhoto;
     private javax.swing.JButton btnView;
+    private javax.swing.JPasswordField cPasswordField;
+    private javax.swing.JComboBox<String> comboCarrier;
+    private javax.swing.JComboBox<String> comboLocation;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblVolunteers;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtName1;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JPasswordField txtPassword1;
+    private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtUserName;
-    private javax.swing.JTextField txtUserName1;
     // End of variables declaration//GEN-END:variables
 
     private void populateVolunteerTable() {
@@ -622,5 +681,19 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
             }
 
         }    
+    }
+
+    private void populateCarrier() {
+        comboCarrier.removeAllItems();
+        comboCarrier.addItem("ATT");
+        comboCarrier.addItem("Sprint");
+        comboCarrier.addItem("TMobile");
+        comboCarrier.addItem("Verizon");
+    }
+
+    private void populateLocation() {
+        comboLocation.removeAllItems();
+        comboLocation.addItem("Back Bay");
+        comboLocation.addItem("Cambridge");
     }
 }

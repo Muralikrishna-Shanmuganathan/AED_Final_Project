@@ -85,6 +85,7 @@ public class RegistrationJPanel extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         comboCarrier = new javax.swing.JComboBox<>();
 
+        setBackground(new java.awt.Color(204, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Manage Registrations");
@@ -271,23 +272,26 @@ public class RegistrationJPanel extends javax.swing.JPanel {
                    JOptionPane.showMessageDialog(null, "Please upload a photo");
                    return;
                }
-               if (system.getUserAccountDirectory().checkIfUsernameIsUnique(userName) == false) {
-                    JOptionPane.showMessageDialog(null, "  User Name already exists ");
-                } 
-               else{
-                Registration registration = new Registration(name, role, userName, password, email, phone, carrier, location, imgPath, "New Request");
-                system.getRegistrationDirectory().AddRegistration( registration, name, role, userName, password, email, phone, carrier, location, imgPath, "New Request");
-            
-              
-               txtName.setText("");
-               txtUserName.setText("");
-               passwordField.setText("");
-               cPasswordField.setText("");
-               txtEmail.setText("");
-               txtPhone.setText("");
+        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(userName) == false) {
+             JOptionPane.showMessageDialog(null, "  User Name already exists ");
+         } 
+        else{
+         Registration registration = new Registration(name, role, userName, password, email, phone, carrier, location, imgPath, "New Request");
+         system.getRegistrationDirectory().AddRegistration( registration, name, role, userName, password, email, phone, carrier, location, imgPath, "New Request");
 
-               JOptionPane.showMessageDialog(null, "Registration Done. Welcome to the team!");
-            }
+
+        txtName.setText("");
+        txtUserName.setText("");
+        passwordField.setText("");
+        cPasswordField.setText("");
+        txtEmail.setText("");
+        txtPhone.setText("");
+        populateRole();
+        populateCarrier();
+        populateLocation();
+
+        JOptionPane.showMessageDialog(null, "Registration Done. Welcome to the team!");
+     }
         
 
 
