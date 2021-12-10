@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import userinterface.Registration.RegistrationJPanel;
 
 /**
  *
@@ -65,6 +66,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageDeliveryAgent = new javax.swing.JButton();
         btnManageDistributor = new javax.swing.JButton();
         btnManageReceiver = new javax.swing.JButton();
+        btnManageRegistration = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -154,6 +156,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         btnManageReceiver.setText("Manage Receiver");
 
+        btnManageRegistration.setText("Manage Registration");
+        btnManageRegistration.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageRegistrationActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -182,6 +191,10 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                                     .addComponent(btnManageDeliveryAgent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnManageReceiver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap(122, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addComponent(btnManageRegistration)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +221,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnManageDistributor)
                     .addComponent(btnManageReceiver))
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnManageRegistration)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         jSplitPane.setRightComponent(jPanel2);
@@ -276,6 +291,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageDistributorActionPerformed
 
+    private void btnManageRegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageRegistrationActionPerformed
+        
+        ManageRegistrationsJPanel rjp = new ManageRegistrationsJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("Manage Registrations", rjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageRegistrationActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnManageAdmin;
@@ -285,6 +308,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageEnterprise;
     private javax.swing.JButton btnManageNetwork;
     private javax.swing.JButton btnManageReceiver;
+    private javax.swing.JButton btnManageRegistration;
     private javax.swing.JButton btnManageStoreAdmin;
     private javax.swing.JButton btnManageVolunteer;
     private javax.swing.JLabel jLabel1;
