@@ -26,6 +26,8 @@ import Business.WorkQueue.WorkQueue;
 import Business.Store.Store;
 import Business.Store.StoreDirectory;
 import Business.DeliveryAdmin.DeliveryAdminDirectory;
+import Business.Registration.RegistrationDirectory;
+
 
 /**
  *
@@ -52,12 +54,14 @@ public class EcoSystem extends Organization {
     private StoreDirectory storeDirectory;
     private WorkQueue workQueue;
     private DeliveryAdminDirectory deliveryAdminDirectory;
+    private RegistrationDirectory registrationDirectory;
+
 
     //Contructor
     public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory,
             VolunteerDirectory volunteerDirectory, ContributorDirectory contributorDirectory, StoreAdminDirectory storeAdminDirectory,
             DeliveryAgentDirectory deliveryAgentDirectory, DistributorDirectory distributorDirectory, ReceiverDirectory receiverDirectory, DriverDirectory driverDirectory, ClerkDirectory clerkDirectory,
-            FleetManagerDirectory fleetManagerDirectory, InspectionManagerDirectory inspectionManagerDirectory, Contribution contribution, StoreDirectory storeDirectory, DeliveryAdminDirectory deliveryAdminDirectory) {
+            FleetManagerDirectory fleetManagerDirectory, InspectionManagerDirectory inspectionManagerDirectory, Contribution contribution, StoreDirectory storeDirectory, DeliveryAdminDirectory deliveryAdminDirectory, RegistrationDirectory registrationDirectory) {
 
         this.restaurantDirectory = restaurantDirectory;
         this.customerDirectory = customerDirectory;
@@ -76,6 +80,7 @@ public class EcoSystem extends Organization {
         this.contribution = contribution;
         this.storeDirectory = storeDirectory;
         this.deliveryAdminDirectory = deliveryAdminDirectory;
+        this.registrationDirectory = registrationDirectory;
     }
 
     public static EcoSystem getInstance() {
@@ -224,6 +229,16 @@ public class EcoSystem extends Organization {
 
     public void setDeliveryAdminDirectory(DeliveryAdminDirectory deliveryAdminDirectory) {
         this.deliveryAdminDirectory = deliveryAdminDirectory;
+    }
+    public RegistrationDirectory getRegistrationDirectory() {
+        if(registrationDirectory == null){
+            registrationDirectory = new RegistrationDirectory();
+        }
+        return registrationDirectory;
+    }
+
+    public void setRegistrationDirectory(RegistrationDirectory registrationDirectory) {
+        this.registrationDirectory = registrationDirectory;
     }
 
     @Override

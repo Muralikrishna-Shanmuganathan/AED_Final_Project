@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.WorkQueue;
+package Business.Registration;
 
 /**
  *
  * @author murali
  */
-public class UserRegistrationRequest extends WorkRequest{
+public class Registration {
     
     private String name;
     private String userName;
@@ -20,6 +20,20 @@ public class UserRegistrationRequest extends WorkRequest{
     private String photo;
     private String role;
     private String location;
+    private String status;
+    
+    public Registration(String name, String role, String username, String password, String email, String phone, String carrier,  String location, String imagePath, String status){
+        this.name = name;
+        this.role =role;
+        this.userName = username;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.carrier = carrier;
+        this.location = location;
+        this.photo = imagePath;
+        this.status = status;
+    }
 
     public String getName() {
         return name;
@@ -92,8 +106,17 @@ public class UserRegistrationRequest extends WorkRequest{
     public void setLocation(String location) {
         this.location = location;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }  
     
-    
-    
-    
+    @Override
+    public String toString(){
+        return name;
+    }
 }

@@ -8,6 +8,7 @@ package userinterface.Registration;
 import Business.Contributor.Contributor;
 import Business.Distributor.Distributor;
 import Business.EcoSystem;
+import Business.Registration.Registration;
 import Business.Role.ContributorRole;
 import Business.Role.DistributorRole;
 import Business.Role.VolunteerRole;
@@ -25,6 +26,7 @@ import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import userinterface.MainJFrame;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
+import Business.Registration.Registration;
 
 /**
  *
@@ -37,6 +39,7 @@ public class RegistrationJPanel extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private EcoSystem system;
+    private String imgPath;
     
     public RegistrationJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
@@ -264,38 +267,55 @@ public class RegistrationJPanel extends javax.swing.JPanel {
             return;
         }
         
-        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(userName) == false) {
-            JOptionPane.showMessageDialog(null, "  User Name already exists ");
-        } else {
+        if (imgPath == null){
+                   JOptionPane.showMessageDialog(null, "Please upload a photo");
+                   return;
+               }
+               if (system.getUserAccountDirectory().checkIfUsernameIsUnique(userName) == false) {
+                    JOptionPane.showMessageDialog(null, "  User Name already exists ");
+                } 
+               else{
+                Registration registration = new Registration(name, role, userName, password, email, phone, carrier, location, imgPath, "New Request");
+                system.getRegistrationDirectory().AddRegistration( registration, name, role, userName, password, email, phone, carrier, location, imgPath, "New Request");
+            
+              
+               txtName.setText("");
+               txtUserName.setText("");
+               passwordField.setText("");
+               cPasswordField.setText("");
+               txtEmail.setText("");
+               txtPhone.setText("");
 
-            if(role.equals("Volunteer")){
-            UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, userName, password, null, new VolunteerRole());
-            Volunteer volunteer = system.getVolunteerDirectory().createVolunteer(userName);
+               JOptionPane.showMessageDialog(null, "Registration Done. Welcome to the team!");
             }
-            else if(role.equals("Contributor")){
-            UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, userName, password, null, new ContributorRole());
-            Contributor contributor = system.getContributorDirectory().createContributor(userName);
-            }
-            else if(role.equals("Distributor")){
-            UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, userName, password, null, new DistributorRole());
-            Distributor distributor = system.getDistributorDirectory().createDistributor(userName);
-            }
-            
-            txtName.setText("");
-            txtUserName.setText("");
-            passwordField.setText("");
-            cPasswordField.setText("");
-            txtEmail.setText("");
-            txtPhone.setText("");
-            
-            JOptionPane.showMessageDialog(null, "Registration Done. Welcome to the team!");
-        }
         
+
+
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnUploadPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadPhotoActionPerformed
         
-        
+        JFileChooser uploadImageFile = new JFileChooser();
+            //Filter image extension
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("IMAGES","png","jpg","jpeg");
+            uploadImageFile.addChoosableFileFilter(filter);
+            try{
+            int showOpenDialogue = uploadImageFile.showOpenDialog(null);
+            if ( showOpenDialogue == JFileChooser.APPROVE_OPTION ){
+               File selectedImageFile = uploadImageFile.getSelectedFile();
+               String selectedImagePath = selectedImageFile.getAbsolutePath();
+               if (selectedImagePath == null){
+                   JOptionPane.showMessageDialog(null, "Please upload a photo");
+                   return;
+               }
+               else
+                    imgPath = selectedImagePath;
+
+               JOptionPane.showMessageDialog(null, selectedImagePath);
+            }
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Error uploading photo");
+            }
     }//GEN-LAST:event_btnUploadPhotoActionPerformed
 
 

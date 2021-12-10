@@ -5,10 +5,19 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.Contributor.Contributor;
+import Business.Distributor.Distributor;
 import Business.EcoSystem;
+import Business.Registration.Registration;
+import Business.Role.ContributorRole;
+import Business.Role.DistributorRole;
+import Business.Role.VolunteerRole;
 import Business.UserAccount.UserAccount;
+import Business.Volunteer.Volunteer;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author murali
@@ -43,31 +52,46 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblRegistrations = new javax.swing.JTable();
+        btnApprove = new javax.swing.JButton();
+        btnReject = new javax.swing.JButton();
 
         jLabel1.setText("Manage New Registrations");
 
         btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblRegistrations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Role", "Name", "Location", "Status"
+                "Role", "Name", "User Name", "Location", "Status"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tblRegistrations);
 
-        jButton1.setText("Approve");
+        btnApprove.setText("Approve");
+        btnApprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApproveActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Reject");
+        btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -84,13 +108,13 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel1)
                         .addGap(238, 238, 238))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(92, 92, 92))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnApprove)
                         .addGap(37, 37, 37)
-                        .addComponent(jButton2)
-                        .addGap(207, 207, 207))))
+                        .addComponent(btnReject)
+                        .addGap(196, 196, 196))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,28 +123,116 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
                 .addComponent(btnBack)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(127, 127, 127))
+                    .addComponent(btnApprove)
+                    .addComponent(btnReject))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
+
+        int selectedRowIndex = tblRegistrations.getSelectedRow();
+
+        if ( selectedRowIndex < 0 ){
+            JOptionPane.showMessageDialog(this,"Please select a row");
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) tblRegistrations.getModel();
+        String roleType = (String) model.getValueAt(selectedRowIndex, 0);
+        String userName = (String) model.getValueAt(selectedRowIndex, 2);
+
+        for (Registration reg : system.getRegistrationDirectory().getRegistrationList()){
+
+            if( userName.equals(reg.getUserName())){
+
+                if ( roleType.equals("Volunteer")){
+                    UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(reg.getName(), reg.getUserName(), reg.getPassword(), null, new VolunteerRole());
+                    Volunteer volunteer = system.getVolunteerDirectory().createVolunteer(reg.getUserName());
+                }
+                else if ( roleType.equals("Contributor")){
+                    UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(reg.getName(), reg.getUserName(), reg.getPassword(), null, new ContributorRole());
+                    Contributor contributor = system.getContributorDirectory().createContributor(reg.getUserName());
+                }
+                else if ( roleType.equals("Distributor")){
+                    UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(reg.getName(), reg.getUserName(), reg.getPassword(), null, new DistributorRole());
+                    Distributor distributor = system.getDistributorDirectory().createDistributor(reg.getUserName());
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "No relevant role found");
+                }
+
+                reg.setStatus("Approved");
+                populateRegistrations();
+            }
+        }
+    }//GEN-LAST:event_btnApproveActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblRegistrations.getSelectedRow();
+
+        if ( selectedRowIndex < 0 ){
+            JOptionPane.showMessageDialog(this,"Please select a row");
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) tblRegistrations.getModel();
+        String userName = (String) model.getValueAt(selectedRowIndex, 2);
+        String curStatus = (String) model.getValueAt(selectedRowIndex, 4);
+
+        for (Registration reg : system.getRegistrationDirectory().getRegistrationList()){
+
+            if( userName.equals(reg.getUserName())){
+                if( curStatus.equals("Approved")){
+                    JOptionPane.showMessageDialog(null, "User already Approved");
+                    return;
+                }
+                reg.setStatus("Rejected");
+                populateRegistrations();
+            }
+        }
+    }//GEN-LAST:event_btnRejectActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnApprove;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnReject;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblRegistrations;
     // End of variables declaration//GEN-END:variables
 
     private void populateRegistrations() {
         
+        DefaultTableModel model = (DefaultTableModel) tblRegistrations.getModel();
         
-    }
+        model.setRowCount(0);
+       
+        for (Registration reg : system.getRegistrationDirectory().getRegistrationList()){
+            
+                Object[] row = new Object[5];
+                row[0] = reg.getRole();
+                row[1] = reg.getName();
+                row[2] = reg.getUserName();
+                row[3] = reg.getLocation();
+                row[4] = reg.getStatus();
+                model.addRow(row);
+               }
+                
+            }
+
+    
 }
