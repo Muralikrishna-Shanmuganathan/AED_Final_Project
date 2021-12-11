@@ -9,6 +9,7 @@ import Business.Distributor.Distributor;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -25,6 +26,7 @@ public class DistributorAreaJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem business;
     private UserAccount userAccount;
+
     public DistributorAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -44,22 +46,27 @@ public class DistributorAreaJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDistributor = new javax.swing.JTable();
-        btnAssign = new javax.swing.JToggleButton();
+        btnDeliver = new javax.swing.JToggleButton();
 
         tblDistributor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Item Name", "Expiry Date", "Location", "Status", "Receiver"
+                "WorkID", "Item Name", "Expiry Date", "Pickup Location", "Drop Location", "Receiver", "Status"
             }
         ));
         jScrollPane1.setViewportView(tblDistributor);
 
-        btnAssign.setText("Assign To Me");
+        btnDeliver.setText("Deliver to Receiver");
+        btnDeliver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeliverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -72,7 +79,7 @@ public class DistributorAreaJPanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(223, 223, 223)
-                        .addComponent(btnAssign)))
+                        .addComponent(btnDeliver)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -81,14 +88,33 @@ public class DistributorAreaJPanel extends javax.swing.JPanel {
                 .addGap(118, 118, 118)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(btnAssign)
+                .addComponent(btnDeliver)
                 .addContainerGap(165, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnDeliverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeliverActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblDistributor.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table to view details", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            WorkRequest workRequest = (WorkRequest) tblDistributor.getValueAt(selectedRow, 0);
+            if (workRequest.getStatus().equals("Delivered to Receiver")) {
+                JOptionPane.showMessageDialog(null, "Already Assigned ", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                DeliverToReceiverJPanel dtrjp = new DeliverToReceiverJPanel(userProcessContainer, userAccount, business, workRequest);
+                userProcessContainer.add("Deliver To Receiver", dtrjp);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            }
+        }
+
+    }//GEN-LAST:event_btnDeliverActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnAssign;
+    private javax.swing.JToggleButton btnDeliver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblDistributor;
     // End of variables declaration//GEN-END:variables
@@ -97,14 +123,20 @@ public class DistributorAreaJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblDistributor.getModel();
 
         model.setRowCount(0);
-        JOptionPane.showMessageDialog(null, business.getWorkQueue().getWorkQueue());
-        for(WorkRequest admin: business.getWorkQueue().getWorkQueue()){
-             Object[] row = new Object[4];
-                row[0] = admin.getProductList();
-                row[1] = null;
-                row[2] = null;
-                row[3] = null;
-                model.addRow(row);
+        int i = 0;
+        for (WorkRequest admin : business.getWorkQueue().getWorkQueue()) {
+            Object[] row = new Object[7];
+
+            row[0] = admin;
+            row[1] = admin.getProductList().getProductList().get(i).getProductName();
+            row[2] = admin.getProductList().getProductList().get(i).getExpiryDate();
+            row[3] = admin.getPickUpLocation();
+            row[4] = admin.getDropOffLocation();
+            row[5] = admin.getReceiver();
+            row[6] = admin.getStatus();
+
+            model.addRow(row);
+            //i++;
         }
     }
 }
