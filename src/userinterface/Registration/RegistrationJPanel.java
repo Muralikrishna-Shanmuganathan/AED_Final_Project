@@ -27,6 +27,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import userinterface.MainJFrame;
 import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 import Business.Registration.Registration;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  *
@@ -294,6 +301,54 @@ public class RegistrationJPanel extends javax.swing.JPanel {
         populateRole();
         populateCarrier();
         populateLocation();
+        
+        
+        //Email and SMS Integration
+        
+        String toEmail = email;
+        String fromEmail = "dummyprojectuser@gmail.com";
+        String fromEmailPassword = "Testpassword";
+        String subject = "Welome to the Team!";
+        
+        String textSms = phone;
+        if (carrier.equals("ATT")) {
+                textSms = textSms + "@txt.att.net";
+            } else if (carrier.equals("Verizon")) {
+                textSms = textSms + "@vmobl.com";
+            } else if (carrier.equals("Sprint")) {
+                textSms = textSms + "@messaging.sprintpcs.com";
+            } else if (carrier.equals("TMobile")) {
+                textSms = textSms + "@tmomail.net";
+            }
+
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth","true");
+        properties.put("mail.smtp.starttls.enable","true");
+        properties.put("mail.smtp.host","smtp.gmail.com");
+        properties.put("mail.smtp.port","587");
+        
+        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+
+        Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication(){
+                return new PasswordAuthentication("dummyprojectuser@gmail.com", "Testpassword");
+            }
+        });
+
+        try{
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(fromEmail));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(textSms));
+            message.setSubject(subject);
+            message.setText("You have registered with us. We will notify you soon. Thank you for choosing us!");
+            Transport.send(message);
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+            System.out.println(e);
+        }
 
         JOptionPane.showMessageDialog(null, "Registration Done. Welcome to the team!");
      }
