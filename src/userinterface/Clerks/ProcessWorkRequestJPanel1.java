@@ -110,8 +110,8 @@ public class ProcessWorkRequestJPanel1 extends javax.swing.JPanel {
             return;
         }
         
-        workrequest.setStatus(status);
-         for(Volunteer cust:system.getVolunteerDirectory().getVolunteerList()){
+        workrequest.setStatus(status);        
+        for(Volunteer cust:system.getVolunteerDirectory().getVolunteerList()){
             if(workrequest.getVolunteerUName().equals(cust.getUserName())){
                 for(WorkRequest wr : cust.getWorkqueue().getWorkQueue()){
                     wr.setStatus(status);

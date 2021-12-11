@@ -111,9 +111,9 @@ public class UserAccount {
     }
     
     
-    /*@Override
+    @Override
     public String toString() {
         return username;
-    }*/
+    }
     
 }

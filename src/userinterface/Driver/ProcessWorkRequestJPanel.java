@@ -17,13 +17,12 @@ import javax.swing.JPanel;
  *
  * @author raunak
  */
-
-
 public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     WorkRequest workrequest;
     EcoSystem system;
+
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
@@ -32,7 +31,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.workrequest = workrequest;
         this.system = system;
-        
+
     }
 
     /**
@@ -91,28 +90,29 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         Component component = componentArray[componentArray.length - 1];
         DriverWorkAreaJPanel dwjp = (DriverWorkAreaJPanel) component;
         //dwjp.populateTable();
-        
+
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-       
-        String status=txtResult.getText();
-        
+
+        String status = txtResult.getText();
+
         try {
-             if(status==null || status.isEmpty()){
+            if (status == null || status.isEmpty()) {
                 throw new Exception(" Please enter delivery status");
-             }        
-        } catch(Exception e){
+            }
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, " Please enter delivery status");
             return;
         }
-        
+
         workrequest.setStatus(status);
-         for(Volunteer cust:system.getVolunteerDirectory().getVolunteerList()){
-            if(workrequest.getVolunteerUName().equals(cust.getUserName())){
-                for(WorkRequest wr : cust.getWorkqueue().getWorkQueue()){
+        system.getWorkQueue().addWorkRequesttoQueue(workrequest);
+        for (Volunteer cust : system.getVolunteerDirectory().getVolunteerList()) {
+            if (workrequest.getVolunteerUName().equals(cust.getUserName())) {
+                for (WorkRequest wr : cust.getWorkqueue().getWorkQueue()) {
                     wr.setStatus(status);
                 }
             }

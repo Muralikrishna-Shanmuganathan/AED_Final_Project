@@ -9,10 +9,12 @@ import Business.Contributor.Contributor;
 import Business.DeliveryAdmin.DeliveryAdmin;
 import Business.Distributor.Distributor;
 import Business.EcoSystem;
+import Business.Receiver.Receiver;
 import Business.Registration.Registration;
 import Business.Role.ContributorRole;
 import Business.Role.DeliveryAdminRole;
 import Business.Role.DistributorRole;
+import Business.Role.ReceiverRole;
 import Business.Role.VolunteerRole;
 import Business.UserAccount.UserAccount;
 import Business.Volunteer.Volunteer;
@@ -165,9 +167,9 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
                     UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(reg.getName(), reg.getUserName(), reg.getPassword(), null, new DistributorRole());
                     Distributor distributor = system.getDistributorDirectory().createDistributor(reg.getUserName());
                 }
-                else if(roleType.equals("Delivery Admin")){
-                    UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(reg.getName(), reg.getUserName(), reg.getPassword(), null, new DeliveryAdminRole());
-                    DeliveryAdmin deliveryAdmin = system.getDeliveryAdminDirectory().createDeliveryAdmin(reg.getName(), reg.getRole(), reg.getUserName(), reg.getPassword(), reg.getEmail(), reg.getPhone(), reg.getCarrier(), reg.getLocation(), reg.getPhoto());
+                else if(roleType.equals("Receiver")){
+                    UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(reg.getName(), reg.getUserName(), reg.getPassword(), null, new ReceiverRole());
+                    Receiver receiver = system.getReceiverDirectory().createReceiver(reg.getName(), reg.getRole(), reg.getUserName(), reg.getPassword(), reg.getEmail(), reg.getPhone(), reg.getCarrier(), reg.getLocation(), reg.getPhoto());
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "No relevant role found");

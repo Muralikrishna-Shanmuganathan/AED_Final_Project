@@ -25,64 +25,55 @@ public class DriverWorkAreaJPanel extends javax.swing.JPanel {
     private EcoSystem system;
     private UserAccount userAccount;
     WorkQueue workQueue;
-    
-    
+
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
     public DriverWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.system = business;
-      
-        
+
         populateDriverTable();
-        
+
         valueLabel.setText(account.getName());
     }
-    
-    public void populateDriverTable(){
-        
+
+    public void populateDriverTable() {
+
         System.out.println("reached populate table from driver work area");
-        
+
         DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
-        
+
         model.setRowCount(0);
-        System.out.println(system.getWorkQueue().getWorkQueue().size());  
-        
+        System.out.println(system.getWorkQueue().getWorkQueue().size());
 
-        for(Driver user:system.getDriverDirectory().getDriverList())
-        {
-            if(user.getUserName().equals(userAccount.getUsername()))
-            {
-                for(WorkRequest wr : user.getWorkQueue().getWorkQueue()){
-                System.out.println(user.getWorkQueue().getWorkQueue().size());   
-                Object[] row = new Object[8];
+        for (Driver user : system.getDriverDirectory().getDriverList()) {
+            if (user.getUserName().equals(userAccount.getUsername())) {
+                for (WorkRequest wr : user.getWorkQueue().getWorkQueue()) {
+                    System.out.println(user.getWorkQueue().getWorkQueue().size());
+                    Object[] row = new Object[8];
 
-                row[0] = wr.getWorkRequestID();
-                row[1] = wr.getPickUptime();
-                row[2] = wr.getDropOfftime();
-                row[3] = wr.getPickUpLocation();
-                row[4] = wr.getDropOffLocation();
+                    row[0] = wr.getWorkRequestID();
+                    row[1] = wr.getPickUptime();
+                    row[2] = wr.getDropOfftime();
+                    row[3] = wr.getPickUpLocation();
+                    row[4] = wr.getDropOffLocation();
 
-                //row[5] = wr.getDriver().getFirstName();
-                //row[6] = wr.getClerk().getFirstName();
-                row[5] = wr.getStatus();
-                row[6]=wr;
+                    //row[5] = wr.getDriver().getFirstName();
+                    //row[6] = wr.getClerk().getFirstName();
+                    row[5] = wr.getStatus();
+                    row[6] = wr;
 
-                model.addRow(row);
+                    model.addRow(row);
 
+                }
             }
-        }
-        
+
         }
     }
-            
-        
-        
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -163,26 +154,28 @@ public class DriverWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
-        
+
         int selectedRowIndex = workRequestJTable.getSelectedRow();
-        
-        if (selectedRowIndex < 0){
+
+        if (selectedRowIndex < 0) {
             return;
         }
-        
-        WorkRequest wr = (WorkRequest)workRequestJTable.getValueAt(selectedRowIndex, 6); 
-        
-        if(wr.getStatus().equals("Delivered")){
-            JOptionPane.showMessageDialog(null," Order Already Delivered","Warning",JOptionPane.WARNING_MESSAGE);
-        }else{
-        
-        
-        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, wr,system);
-        userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+
+        WorkRequest wr = (WorkRequest) workRequestJTable.getValueAt(selectedRowIndex, 6);
+
+        if (wr.getStatus().equals("Delivered")) {
+            JOptionPane.showMessageDialog(null, " Order Already Delivered", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (wr.getStatus().equals("Assigned to Clerk")) {
+            JOptionPane.showMessageDialog(null, "Not Approved by Clerk", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (wr.getStatus().equals("Req to Clerk sent")) {
+            JOptionPane.showMessageDialog(null, "Not Approved by Clerk", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, wr, system);
+            userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
         }
-        
+
     }//GEN-LAST:event_btnProcessActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed

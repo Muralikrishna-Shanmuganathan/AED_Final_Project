@@ -149,6 +149,7 @@ public class AssignDeliveryAgencyJPanel extends javax.swing.JPanel {
                     workRequest.setStatus("Assigned to Agency");
                     workRequest.setDeliveryAgencyAdminName(ua1.getUsername());
                     ua1.getWorkQueue().addWorkRequesttoQueue(workRequest);
+                    
                 }
             }
             

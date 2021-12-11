@@ -156,6 +156,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnManageReceiver.setText("Manage Receiver");
+        btnManageReceiver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageReceiverActionPerformed(evt);
+            }
+        });
 
         btnManageRegistration.setText("Manage Registration");
         btnManageRegistration.addActionListener(new java.awt.event.ActionListener() {
@@ -228,9 +233,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(btnManageStoreAdmin)
                     .addComponent(btnManageDeliveryAgent))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnManageDistributor)
-                    .addComponent(btnManageReceiver))
+                    .addComponent(btnManageReceiver, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnManageRegistration)
@@ -318,6 +323,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageDeliveryAdminActionPerformed
+
+    private void btnManageReceiverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageReceiverActionPerformed
+        // TODO add your handling code here:
+       ManageReceiverJPanel mrjp = new ManageReceiverJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("Manage Receiver JPanel", mrjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageReceiverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

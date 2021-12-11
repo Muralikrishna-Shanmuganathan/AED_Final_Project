@@ -113,6 +113,11 @@ public class RegistrationJPanel extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, -1));
         add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 107, -1));
 
+        comboRole.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboRoleActionPerformed(evt);
+            }
+        });
         add(comboRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 132, -1));
 
         jLabel6.setText("Role");
@@ -322,6 +327,10 @@ public class RegistrationJPanel extends javax.swing.JPanel {
             }
     }//GEN-LAST:event_btnUploadPhotoActionPerformed
 
+    private void comboRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboRoleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboRoleActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
@@ -354,8 +363,7 @@ public class RegistrationJPanel extends javax.swing.JPanel {
         comboRole.addItem("Volunteer");
         comboRole.addItem("Contributor");
         comboRole.addItem("Distributor");
-        comboRole.addItem("Delivery Admin");
-        
+        comboRole.addItem("Receiver");
     }
 
     private void populateCarrier() {
