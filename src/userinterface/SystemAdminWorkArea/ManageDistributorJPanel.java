@@ -246,6 +246,7 @@ public class ManageDistributorJPanel extends javax.swing.JPanel {
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
         int selectRow = tblDistributors.getSelectedRow();
+        txtUserName.setEditable(false);
 
         if (selectRow >= 0) {
             String username = (String) tblDistributors.getValueAt(selectRow, 1);
@@ -254,6 +255,7 @@ public class ManageDistributorJPanel extends javax.swing.JPanel {
             
             for (Distributor distributor : system.getDistributorDirectory().getDistributorDirectory()) {
                 if (username.equals(distributor.getUserName())) {
+                    JOptionPane.showMessageDialog(null, distributor.getName());
                     txtName.setText(distributor.getName());
                     txtUserName.setText(distributor.getUserName());
                     txtPassword.setText(distributor.getPassword());

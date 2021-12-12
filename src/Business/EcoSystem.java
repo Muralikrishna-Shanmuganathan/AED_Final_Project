@@ -9,8 +9,6 @@ import Business.Contributor.ContributorDirectory;
 import Business.Customer.CustomerDirectory;
 import Business.DeliveryAgency.ClerkDirectory;
 import Business.DeliveryAgency.DriverDirectory;
-import Business.DeliveryAgency.FleetManagerDirectory;
-import Business.DeliveryAgency.InspectionManagerDirectory;
 import Business.DeliveryMan.DeliveryManDirectory;
 import Business.Distributor.DistributorDirectory;
 import Business.Receiver.ReceiverDirectory;
@@ -48,8 +46,6 @@ public class EcoSystem extends Organization {
     private ReceiverDirectory receiverDirectory;
     private DriverDirectory driverDirectory;
     private ClerkDirectory clerkDirectory;
-    private FleetManagerDirectory fleetManagerDirectory;
-    private InspectionManagerDirectory inspectionManagerDirectory;
     private Contribution contribution;
     private StoreDirectory storeDirectory;
     private WorkQueue workQueue;
@@ -61,7 +57,7 @@ public class EcoSystem extends Organization {
     public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory,
             VolunteerDirectory volunteerDirectory, ContributorDirectory contributorDirectory, StoreAdminDirectory storeAdminDirectory,
             DeliveryAgentDirectory deliveryAgentDirectory, DistributorDirectory distributorDirectory, ReceiverDirectory receiverDirectory, DriverDirectory driverDirectory, ClerkDirectory clerkDirectory,
-            FleetManagerDirectory fleetManagerDirectory, InspectionManagerDirectory inspectionManagerDirectory, Contribution contribution, StoreDirectory storeDirectory, DeliveryAdminDirectory deliveryAdminDirectory, RegistrationDirectory registrationDirectory) {
+            Contribution contribution, StoreDirectory storeDirectory, DeliveryAdminDirectory deliveryAdminDirectory, RegistrationDirectory registrationDirectory) {
 
         this.restaurantDirectory = restaurantDirectory;
         this.customerDirectory = customerDirectory;
@@ -75,8 +71,6 @@ public class EcoSystem extends Organization {
         this.receiverDirectory = receiverDirectory;
         this.driverDirectory = driverDirectory;
         this.clerkDirectory = clerkDirectory;
-        this.fleetManagerDirectory = fleetManagerDirectory;
-        this.inspectionManagerDirectory = inspectionManagerDirectory;
         this.contribution = contribution;
         this.storeDirectory = storeDirectory;
         this.deliveryAdminDirectory = deliveryAdminDirectory;
@@ -181,28 +175,6 @@ public class EcoSystem extends Organization {
 
     public void setClerkDirectory(ClerkDirectory clerkDirectory) {
         this.clerkDirectory = clerkDirectory;
-    }
-
-    public FleetManagerDirectory getFleetManagerDirectory() {
-        if (fleetManagerDirectory == null) {
-            fleetManagerDirectory = new FleetManagerDirectory();
-        }
-        return fleetManagerDirectory;
-    }
-
-    public void setFleetManagerDirectory(FleetManagerDirectory fleetManagerDirectory) {
-        this.fleetManagerDirectory = fleetManagerDirectory;
-    }
-
-    public InspectionManagerDirectory getInspectionManagerDirectory() {
-        if (inspectionManagerDirectory == null) {
-            inspectionManagerDirectory = new InspectionManagerDirectory();
-        }
-        return inspectionManagerDirectory;
-    }
-
-    public void setInspectionManagerDirectory(InspectionManagerDirectory inspectionManagerDirectory) {
-        this.inspectionManagerDirectory = inspectionManagerDirectory;
     }
 
     public StoreDirectory getStoreDirectory() {

@@ -29,7 +29,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="40" y="160" width="780" height="130"/>
+          <AbsoluteConstraints x="40" y="160" width="580" height="130"/>
         </Constraint>
       </Constraints>
 
@@ -38,39 +38,15 @@
         <Component class="javax.swing.JTable" name="workRequestJTable">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="8" rowCount="4">
+              <Table columnCount="4" rowCount="4">
                 <Column editable="false" title="Work ID" type="java.lang.Object"/>
-                <Column editable="false" title="Pickup time" type="java.lang.Object"/>
-                <Column editable="false" title="Dropoff time" type="java.lang.String"/>
                 <Column editable="false" title="Pickup Location" type="java.lang.String"/>
                 <Column editable="false" title="Drop off Location" type="java.lang.Object"/>
                 <Column editable="false" title="Status" type="java.lang.Object"/>
-                <Column editable="true" title="object" type="java.lang.Object"/>
-                <Column editable="true" title="driver" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>

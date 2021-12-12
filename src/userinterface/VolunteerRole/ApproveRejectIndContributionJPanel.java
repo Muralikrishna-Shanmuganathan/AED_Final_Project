@@ -123,6 +123,7 @@ public class ApproveRejectIndContributionJPanel extends javax.swing.JPanel {
                 return;
             }
             else {
+                JOptionPane.showMessageDialog(null, "Contribution Approved");
                 contribution.setStatus("Approved");
             }
         }
@@ -147,6 +148,7 @@ public class ApproveRejectIndContributionJPanel extends javax.swing.JPanel {
             } 
             else {
                 contribution.setStatus("Rejected");
+                JOptionPane.showMessageDialog(null, "Contribution Rejected");
             }
         }
         populateIndividualContribution();

@@ -58,24 +58,22 @@ public class UpdateDetailsJPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         lblPickup = new javax.swing.JLabel();
+        txtName = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtItem = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         cmbDrop = new javax.swing.JComboBox<>();
+        txtItem = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Contributor");
-
-        txtName.setEditable(false);
 
         jLabel4.setText("Pickup Location");
 
@@ -102,6 +100,8 @@ public class UpdateDetailsJPanel extends javax.swing.JPanel {
                 .addComponent(lblPickup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        txtName.setText("jLabel5");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -110,8 +110,8 @@ public class UpdateDetailsJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addComponent(txtName)
+                .addGap(126, 126, 126))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -119,10 +119,10 @@ public class UpdateDetailsJPanel extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
@@ -131,8 +131,6 @@ public class UpdateDetailsJPanel extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 88, 240, -1));
 
         jLabel2.setText("Item");
-
-        txtItem.setEditable(false);
 
         jLabel6.setText("Drop Off Location");
 
@@ -156,6 +154,8 @@ public class UpdateDetailsJPanel extends javax.swing.JPanel {
                     .addComponent(cmbDrop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
+        txtItem.setText("jLabel3");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -163,9 +163,9 @@ public class UpdateDetailsJPanel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(73, 73, 73)
+                .addComponent(txtItem)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -173,10 +173,10 @@ public class UpdateDetailsJPanel extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtItem))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -206,6 +206,7 @@ public class UpdateDetailsJPanel extends javax.swing.JPanel {
         
         
         String pickupPoint="";
+        
         for (Contributor con : system.getContributorDirectory().getContributorList()) {
             if (con.getUserName().equals(txtName.getText())) {
                pickupPoint = con.getLocation();
@@ -217,7 +218,7 @@ public class UpdateDetailsJPanel extends javax.swing.JPanel {
             }
         }
 
-        contribution.setStatus("Assigned to Agency");
+        contribution.setStatus("Assigned to Delivery Agency");
         WorkRequest workRequest = new WorkRequest();
         Product product = new Product();
         product.setProductName(contribution.getItem());
@@ -226,7 +227,6 @@ public class UpdateDetailsJPanel extends javax.swing.JPanel {
         productList.addProducttoList(product);
         workRequest.setProductList(productList);
         workRequest.setDropOffLocation(cmbDrop.getSelectedItem().toString());
-//        workRequest.setPickUpLocation(cmbPickup.getSelectedItem().toString());
         workRequest.setPickUpLocation(pickupPoint);
     
         String dropLocation = cmbDrop.getSelectedItem().toString();
@@ -259,20 +259,18 @@ public class UpdateDetailsJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lblPickup;
-    private javax.swing.JTextField txtItem;
-    private javax.swing.JTextField txtName;
+    private javax.swing.JLabel txtItem;
+    private javax.swing.JLabel txtName;
     // End of variables declaration//GEN-END:variables
 
     private void populateDropLocationCmb() {
         cmbDrop.removeAllItems();
-        cmbDrop.addItem("Backbay");
-        cmbDrop.addItem("Cambridge");
+        cmbDrop.addItem("Back Bay");
+        cmbDrop.addItem("Chinatown");
+        cmbDrop.addItem("Roxbury");
     }
 
     private void populatePickupLocationCmb() {
-//        cmbPickup.removeAllItems();
-//        cmbPickup.addItem("Backbay");
-//        cmbPickup.addItem("Cambridge");
 
         for (Contributor con : system.getContributorDirectory().getContributorList()) {
             if (con.getUserName().equals(txtName.getText())) {

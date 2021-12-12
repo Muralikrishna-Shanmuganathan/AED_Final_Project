@@ -5,7 +5,6 @@
  */
 package userinterface.DeliveryAgentRole;
 
-import Business.Customer.Customer;
 import Business.DeliveryAgency.Driver;
 import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
@@ -75,13 +74,13 @@ public class AssignDriverJPanel extends javax.swing.JPanel {
 
         tblDeliveryPerson.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Devlivery Person Name", "Name", "Password"
+                "Name", "Password"
             }
         ));
         jScrollPane1.setViewportView(tblDeliveryPerson);
@@ -122,9 +121,7 @@ public class AssignDriverJPanel extends javax.swing.JPanel {
             account.getDriverList().addWorkRequesttoDriver(driver, workRequest);
             //system.getWorkQueue().addWorkRequesttoQueue(workRequest);
             workRequest.setStatus("Assigned to Driver");
-            System.out.println("Added to driver workqueue");
-            System.out.println(driver.getWorkQueue().getWorkQueue().size()+" driver queue size in assign driver page " +driver.getUserName());
-
+            JOptionPane.showMessageDialog(null, "Contribution assigned to Driver");
 
             userProcessContainer.remove(this);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();

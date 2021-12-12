@@ -10,6 +10,13 @@ import Business.Receiver.Receiver;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -111,6 +118,65 @@ public class DeliverToReceiverJPanel extends javax.swing.JPanel {
             workQueue.addWorkRequesttoQueue(workRequest);
             receiver.setWorkQueue(workQueue);
             JOptionPane.showMessageDialog(null, receiver);
+
+            
+            String email="";
+            String phone="";
+            String carrier="";
+            for( Receiver rec : business.getReceiverDirectory().getReceiverList() ){
+                if( rec.getUserName().equals(userAccount.getUsername()) ){
+                email = rec.getEmail();
+                phone = rec.getPhone();
+                carrier = rec.getCarrier();
+                
+                }
+            }
+            
+            String toEmail = email;
+            String fromEmail = "dummyprojectuser@gmail.com";
+            String fromEmailPassword = "Testpassword";
+            String subject = "Registration Approved";
+
+            String textSms = phone;
+            if (carrier.equals("ATT")) {
+                textSms = textSms + "@txt.att.net";
+            } else if (carrier.equals("Verizon")) {
+                textSms = textSms + "@vmobl.com";
+            } else if (carrier.equals("Sprint")) {
+                textSms = textSms + "@messaging.sprintpcs.com";
+            } else if (carrier.equals("TMobile")) {
+                textSms = textSms + "@tmomail.net";
+            }
+
+            Properties properties = new Properties();
+            properties.put("mail.smtp.auth", "true");
+            properties.put("mail.smtp.starttls.enable", "true");
+            properties.put("mail.smtp.host", "smtp.gmail.com");
+            properties.put("mail.smtp.port", "587");
+
+            properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+            properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+
+            Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication("dummyprojectuser@gmail.com", "Testpassword");
+                }
+            });
+
+            try {
+                MimeMessage message = new MimeMessage(session);
+                message.setFrom(new InternetAddress(fromEmail));
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(textSms));
+                message.setSubject(subject);
+                message.setText("Welome to the Team! Please log in to our portal and start making a difference :)");
+                Transport.send(message);
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+                System.out.println(e);
+            }
+
         }
     }//GEN-LAST:event_btnDeliverActionPerformed
 
