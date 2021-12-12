@@ -6,6 +6,7 @@
 package userinterface.StoreAdminRole;
 
 import Business.EcoSystem;
+import Business.Store.Store;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -16,21 +17,22 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author murali
  */
-public class DeleteStoreAdminJPanel extends javax.swing.JPanel {
+public class DeleteStoreJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form DeleteStoreAdminJPanel
+     * Creates new form DeleteStoreJPanel
      */
     private JPanel userProcessContainer;
     private EcoSystem system;
-    UserAccount account; 
-    public DeleteStoreAdminJPanel(JPanel userProcessContainer,UserAccount account, EcoSystem system) {
+    UserAccount account;
+
+    public DeleteStoreJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         this.account = account;
-        
+
         populateDeleteStoreTable();
     }
 
@@ -123,7 +125,7 @@ public class DeleteStoreAdminJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        
+
         int selectedRow = tblDeleteStore.getSelectedRow();
         if (selectedRow >= 0) {
             int selectionButton = JOptionPane.YES_NO_OPTION;
@@ -153,23 +155,21 @@ public class DeleteStoreAdminJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateDeleteStoreTable() {
-        
+
         DefaultTableModel model = (DefaultTableModel) tblDeleteStore.getModel();
-        
+
         model.setRowCount(0);
-         
-         for (UserAccount user : system.getUserAccountDirectory().getUserAccountList()) {
+        for (UserAccount user : system.getUserAccountDirectory().getUserAccountList()) {
 
             if ("Business.Role.StoreRole".equals(user.getRole().getClass().getName())) {
                 Object[] row = new Object[3];
-
+                
                 row[0] = user.getName();
                 row[1] = user.getUsername();
                 row[2] = user.getPassword();
-
                 model.addRow(row);
-            }
-
+            } 
         }
+
     }
 }

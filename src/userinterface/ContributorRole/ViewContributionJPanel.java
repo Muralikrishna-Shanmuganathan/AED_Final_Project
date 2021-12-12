@@ -19,16 +19,16 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-public class ViewContribution2JPanel extends javax.swing.JPanel {
+public class ViewContributionJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewContribution2JPanel
+     * Creates new form ViewContributionJPanel
      */
     private JPanel userProcessContainer;
     private EcoSystem system;
     UserAccount user;
 
-    public ViewContribution2JPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
+    public ViewContributionJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;

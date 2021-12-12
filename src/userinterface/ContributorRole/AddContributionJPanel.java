@@ -21,23 +21,25 @@ import javax.swing.JPanel;
  *
  * @author murali
  */
-public class AddContribution2JPanel extends javax.swing.JPanel {
+public class AddContributionJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form AddContribution2JPanel
+     * Creates new form AddContributionJPanel
      */
     private JPanel userProcessContainer;
     private EcoSystem system;
     UserAccount account;
     Contribution contribution;
     
-    public AddContribution2JPanel(JPanel userProcessContainer,UserAccount account, EcoSystem system) {
+    public AddContributionJPanel(JPanel userProcessContainer,UserAccount account, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         this.account = account;
         
+        txtName.setText(account.getUsername());
         System.out.println(contribution);
+        
     }
 
     /**
@@ -59,8 +61,8 @@ public class AddContribution2JPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtStoreName = new javax.swing.JTextField();
         jDateChooser = new com.toedter.calendar.JDateChooser();
+        txtName = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -104,17 +106,19 @@ public class AddContribution2JPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
-        add(txtStoreName, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 140, -1));
         add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 140, -1));
+
+        txtName.setText("jLabel4");
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if (txtStoreName.getText().trim().isEmpty() || txtItem.getText().trim().isEmpty() || txtqty.getText().trim().isEmpty() || jDateChooser==null){
+        if (txtItem.getText().trim().isEmpty() || txtqty.getText().trim().isEmpty() || jDateChooser==null){
             JOptionPane.showMessageDialog(null, "Please enter all fields");
         }
 
-        String name = txtStoreName.getText();
+        String name = account.getUsername();
         String item = txtItem.getText();
         String qty = txtqty.getText();
         Date date = jDateChooser.getDate();
@@ -150,18 +154,19 @@ public class AddContribution2JPanel extends javax.swing.JPanel {
         }
 
         JOptionPane.showMessageDialog(null, "Item added");
-        txtStoreName.setText("");
         txtqty.setText("");
-        JDateChooser dateChooser = new JDateChooser();
-        dateChooser.setCalendar(null);
+        jDateChooser.setDateFormatString("");
+        txtItem.setText("");
+        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
-        txtStoreName.setText("");
+//        txtStoreName.setText("");
         txtqty.setText("");
-        JDateChooser dateChooser = new JDateChooser();
-        dateChooser.setCalendar(null);
+        txtItem.setText("");
+        jDateChooser.setDateFormatString("");
+        
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -183,7 +188,7 @@ public class AddContribution2JPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField txtItem;
-    private javax.swing.JTextField txtStoreName;
+    private javax.swing.JLabel txtName;
     private javax.swing.JTextField txtqty;
     // End of variables declaration//GEN-END:variables
 }

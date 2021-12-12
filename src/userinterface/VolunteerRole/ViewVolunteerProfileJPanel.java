@@ -155,7 +155,7 @@ public class ViewVolunteerProfileJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(lblProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -186,7 +186,7 @@ public class ViewVolunteerProfileJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(31, 31, 31))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -231,7 +231,7 @@ public class ViewVolunteerProfileJPanel extends javax.swing.JPanel {
                 txtLocation.setText(vol.getLocation());
 
                 ImageIcon icon = new ImageIcon(vol.getPhoto());
-                Image image = icon.getImage().getScaledInstance(240, 200, Image.SCALE_SMOOTH);
+                Image image = icon.getImage().getScaledInstance(180, 160, Image.SCALE_SMOOTH);
                 lblPhoto.setIcon(new ImageIcon(image));
             }
         }

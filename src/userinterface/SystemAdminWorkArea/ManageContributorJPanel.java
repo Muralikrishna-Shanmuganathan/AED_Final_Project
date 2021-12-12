@@ -608,7 +608,6 @@ public class ManageContributorJPanel extends javax.swing.JPanel {
                 else
                 imgPath = selectedImagePath;
 
-                JOptionPane.showMessageDialog(null, selectedImagePath);
             }
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, "Error uploading photo");

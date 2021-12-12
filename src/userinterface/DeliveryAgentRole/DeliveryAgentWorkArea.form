@@ -24,9 +24,6 @@
                           <Component id="btnWorkRequests" max="32767" attributes="0"/>
                           <Component id="btnClerks" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnDrivers" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnInspectionManager" max="32767" attributes="0"/>
-                          <Component id="btnFleetManager" max="32767" attributes="0"/>
-                          <Component id="btnPayment" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -49,13 +46,7 @@
               <Component id="btnClerks" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Component id="btnWorkRequests" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-              <Component id="btnInspectionManager" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-              <Component id="btnFleetManager" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-              <Component id="btnPayment" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="94" max="32767" attributes="0"/>
+              <EmptySpace pref="316" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -83,36 +74,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnWorkRequestsActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnPayment">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Payment "/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPaymentActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="btnClerks">
       <Properties>
         <Property name="text" type="java.lang.String" value="Manage Clerks"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClerksActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnFleetManager">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Fleet Managers"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFleetManagerActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnInspectionManager">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Inspection Managers"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInspectionManagerActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -8,6 +8,7 @@ import Business.DeliveryAgency.ClerkDirectory;
 import Business.DeliveryAgency.DriverDirectory;
 import Business.Employee.Employee;
 import Business.Role.Role;
+import Business.Store.StoreDirectory;
 import Business.WorkQueue.WorkQueue;
 
 /**
@@ -24,6 +25,7 @@ public class UserAccount {
     private WorkQueue workQueue;
     private DriverDirectory driverList;
     private ClerkDirectory clerkList;
+    private StoreDirectory storeDirectory;
     private String email;
     private String carrier;
     private String phone;
@@ -152,6 +154,18 @@ public class UserAccount {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public StoreDirectory getStoreDirectory() {
+        if(storeDirectory==null)
+        {
+            storeDirectory=new StoreDirectory();
+        }
+        return storeDirectory;
+    }
+
+    public void setStoreDirectory(StoreDirectory storeDirectory) {
+        this.storeDirectory = storeDirectory;
     }
     
     

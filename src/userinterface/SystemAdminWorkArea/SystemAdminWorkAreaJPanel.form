@@ -89,9 +89,9 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnManageContributor" max="32767" attributes="0"/>
-                          <Component id="btnManageDeliveryAgent" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnManageReceiver" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnManageDeliveryAdmin" max="32767" attributes="0"/>
+                          <Component id="btnManageDeliveryAgent" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
                   </Group>
@@ -108,7 +108,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnManageStoreAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnManageDeliveryAgent" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnManageDeliveryAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -116,9 +116,9 @@
                           <Component id="btnManageReceiver" min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnManageRegistration" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnManageDeliveryAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnManageRegistration" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnManageDeliveryAgent" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="63" max="32767" attributes="0"/>
                   </Group>

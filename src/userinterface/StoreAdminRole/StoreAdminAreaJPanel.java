@@ -29,6 +29,8 @@ public class StoreAdminAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.ecosystem = ecosystem;
+        
+        jLabel1.setText(" Welcome "+account.getUsername());
     }
 
     /**
@@ -115,7 +117,7 @@ public class StoreAdminAreaJPanel extends javax.swing.JPanel {
 
     private void btnDeleteStoreAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteStoreAdminActionPerformed
         // TODO add your handling code here:
-        DeleteStoreAdminJPanel acjp = new DeleteStoreAdminJPanel(userProcessContainer, userAccount, ecosystem);
+        DeleteStoreJPanel acjp = new DeleteStoreJPanel(userProcessContainer, userAccount, ecosystem);
         userProcessContainer.add("Add Store", acjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -123,7 +125,7 @@ public class StoreAdminAreaJPanel extends javax.swing.JPanel {
 
     private void btnUpdateStoreAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateStoreAdminActionPerformed
         // TODO add your handling code here:
-        UpdateStoreAdminJPanel acjp = new UpdateStoreAdminJPanel(userProcessContainer, userAccount, ecosystem);
+        UpdateStoreJPanel acjp = new UpdateStoreJPanel(userProcessContainer, userAccount, ecosystem);
         userProcessContainer.add("Add Store", acjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -131,14 +133,14 @@ public class StoreAdminAreaJPanel extends javax.swing.JPanel {
 
     private void btnAddStoreAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStoreAdminActionPerformed
 
-        AddStoreAdminJPanel acjp = new AddStoreAdminJPanel(userProcessContainer, userAccount, ecosystem);
+        AddStoreJPanel acjp = new AddStoreJPanel(userProcessContainer, userAccount, ecosystem);
         userProcessContainer.add("Add Store", acjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnAddStoreAdminActionPerformed
 
     private void btnViewAllStoreAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllStoreAdminActionPerformed
-        ViewStoreAdminJPanel acjp = new ViewStoreAdminJPanel(userProcessContainer, userAccount, ecosystem);
+        ViewStoreJPanel acjp = new ViewStoreJPanel(userProcessContainer, userAccount, ecosystem);
         userProcessContainer.add("View Store", acjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

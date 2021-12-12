@@ -115,8 +115,14 @@ public class ApproveRejectIndContributionJPanel extends javax.swing.JPanel {
         } else {
 
             if (contribution.getStatus().equals("Approved")) {
-                JOptionPane.showMessageDialog(null, "Order already approved", "Warning", JOptionPane.WARNING_MESSAGE);
-            } else {
+                JOptionPane.showMessageDialog(null, "Contribution already approved", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            } 
+            else if (contribution.getStatus().equals("Rejcted")) {
+                JOptionPane.showMessageDialog(null, "Contribution already rejcted", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            else {
                 contribution.setStatus("Approved");
             }
         }
@@ -132,8 +138,14 @@ public class ApproveRejectIndContributionJPanel extends javax.swing.JPanel {
         } else {
 
             if (contribution.getStatus().equals("Rejected")) {
-                JOptionPane.showMessageDialog(null, "Order already rejected", "Warning", JOptionPane.WARNING_MESSAGE);
-            } else {
+                JOptionPane.showMessageDialog(null, "Contribution already rejected", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            } 
+            else if(contribution.getStatus().equals("Approved")) {
+                JOptionPane.showMessageDialog(null, "Contribution already Approved", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            } 
+            else {
                 contribution.setStatus("Rejected");
             }
         }

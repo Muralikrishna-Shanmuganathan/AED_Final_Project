@@ -20,21 +20,22 @@ import javax.swing.JPanel;
  *
  * @author murali
  */
-public class AddStoreAdminJPanel extends javax.swing.JPanel {
+public class AddStoreJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form AddStoreAdminJPanel
+     * Creates new form AddStoreJPanel
      */
     private JPanel userProcessContainer;
     private EcoSystem system;
     UserAccount account;    
     
-    public AddStoreAdminJPanel(JPanel userProcessContainer,UserAccount account, EcoSystem system) {
+    public AddStoreJPanel(JPanel userProcessContainer,UserAccount account, EcoSystem system) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         this.account = account;
+        populateLocation();
     }
 
     /**
@@ -58,6 +59,10 @@ public class AddStoreAdminJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
+        txtCPassword = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        comboLocation = new javax.swing.JComboBox<>();
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -149,10 +154,18 @@ public class AddStoreAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setText("Confirm Password");
+
+        jLabel6.setText("Location");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnAdd)
+                .addGap(216, 216, 216))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -165,12 +178,18 @@ public class AddStoreAdminJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(180, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAdd)
-                .addGap(219, 219, 219))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtCPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                            .addComponent(comboLocation, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(12, 12, 12)))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,9 +204,17 @@ public class AddStoreAdminJPanel extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtCPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(comboLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(btnAdd)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGap(41, 41, 41))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -207,7 +234,8 @@ public class AddStoreAdminJPanel extends javax.swing.JPanel {
         String storeName = txtStoreName.getText();
         String uname = txtUserName.getText();
         String password = String.valueOf(txtPassword.getPassword());
-
+        String cpassword = String.valueOf(txtCPassword.getPassword());
+        String location = String.valueOf(comboLocation.getSelectedItem());
         try {
             if (storeName == null || storeName.isEmpty()) {
                 throw new NullPointerException(" Name field is Empty");
@@ -247,7 +275,7 @@ public class AddStoreAdminJPanel extends javax.swing.JPanel {
         try {
 
             if (password == null || password.isEmpty()) {
-                throw new NullPointerException("Pwd field is Empty");
+                throw new NullPointerException("Password field is Empty");
             } else if (Pattern.matches("^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,30}$", password) == false) {
                 throw new Exception("Invalid Password");
             }
@@ -261,34 +289,51 @@ public class AddStoreAdminJPanel extends javax.swing.JPanel {
 
             return;
         }
+        if( !(password.equals(cpassword))){
+            JOptionPane.showMessageDialog(null, "Passwords don't match");
+            return;
+        }
 
         if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname) == false) {
             JOptionPane.showMessageDialog(null, "  User Name already exists ");
         } else {
 
             UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(storeName, uname, password, null, new StoreRole());
-            Store store = system.getStoreDirectory().createStore(uname);
+            Store store = system.getStoreDirectory().createStore(storeName, uname, password, location);
 
             store.setName(storeName);
             store.setUserName(uname);
+            store.setLocation(location);
             
             txtStoreName.setText("");
             txtUserName.setText("");
             txtPassword.setText("");
+            txtCPassword.setText("");
+            
+            JOptionPane.showMessageDialog(null, "Store added");
         }
     }//GEN-LAST:event_btnAddActionPerformed
-
+    private void populateLocation() {
+        comboLocation.removeAllItems();
+        comboLocation.addItem("Back Bay");
+        comboLocation.addItem("Chinatown");
+        comboLocation.addItem("Roxbury");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JComboBox<String> comboLocation;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPasswordField txtCPassword;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtStoreName;
     private javax.swing.JTextField txtUserName;

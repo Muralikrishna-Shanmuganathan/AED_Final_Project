@@ -86,7 +86,7 @@ public class AssignDriverJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblDeliveryPerson);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 210, 161));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 450, 161));
 
         btnAssign.setText("SELECT DELIVERY PERSON");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +94,7 @@ public class AssignDriverJPanel extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

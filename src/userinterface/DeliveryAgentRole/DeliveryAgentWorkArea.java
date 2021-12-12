@@ -29,6 +29,8 @@ public class DeliveryAgentWorkArea extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.ecosystem = ecosystem;
+        
+        jLabel1.setText("Welcome "+account.getUsername());
     }
 
     /**
@@ -43,10 +45,7 @@ public class DeliveryAgentWorkArea extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnDrivers = new javax.swing.JButton();
         btnWorkRequests = new javax.swing.JButton();
-        btnPayment = new javax.swing.JButton();
         btnClerks = new javax.swing.JButton();
-        btnFleetManager = new javax.swing.JButton();
-        btnInspectionManager = new javax.swing.JButton();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Welcome Delivery Agency");
@@ -65,31 +64,10 @@ public class DeliveryAgentWorkArea extends javax.swing.JPanel {
             }
         });
 
-        btnPayment.setText("Payment ");
-        btnPayment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPaymentActionPerformed(evt);
-            }
-        });
-
         btnClerks.setText("Manage Clerks");
         btnClerks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClerksActionPerformed(evt);
-            }
-        });
-
-        btnFleetManager.setText("Fleet Managers");
-        btnFleetManager.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFleetManagerActionPerformed(evt);
-            }
-        });
-
-        btnInspectionManager.setText("Inspection Managers");
-        btnInspectionManager.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInspectionManagerActionPerformed(evt);
             }
         });
 
@@ -104,10 +82,7 @@ public class DeliveryAgentWorkArea extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnWorkRequests, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnClerks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDrivers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnInspectionManager, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnFleetManager, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnPayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnDrivers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -124,13 +99,7 @@ public class DeliveryAgentWorkArea extends javax.swing.JPanel {
                 .addComponent(btnClerks)
                 .addGap(44, 44, 44)
                 .addComponent(btnWorkRequests)
-                .addGap(43, 43, 43)
-                .addComponent(btnInspectionManager)
-                .addGap(47, 47, 47)
-                .addComponent(btnFleetManager)
-                .addGap(45, 45, 45)
-                .addComponent(btnPayment)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(316, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -162,35 +131,10 @@ public class DeliveryAgentWorkArea extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnClerksActionPerformed
 
-    private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPaymentActionPerformed
-
-    private void btnFleetManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFleetManagerActionPerformed
-        // TODO add your handling code here:
-        AddFleetManagerJPanel aDjp = new AddFleetManagerJPanel(userProcessContainer, ecosystem);
-        userProcessContainer.add("Manage Fleet Managers", aDjp);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-        
-    }//GEN-LAST:event_btnFleetManagerActionPerformed
-
-    private void btnInspectionManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInspectionManagerActionPerformed
-        // TODO add your handling code here:
-        AddInspectionManagerJPanel aDjp = new AddInspectionManagerJPanel(userProcessContainer, ecosystem);
-        userProcessContainer.add("Manage Inspection Managers", aDjp);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-        
-    }//GEN-LAST:event_btnInspectionManagerActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClerks;
     private javax.swing.JButton btnDrivers;
-    private javax.swing.JButton btnFleetManager;
-    private javax.swing.JButton btnInspectionManager;
-    private javax.swing.JButton btnPayment;
     private javax.swing.JButton btnWorkRequests;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

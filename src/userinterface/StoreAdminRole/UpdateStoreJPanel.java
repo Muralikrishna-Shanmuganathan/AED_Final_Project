@@ -17,15 +17,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author murali
  */
-public class UpdateStoreAdminJPanel extends javax.swing.JPanel {
+public class UpdateStoreJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form UpdateStoreAdminJPanel
+     * Creates new form UpdateStoreJPanel
      */
     private JPanel userProcessContainer;
     private EcoSystem system;
     UserAccount account; 
-    public UpdateStoreAdminJPanel(JPanel userProcessContainer,UserAccount account, EcoSystem system) {
+    public UpdateStoreJPanel(JPanel userProcessContainer,UserAccount account, EcoSystem system) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;

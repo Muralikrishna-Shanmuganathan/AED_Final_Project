@@ -29,6 +29,8 @@ public class ContributorAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.ecosystem = ecosystem;
+        
+        jLabel1.setText("Welcome "+account.getUsername());
     }
 
 
@@ -109,7 +111,7 @@ public class ContributorAreaJPanel extends javax.swing.JPanel {
 
     private void btnAddContributionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddContributionActionPerformed
         // TODO add your handling code here:
-        AddContribution2JPanel acjp = new AddContribution2JPanel(userProcessContainer, userAccount, ecosystem);
+        AddContributionJPanel acjp = new AddContributionJPanel(userProcessContainer, userAccount, ecosystem);
         userProcessContainer.add("Add Contribution", acjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -117,7 +119,7 @@ public class ContributorAreaJPanel extends javax.swing.JPanel {
 
     private void btnViewContributionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewContributionActionPerformed
         // TODO add your handling code here:
-        ViewContribution2JPanel vcjp = new ViewContribution2JPanel(userProcessContainer, userAccount, ecosystem);
+        ViewContributionJPanel vcjp = new ViewContributionJPanel(userProcessContainer, userAccount, ecosystem);
         userProcessContainer.add("View Contribution History", vcjp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

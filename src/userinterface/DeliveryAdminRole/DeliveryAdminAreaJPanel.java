@@ -65,7 +65,7 @@ public class DeliveryAdminAreaJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblStoreContribution);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 580, 110));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 640, 130));
 
         btnUpdate.setText("Update Details");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +73,7 @@ public class DeliveryAdminAreaJPanel extends javax.swing.JPanel {
                 btnUpdateActionPerformed(evt);
             }
         });
-        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
+        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed

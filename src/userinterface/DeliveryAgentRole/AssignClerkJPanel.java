@@ -87,7 +87,7 @@ public class AssignClerkJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblClerkPerson);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 210, 161));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 370, 161));
 
         btnAssign.setText("SELECT CLERK PERSON");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +95,7 @@ public class AssignClerkJPanel extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

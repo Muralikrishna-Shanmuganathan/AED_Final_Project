@@ -17,20 +17,21 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author murali
  */
-public class ViewStoreAdminJPanel extends javax.swing.JPanel {
+public class ViewStoreJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewStoreAdminJPanel
+     * Creates new form ViewStoreJPanel
      */
     private JPanel userProcessContainer;
     private EcoSystem system;
-    UserAccount account; 
-    public ViewStoreAdminJPanel(JPanel userProcessContainer,UserAccount account, EcoSystem system) {
+    UserAccount account;
+
+    public ViewStoreJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         this.account = account;
-        
+
         populateStoreTable();
     }
 
@@ -116,24 +117,25 @@ public class ViewStoreAdminJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateStoreTable() {
-        
+
         DefaultTableModel model = (DefaultTableModel) tblStore.getModel();
-        
+
         model.setRowCount(0);
-         
-         for (UserAccount user : system.getUserAccountDirectory().getUserAccountList()) {
+
+        for (UserAccount user : system.getUserAccountDirectory().getUserAccountList()) {
 
             if ("Business.Role.StoreRole".equals(user.getRole().getClass().getName())) {
-                Object[] row = new Object[3];
+                    Object[] row = new Object[3];
 
-                row[0] = user.getName();
-                row[1] = user.getUsername();
-                row[2] = user.getPassword();
+                    row[0] = user.getName();
+                    row[1] = user.getUsername();
+                    row[2] = user.getPassword();
 
-                model.addRow(row);
+                    model.addRow(row);
+                
             }
-
         }
-    
+
+
     }
 }
