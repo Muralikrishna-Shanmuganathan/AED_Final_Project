@@ -89,65 +89,93 @@ public class RegistrationJPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         btnUploadPhoto = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
         comboCarrier = new javax.swing.JComboBox<>();
 
-        setBackground(new java.awt.Color(204, 204, 204));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel1.setText("Manage Registrations");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
 
+        btnRegister.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        btnRegister.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/register.png"))); // NOI18N
         btnRegister.setText("Register");
+        btnRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
             }
         });
-        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
+        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 160, -1));
 
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel2.setText("Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, -1));
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 96, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
 
+        txtName.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 150, -1));
+
+        jLabel3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel3.setText("Confirm Password");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel4.setText("Password");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel5.setText("User Name");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, -1));
-        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 107, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, -1, -1));
 
+        txtUserName.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 150, -1));
+
+        comboRole.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         comboRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboRoleActionPerformed(evt);
             }
         });
-        add(comboRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 132, -1));
+        add(comboRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 130, 150, -1));
 
+        jLabel6.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel6.setText("Role");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel7.setText("Carrier");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, -1, -1));
 
-        add(comboLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 111, -1));
+        comboLocation.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        add(comboLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 140, -1));
 
+        jLabel8.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel8.setText("Email");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, -1, -1));
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 107, -1));
-        add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 107, -1));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 40, -1));
 
+        txtEmail.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 140, -1));
+
+        txtPhone.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, 140, -1));
+
+        jLabel9.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel9.setText("Phone Number");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
-        add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 117, -1));
-        add(cPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 117, -1));
 
+        passwordField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 150, -1));
+
+        cPasswordField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        add(cPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 150, -1));
+
+        jLabel10.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel10.setText("Location");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, -1, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
 
+        jLabel11.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel11.setText("Photo");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, -1, -1));
 
@@ -157,12 +185,10 @@ public class RegistrationJPanel extends javax.swing.JPanel {
                 btnUploadPhotoActionPerformed(evt);
             }
         });
-        add(btnUploadPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, -1, -1));
+        add(btnUploadPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 140, -1));
 
-        jLabel12.setText("Location");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, -1, -1));
-
-        add(comboCarrier, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 111, -1));
+        comboCarrier.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        add(comboCarrier, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 140, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
@@ -346,7 +372,6 @@ public class RegistrationJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

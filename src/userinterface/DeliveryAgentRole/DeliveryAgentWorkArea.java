@@ -46,61 +46,48 @@ public class DeliveryAgentWorkArea extends javax.swing.JPanel {
         btnDrivers = new javax.swing.JButton();
         btnWorkRequests = new javax.swing.JButton();
         btnClerks = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Welcome Delivery Agency");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 71, 278, 32));
 
+        btnDrivers.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         btnDrivers.setText("Manage Drivers");
+        btnDrivers.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnDrivers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDriversActionPerformed(evt);
             }
         });
+        add(btnDrivers, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 161, 178, 33));
 
+        btnWorkRequests.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnWorkRequests.setText("Manage Work Requests");
+        btnWorkRequests.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnWorkRequests.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnWorkRequestsActionPerformed(evt);
             }
         });
+        add(btnWorkRequests, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 319, 200, 37));
 
+        btnClerks.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         btnClerks.setText("Manage Clerks");
+        btnClerks.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnClerks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClerksActionPerformed(evt);
             }
         });
+        add(btnClerks, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 234, 178, 37));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(251, 251, 251)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnWorkRequests, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnClerks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDrivers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(318, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
-                .addComponent(btnDrivers)
-                .addGap(38, 38, 38)
-                .addComponent(btnClerks)
-                .addGap(44, 44, 44)
-                .addComponent(btnWorkRequests)
-                .addContainerGap(316, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/delivery-agency.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnWorkRequestsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWorkRequestsActionPerformed
@@ -137,5 +124,6 @@ public class DeliveryAgentWorkArea extends javax.swing.JPanel {
     private javax.swing.JButton btnDrivers;
     private javax.swing.JButton btnWorkRequests;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
