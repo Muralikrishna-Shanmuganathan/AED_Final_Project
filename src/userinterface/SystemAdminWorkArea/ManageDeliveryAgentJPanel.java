@@ -303,6 +303,7 @@ public class ManageDeliveryAgentJPanel extends javax.swing.JPanel {
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
         int selectRow = tblDeliveryAgents.getSelectedRow();
+        txtUserName.setEditable(false);
 
         if (selectRow >= 0) {
             String username = (String) tblDeliveryAgents.getValueAt(selectRow, 1);

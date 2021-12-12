@@ -37,8 +37,9 @@ public class DistributorDirectory {
     }
     
     //Create
-    public Distributor createDistributor(String uName){
-        distributor = new Distributor(uName);
+    public Distributor createDistributor(String uname){
+        
+        distributor = new Distributor(uname);
         distributorDirectory.add(distributor);
         return distributor;
     }

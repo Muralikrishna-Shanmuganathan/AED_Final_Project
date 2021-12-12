@@ -57,7 +57,6 @@ public class ManageContributorJPanel extends javax.swing.JPanel {
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         comboLocation = new javax.swing.JComboBox<>();
@@ -150,14 +149,6 @@ public class ManageContributorJPanel extends javax.swing.JPanel {
             }
         });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
-
-        btnRefresh.setText("Refresh");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
-        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
 
         jLabel5.setText("Confirm Password");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
@@ -599,11 +590,6 @@ public class ManageContributorJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        // TODO add your handling code here:
-        populateContributorsTable();
-    }//GEN-LAST:event_btnRefreshActionPerformed
-
     private void btnUploadPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadPhotoActionPerformed
 
         JFileChooser uploadImageFile = new JFileChooser();
@@ -638,7 +624,6 @@ public class ManageContributorJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnUploadPhoto;
     private javax.swing.JButton btnView;
@@ -696,6 +681,7 @@ public class ManageContributorJPanel extends javax.swing.JPanel {
     private void populateLocation() {
         comboLocation.removeAllItems();
         comboLocation.addItem("Back Bay");
-        comboLocation.addItem("Cambridge");
+        comboLocation.addItem("Chinatown");
+        comboLocation.addItem("Roxbury");
     }
 }

@@ -33,15 +33,10 @@ public class DeliveryAdmin {
     private ArrayList<Contribution> contributionList;
     private ArrayList<WorkRequest> workRequestList;
 
-    public DeliveryAdmin(String name, String role, String userName, String password, String email, String phone, String carrier, String location, String imgPath) {
+    public DeliveryAdmin(String name, String role, String userName, String password) {
         this.UserName = userName;
         this.Name = name;
         this.password = password;
-        this.email = email;
-        this.phone = phone;
-        this.carrier = carrier;
-        this.location = location;
-        this.photo = imgPath;
     }
 
     public void addWorkRequest(String storeName, String item, Date expDate, Date pickupTime, String pickupLocation) {

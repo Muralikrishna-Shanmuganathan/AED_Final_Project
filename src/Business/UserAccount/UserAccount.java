@@ -24,7 +24,11 @@ public class UserAccount {
     private WorkQueue workQueue;
     private DriverDirectory driverList;
     private ClerkDirectory clerkList;
-
+    private String email;
+    private String carrier;
+    private String phone;
+    private String photo;
+    private String location;
     
 
     public UserAccount() {
@@ -108,6 +112,46 @@ public class UserAccount {
 
     public void setClerkList(ClerkDirectory clerkList) {
         this.clerkList = clerkList;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCarrier() {
+        return carrier;
+    }
+
+    public void setCarrier(String carrier) {
+        this.carrier = carrier;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
     
     

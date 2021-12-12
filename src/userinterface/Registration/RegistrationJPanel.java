@@ -186,7 +186,7 @@ public class RegistrationJPanel extends javax.swing.JPanel {
             if (name == null || name.isEmpty()) {
                 throw new NullPointerException(" Name field is Empty");
 
-            } else if (name.length() < 5 || Pattern.matches("^[A-Za-z]+$", name) == false) {
+            } else if (name.length() < 2 || Pattern.matches("^[A-Za-z]+$", name) == false) {
                 throw new Exception("Please enter valid  Name");
 
             }
@@ -205,7 +205,7 @@ public class RegistrationJPanel extends javax.swing.JPanel {
             if (userName == null || userName.isEmpty()) {
                 throw new NullPointerException("User Name field is Empty");
 
-            } else if (userName.length() < 5) {
+            } else if (userName.length() < 2) {
                 throw new Exception("Please enter valid User Name");
 
             }
@@ -223,7 +223,7 @@ public class RegistrationJPanel extends javax.swing.JPanel {
         try {
 
             if (password == null || password.isEmpty()) {
-                throw new NullPointerException("Pwd field is Empty");
+                throw new NullPointerException("Password field is Empty");
             } else if (Pattern.matches("^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,30}$", password) == false) {
                 throw new Exception("Invalid Password");
             }
@@ -233,7 +233,7 @@ public class RegistrationJPanel extends javax.swing.JPanel {
 
             return;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Password is of invalid pattern");
+            JOptionPane.showMessageDialog(null, "Password should contain atleast one letter, one number, one special character ");
 
             return;
         }
@@ -249,15 +249,15 @@ public class RegistrationJPanel extends javax.swing.JPanel {
             if (email == null || email.isEmpty()) {
                 throw new NullPointerException("Email field is Empty");
             } else if (Pattern.matches("^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", email) == false) {
-                throw new Exception("Invalid email format");
+                throw new Exception("Invalid Email format");
             }
 
         } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "email is Empty");
+            JOptionPane.showMessageDialog(null, "Email is Empty");
 
             return;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "email is of invalid pattern");
+            JOptionPane.showMessageDialog(null, "Invalid Email format");
 
             return;
         }
@@ -265,17 +265,17 @@ public class RegistrationJPanel extends javax.swing.JPanel {
         try {
 
             if (phone == null || phone.isEmpty()) {
-                throw new NullPointerException("phone field is Empty");
+                throw new NullPointerException("Phone Number field is Empty");
             } else if (Pattern.matches("^[0-9]{10}$", phone) == false) {
-                throw new Exception("Invalid phone format");
+                throw new Exception("Invalid Phone Number format");
             }
 
         } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "phone is Empty");
+            JOptionPane.showMessageDialog(null, "Phone Number is Empty");
 
             return;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "phone is of invalid pattern");
+            JOptionPane.showMessageDialog(null, "Invalid Phone Number format");
 
             return;
         }
@@ -301,59 +301,9 @@ public class RegistrationJPanel extends javax.swing.JPanel {
         populateRole();
         populateCarrier();
         populateLocation();
-        
-        
-        //Email and SMS Integration
-        
-        String toEmail = email;
-        String fromEmail = "dummyprojectuser@gmail.com";
-        String fromEmailPassword = "Testpassword";
-        String subject = "Welome to the Team!";
-        
-        String textSms = phone;
-        if (carrier.equals("ATT")) {
-                textSms = textSms + "@txt.att.net";
-            } else if (carrier.equals("Verizon")) {
-                textSms = textSms + "@vmobl.com";
-            } else if (carrier.equals("Sprint")) {
-                textSms = textSms + "@messaging.sprintpcs.com";
-            } else if (carrier.equals("TMobile")) {
-                textSms = textSms + "@tmomail.net";
-            }
 
-        Properties properties = new Properties();
-        properties.put("mail.smtp.auth","true");
-        properties.put("mail.smtp.starttls.enable","true");
-        properties.put("mail.smtp.host","smtp.gmail.com");
-        properties.put("mail.smtp.port","587");
-        
-        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
-
-        Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication(){
-                return new PasswordAuthentication("dummyprojectuser@gmail.com", "Testpassword");
-            }
-        });
-
-        try{
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(fromEmail));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(textSms));
-            message.setSubject(subject);
-            message.setText("You have registered with us. We will notify you soon. Thank you for choosing us!");
-            Transport.send(message);
-            
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
-            System.out.println(e);
-        }
-
-        JOptionPane.showMessageDialog(null, "Registration Done. Welcome to the team!");
+        JOptionPane.showMessageDialog(null, "Registration Done! Please wait while we process your application");
      }
-        
-
 
     }//GEN-LAST:event_btnRegisterActionPerformed
 
@@ -375,7 +325,6 @@ public class RegistrationJPanel extends javax.swing.JPanel {
                else
                     imgPath = selectedImagePath;
 
-               JOptionPane.showMessageDialog(null, selectedImagePath);
             }
             }catch (Exception e){
                 JOptionPane.showMessageDialog(null, "Error uploading photo");
@@ -417,7 +366,6 @@ public class RegistrationJPanel extends javax.swing.JPanel {
         comboRole.removeAllItems();
         comboRole.addItem("Volunteer");
         comboRole.addItem("Contributor");
-        comboRole.addItem("Distributor");
         comboRole.addItem("Receiver");
     }
 
@@ -432,6 +380,7 @@ public class RegistrationJPanel extends javax.swing.JPanel {
     private void populateLocation() {
         comboLocation.removeAllItems();
         comboLocation.addItem("Back Bay");
-        comboLocation.addItem("Cambridge");
+        comboLocation.addItem("Chinatown");
+        comboLocation.addItem("Roxbury");
     }
 }
