@@ -48,40 +48,40 @@ public class ApproveRejectIndContributionJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblIndividualContribution = new javax.swing.JTable();
+        btnBack1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel1.setText("Manage Individual Contribution");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(298, 55, -1, -1));
 
-        btnBack.setText("BACK");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
-
+        btnApprove.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        btnApprove.setForeground(new java.awt.Color(67, 0, 163));
+        btnApprove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/tick.png"))); // NOI18N
         btnApprove.setText("Approve");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApproveActionPerformed(evt);
             }
         });
-        add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, -1, -1));
+        add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, -1, -1));
 
+        btnReject.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        btnReject.setForeground(new java.awt.Color(67, 0, 163));
+        btnReject.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/close.png"))); // NOI18N
         btnReject.setText("Reject");
         btnReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRejectActionPerformed(evt);
             }
         });
-        add(btnReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, -1, -1));
+        add(btnReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 160, -1));
 
         tblIndividualContribution.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,14 +97,20 @@ public class ApproveRejectIndContributionJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblIndividualContribution);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 119, 614, 150));
-    }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
+        btnBack1.setBackground(new java.awt.Color(255, 255, 255));
+        btnBack1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        btnBack1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/back.png"))); // NOI18N
+        btnBack1.setText("Back");
+        btnBack1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnBack1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack1ActionPerformed(evt);
+            }
+        });
+        add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 110, -1));
+    }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         // TODO add your handling code here:
@@ -154,10 +160,16 @@ public class ApproveRejectIndContributionJPanel extends javax.swing.JPanel {
         populateIndividualContribution();
     }//GEN-LAST:event_btnRejectActionPerformed
 
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBack1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApprove;
-    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnBack1;
     private javax.swing.JButton btnReject;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

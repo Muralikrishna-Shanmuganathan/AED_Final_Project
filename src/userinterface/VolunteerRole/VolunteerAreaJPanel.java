@@ -46,22 +46,34 @@ public class VolunteerAreaJPanel extends javax.swing.JPanel {
         btnAppRejIndContribution = new javax.swing.JButton();
         btnViewProfile = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel1.setText("Welcome Volunteer!");
 
-        btnAppRejStoreContribution.setText("Approve/Reject Store Contribution");
+        btnAppRejStoreContribution.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        btnAppRejStoreContribution.setForeground(new java.awt.Color(67, 0, 163));
+        btnAppRejStoreContribution.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/view.png"))); // NOI18N
+        btnAppRejStoreContribution.setText("View Store Contribution");
         btnAppRejStoreContribution.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAppRejStoreContributionActionPerformed(evt);
             }
         });
 
-        btnAppRejIndContribution.setText("Approve/Reject Individual Contribution");
+        btnAppRejIndContribution.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        btnAppRejIndContribution.setForeground(new java.awt.Color(67, 0, 163));
+        btnAppRejIndContribution.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/view.png"))); // NOI18N
+        btnAppRejIndContribution.setText("View Individual Contribution");
         btnAppRejIndContribution.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAppRejIndContributionActionPerformed(evt);
             }
         });
 
+        btnViewProfile.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnViewProfile.setForeground(new java.awt.Color(67, 0, 163));
+        btnViewProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/view.png"))); // NOI18N
         btnViewProfile.setText("View Profile");
         btnViewProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,35 +87,29 @@ public class VolunteerAreaJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(213, 213, 213)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btnAppRejStoreContribution)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnAppRejIndContribution, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAppRejIndContribution, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAppRejStoreContribution, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
                 .addComponent(jLabel1)
-                .addGap(135, 135, 135)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnViewProfile)
                 .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jLabel1)
-                        .addGap(110, 110, 110)
-                        .addComponent(btnAppRejStoreContribution)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnAppRejIndContribution))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(btnViewProfile)))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnViewProfile)
+                    .addComponent(jLabel1))
+                .addGap(87, 87, 87)
+                .addComponent(btnAppRejStoreContribution)
+                .addGap(30, 30, 30)
+                .addComponent(btnAppRejIndContribution)
+                .addContainerGap(111, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
