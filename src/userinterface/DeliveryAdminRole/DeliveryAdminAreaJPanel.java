@@ -51,6 +51,7 @@ public class DeliveryAdminAreaJPanel extends javax.swing.JPanel {
         btnUpdate = new javax.swing.JButton();
         btnMap = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblStoreContribution.setModel(new javax.swing.table.DefaultTableModel(
@@ -68,21 +69,31 @@ public class DeliveryAdminAreaJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 640, 130));
 
+        btnUpdate.setBackground(new java.awt.Color(67, 0, 163));
+        btnUpdate.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/update-white.png"))); // NOI18N
         btnUpdate.setText("Update Details");
+        btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
             }
         });
-        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, -1, -1));
+        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 180, 40));
 
+        btnMap.setBackground(new java.awt.Color(255, 255, 255));
+        btnMap.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnMap.setForeground(new java.awt.Color(67, 0, 163));
+        btnMap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/location.png"))); // NOI18N
         btnMap.setText("View on Map");
+        btnMap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(67, 0, 163)));
         btnMap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMapActionPerformed(evt);
             }
         });
-        add(btnMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 120, 30));
+        add(btnMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 180, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed

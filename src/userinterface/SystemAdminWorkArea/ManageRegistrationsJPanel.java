@@ -71,9 +71,11 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel1.setText("Manage New Registrations");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(309, 89, -1, -1));
 
         tblRegistrations.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         tblRegistrations.setModel(new javax.swing.table.DefaultTableModel(
@@ -89,6 +91,8 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblRegistrations);
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 136, 643, 188));
+
         btnApprove.setBackground(new java.awt.Color(255, 255, 255));
         btnApprove.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         btnApprove.setForeground(new java.awt.Color(67, 0, 163));
@@ -99,6 +103,7 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
                 btnApproveActionPerformed(evt);
             }
         });
+        add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 342, -1, -1));
 
         btnReject.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         btnReject.setForeground(new java.awt.Color(67, 0, 163));
@@ -109,6 +114,7 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
                 btnRejectActionPerformed(evt);
             }
         });
+        add(btnReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 342, -1, -1));
 
         btnBack1.setBackground(new java.awt.Color(255, 255, 255));
         btnBack1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
@@ -121,47 +127,7 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
                 btnBack1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnApprove)
-                .addGap(71, 71, 71)
-                .addComponent(btnReject)
-                .addGap(191, 191, 191))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(264, 264, 264))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 105, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(btnBack1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1)
-                        .addGap(40, 40, 40)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(136, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnApprove)
-                            .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(65, 65, 65))))
-        );
+        add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 110, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
