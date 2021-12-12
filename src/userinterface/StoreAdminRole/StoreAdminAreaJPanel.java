@@ -48,30 +48,45 @@ public class StoreAdminAreaJPanel extends javax.swing.JPanel {
         btnViewAllStoreAdmin = new javax.swing.JButton();
         btnAddStoreAdmin = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel1.setText("Welcom Store Admin");
 
+        btnDeleteStoreAdmin.setBackground(new java.awt.Color(255, 255, 255));
+        btnDeleteStoreAdmin.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         btnDeleteStoreAdmin.setText("Delete Store");
+        btnDeleteStoreAdmin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnDeleteStoreAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteStoreAdminActionPerformed(evt);
             }
         });
 
+        btnUpdateStoreAdmin.setBackground(new java.awt.Color(255, 255, 255));
+        btnUpdateStoreAdmin.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         btnUpdateStoreAdmin.setText("Update Store");
+        btnUpdateStoreAdmin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnUpdateStoreAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateStoreAdminActionPerformed(evt);
             }
         });
 
+        btnViewAllStoreAdmin.setBackground(new java.awt.Color(255, 255, 255));
+        btnViewAllStoreAdmin.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         btnViewAllStoreAdmin.setText("View All Stores");
+        btnViewAllStoreAdmin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnViewAllStoreAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewAllStoreAdminActionPerformed(evt);
             }
         });
 
+        btnAddStoreAdmin.setBackground(new java.awt.Color(255, 255, 255));
+        btnAddStoreAdmin.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         btnAddStoreAdmin.setText("Add Store");
+        btnAddStoreAdmin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnAddStoreAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddStoreAdminActionPerformed(evt);
@@ -85,33 +100,33 @@ public class StoreAdminAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel1))
+                        .addGap(184, 184, 184)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAddStoreAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnUpdateStoreAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnViewAllStoreAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(btnDeleteStoreAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(291, 291, 291)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnViewAllStoreAdmin)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnUpdateStoreAdmin)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnDeleteStoreAdmin)
-                                    .addComponent(btnAddStoreAdmin))))))
-                .addContainerGap(318, Short.MAX_VALUE))
+                        .addGap(258, 258, 258)
+                        .addComponent(jLabel1)))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(69, 69, 69)
                 .addComponent(jLabel1)
-                .addGap(100, 100, 100)
-                .addComponent(btnAddStoreAdmin)
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnDeleteStoreAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(btnAddStoreAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(btnDeleteStoreAdmin)
-                .addGap(18, 18, 18)
-                .addComponent(btnUpdateStoreAdmin)
-                .addGap(18, 18, 18)
-                .addComponent(btnViewAllStoreAdmin)
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUpdateStoreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewAllStoreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(340, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

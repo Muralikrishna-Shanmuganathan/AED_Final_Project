@@ -47,6 +47,10 @@ public class DistributorAreaJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDistributor = new javax.swing.JTable();
         btnDeliver = new javax.swing.JToggleButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblDistributor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -61,36 +65,24 @@ public class DistributorAreaJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblDistributor);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 580, 110));
+
+        btnDeliver.setBackground(new java.awt.Color(255, 255, 255));
+        btnDeliver.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        btnDeliver.setForeground(new java.awt.Color(67, 0, 163));
+        btnDeliver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/hand-svgrepo-com.png"))); // NOI18N
         btnDeliver.setText("Deliver to Receiver");
+        btnDeliver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDeliver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeliverActionPerformed(evt);
             }
         });
+        add(btnDeliver, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 206, 36));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(223, 223, 223)
-                        .addComponent(btnDeliver)))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(btnDeliver)
-                .addContainerGap(165, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel1.setText("Distribution List");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 49, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeliverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeliverActionPerformed
@@ -115,6 +107,7 @@ public class DistributorAreaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnDeliver;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblDistributor;
     // End of variables declaration//GEN-END:variables
