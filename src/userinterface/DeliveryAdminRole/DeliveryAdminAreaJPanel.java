@@ -88,6 +88,7 @@ public class DeliveryAdminAreaJPanel extends javax.swing.JPanel {
         btnMap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/location.png"))); // NOI18N
         btnMap.setText("View on Map");
         btnMap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(67, 0, 163)));
+        btnMap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMapActionPerformed(evt);

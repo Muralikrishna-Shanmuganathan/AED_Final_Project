@@ -53,8 +53,6 @@ public class AddContributionJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtqty = new javax.swing.JTextField();
@@ -65,61 +63,83 @@ public class AddContributionJPanel extends javax.swing.JPanel {
         txtItem = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jDateChooser = new com.toedter.calendar.JDateChooser();
+        jLabel5 = new javax.swing.JLabel();
+        btnBack1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Add Contribution");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 62, -1, -1));
-
-        btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 27, -1, -1));
-
+        jLabel3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel3.setText("Item:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(269, 170, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel7.setText("Quantity:");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 212, -1, -1));
-        add(txtqty, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 207, 143, -1));
 
+        txtqty.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        add(txtqty, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 143, -1));
+
+        jLabel8.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel8.setText("Expiry Date:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 251, -1, -1));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, -1, -1));
 
-        btnAdd.setText("ADD");
+        btnAdd.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(67, 0, 163));
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/plus.png"))); // NOI18N
+        btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
         });
-        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 325, -1, -1));
+        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 100, 40));
 
-        btnReset.setText("RESET");
+        btnReset.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/refresh-color.png"))); // NOI18N
+        btnReset.setText("Reset");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
             }
         });
-        add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 325, -1, -1));
+        add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel2.setText("Store Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 137, -1, -1));
-        add(txtItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 165, 143, -1));
 
+        txtItem.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        add(txtItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 143, -1));
+
+        jLabel4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel4.setText("jLabel4");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 137, -1, -1));
-        add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 150, 20));
-    }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
+        jDateChooser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 150, 30));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/agree.png"))); // NOI18N
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, -1, -1));
+
+        btnBack1.setBackground(new java.awt.Color(255, 255, 255));
+        btnBack1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        btnBack1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/back.png"))); // NOI18N
+        btnBack1.setText("Back");
+        btnBack1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnBack1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack1ActionPerformed(evt);
+            }
+        });
+        add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 110, -1));
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel1.setText("Add Contribution");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
+    }// </editor-fold>//GEN-END:initComponents
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
@@ -179,16 +199,23 @@ public class AddContributionJPanel extends javax.swing.JPanel {
         jDateChooser.setDateFormatString("");
     }//GEN-LAST:event_btnAddActionPerformed
 
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBack1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnBack1;
     private javax.swing.JButton btnReset;
     private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField txtItem;
