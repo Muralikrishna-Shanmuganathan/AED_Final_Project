@@ -114,5 +114,9 @@ public class Driver extends Person {
 
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
-    }    
+    }  
+    @Override
+    public String toString(){
+        return UserName;
+    }
 }

@@ -112,7 +112,10 @@ public class Clerk  extends Person {
         this.Status = Status;
     }
     
-    
+    @Override
+    public String toString(){
+        return UserName;
+    }
 
     
     

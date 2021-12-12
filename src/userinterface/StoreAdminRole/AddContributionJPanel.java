@@ -41,7 +41,7 @@ public class AddContributionJPanel extends javax.swing.JPanel {
         this.system = system;
         this.account = account;
         
-        System.out.println(contribution);
+        jLabel4.setText(account.getName());
     }
 
     /**
@@ -56,7 +56,6 @@ public class AddContributionJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        txtStoreName = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtqty = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -65,8 +64,12 @@ public class AddContributionJPanel extends javax.swing.JPanel {
         btnReset = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtItem = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Add Contribution");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 62, -1, -1));
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -74,12 +77,18 @@ public class AddContributionJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 27, -1, -1));
 
         jLabel3.setText("Item:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(269, 170, -1, -1));
 
         jLabel7.setText("Quantity:");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 212, -1, -1));
+        add(txtqty, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 207, 143, -1));
 
         jLabel8.setText("Expiry Date:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 251, -1, -1));
+        add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 241, 143, -1));
 
         btnAdd.setText("ADD");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +96,7 @@ public class AddContributionJPanel extends javax.swing.JPanel {
                 btnAddActionPerformed(evt);
             }
         });
+        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 325, -1, -1));
 
         btnReset.setText("RESET");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
@@ -94,75 +104,14 @@ public class AddContributionJPanel extends javax.swing.JPanel {
                 btnResetActionPerformed(evt);
             }
         });
+        add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 325, -1, -1));
 
         jLabel2.setText("Store Name:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 137, -1, -1));
+        add(txtItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 165, 143, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(300, 300, 300))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btnBack))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnAdd)
-                                .addGap(34, 34, 34)
-                                .addComponent(btnReset))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel2))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtStoreName)
-                                    .addComponent(txtqty, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtItem))))))
-                .addContainerGap(258, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtStoreName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(txtqty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8)))
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd)
-                    .addComponent(btnReset))
-                .addGap(75, 75, 75))
-        );
+        jLabel4.setText("jLabel4");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 137, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -174,19 +123,22 @@ public class AddContributionJPanel extends javax.swing.JPanel {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
-        txtStoreName.setText("");
+       
         txtqty.setText("");
-        JDateChooser dateChooser = new JDateChooser();
-        dateChooser.setCalendar(null);
+        txtItem.setText("");
+        jDateChooser.setDateFormatString("");
+        
+       
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if ( txtStoreName.getText().trim().isEmpty() || txtItem.getText().trim().isEmpty() || txtqty.getText().trim().isEmpty() || jDateChooser==null){
+        if (txtItem.getText().trim().isEmpty() || txtqty.getText().trim().isEmpty() || jDateChooser==null){
             JOptionPane.showMessageDialog(null, "Please enter all fields");
         }
         
-        String storeName = txtStoreName.getText();
+        String storeName = account.getName();
+        jLabel4.setText(account.getName());
         String item = txtItem.getText();
         String qty = txtqty.getText();
         Date date = jDateChooser.getDate();
@@ -222,10 +174,9 @@ public class AddContributionJPanel extends javax.swing.JPanel {
         }
         
         JOptionPane.showMessageDialog(null, "Item added");
-        txtStoreName.setText("");
         txtqty.setText("");
-        JDateChooser dateChooser = new JDateChooser();
-        dateChooser.setCalendar(null);
+        txtItem.setText("");
+        jDateChooser.setDateFormatString("");
     }//GEN-LAST:event_btnAddActionPerformed
 
 
@@ -237,10 +188,10 @@ public class AddContributionJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField txtItem;
-    private javax.swing.JTextField txtStoreName;
     private javax.swing.JTextField txtqty;
     // End of variables declaration//GEN-END:variables
 }

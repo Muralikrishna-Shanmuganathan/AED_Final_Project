@@ -4,7 +4,6 @@
  */
 package userinterface.Driver;
 
-import Business.Customer.Customer;
 import Business.EcoSystem;
 import Business.Volunteer.Volunteer;
 import Business.WorkQueue.WorkRequest;
@@ -110,13 +109,13 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
         workrequest.setStatus(status);
         system.getWorkQueue().addWorkRequesttoQueue(workrequest);
-        for (Volunteer cust : system.getVolunteerDirectory().getVolunteerList()) {
-            if (workrequest.getVolunteerUName().equals(cust.getUserName())) {
-                for (WorkRequest wr : cust.getWorkqueue().getWorkQueue()) {
-                    wr.setStatus(status);
-                }
-            }
-        }
+//        for (Volunteer cust : system.getVolunteerDirectory().getVolunteerList()) {
+//            if (workrequest.getVolunteerUName().equals(cust.getUserName())) {
+//                for (WorkRequest wr : cust.getWorkqueue().getWorkQueue()) {
+//                    wr.setStatus(status);
+//                }
+//            }
+//        }
         txtResult.setText("");
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

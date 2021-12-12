@@ -90,7 +90,6 @@ public class ReceiverAreaJPanel extends javax.swing.JPanel {
     private void populateReceiverTable() {
         DefaultTableModel model = (DefaultTableModel) tblReceiver.getModel();
         model.setRowCount(0);
-        JOptionPane.showMessageDialog(null, userAccount.getWorkQueue().getWorkQueue().size());
         for (Receiver admin : ecosystem.getReceiverDirectory().getReceiverList()) {
             if (admin.getUserName().equals(userAccount.getUsername())) {
                 Object[] row = new Object[2];

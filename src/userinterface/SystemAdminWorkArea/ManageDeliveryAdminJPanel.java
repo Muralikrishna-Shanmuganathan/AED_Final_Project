@@ -38,8 +38,6 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         populateDeliveryAdminTable();
-        populateCarrier();
-        populateLocation();
     }
 
     /**
@@ -58,34 +56,15 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        comboLocation = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         txtUserName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        btnUploadPhoto = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         txtName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        txtEmail = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        txtPhone = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        comboCarrier = new javax.swing.JComboBox<>();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        cPasswordField = new javax.swing.JPasswordField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -159,14 +138,6 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
         });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
-        btnRefresh.setText("Refresh");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
-        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, -1, -1));
-
         jLabel1.setText("Password");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -174,7 +145,7 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 7, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(10, 10, 10)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,32 +161,7 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 210, 40));
-
-        jLabel2.setText("Location");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 36, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(comboLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 230, 40));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 210, 40));
 
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,7 +176,7 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 17, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -245,39 +191,7 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 210, 40));
-
-        jLabel13.setText("Photo");
-
-        btnUploadPhoto.setText("Upload Image");
-        btnUploadPhoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUploadPhotoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 33, Short.MAX_VALUE)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnUploadPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(btnUploadPhoto))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, 240, 40));
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 210, 40));
 
         jLabel5.setText("Name");
 
@@ -301,106 +215,7 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 210, 40));
-
-        jLabel6.setText("Email");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(0, 42, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 210, 40));
-
-        jLabel7.setText("Phone Number");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addGap(0, 6, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 230, 40));
-
-        jLabel8.setText("Carrier");
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addGap(0, 43, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboCarrier, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(comboCarrier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 230, 40));
-
-        jLabel9.setText("Confirm Password");
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addGap(0, 7, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(cPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 250, 40));
+        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 210, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -410,15 +225,10 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
 
         char[] passwordCharArray = txtPassword.getPassword();
         String password = String.valueOf(passwordCharArray);
+        
 
-        char[] passwordCharArray1 = cPasswordField.getPassword();
-        String cpassword = String.valueOf(passwordCharArray1);
-
-        String email = txtEmail.getText();
-        String phone = txtPhone.getText();
+        
         String role = "Delivery Admin";
-        String carrier = String.valueOf(comboCarrier.getSelectedItem());
-        String location = String.valueOf(comboLocation.getSelectedItem());
 
         try {
             if (name == null || name.isEmpty()) {
@@ -461,7 +271,7 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
         try {
 
             if (password == null || password.isEmpty()) {
-                throw new NullPointerException("Pwd field is Empty");
+                throw new NullPointerException("Password field is Empty");
             } else if (Pattern.matches("^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,30}$", password) == false) {
                 throw new Exception("Invalid Password");
             }
@@ -475,67 +285,16 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
 
             return;
         }
-        if (password.equals(cpassword)) {
 
-        } else {
-            JOptionPane.showMessageDialog(null, "Passwords dont match");
-            return;
-        }
-
-        try {
-
-            if (email == null || email.isEmpty()) {
-                throw new NullPointerException("Email field is Empty");
-            } else if (Pattern.matches("^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", email) == false) {
-                throw new Exception("Invalid email format");
-            }
-
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "email is Empty");
-
-            return;
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "email is of invalid pattern");
-
-            return;
-        }
-
-        try {
-
-            if (phone == null || phone.isEmpty()) {
-                throw new NullPointerException("phone field is Empty");
-            } else if (Pattern.matches("^[0-9]{10}$", phone) == false) {
-                throw new Exception("Invalid phone format");
-            }
-
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "phone is Empty");
-
-            return;
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "phone is of invalid pattern");
-
-            return;
-        }
-
-        if (imgPath == null) {
-            JOptionPane.showMessageDialog(null, "Please upload a photo");
-            return;
-        }
         if (system.getUserAccountDirectory().checkIfUsernameIsUnique(userName) == false) {
             JOptionPane.showMessageDialog(null, "  User Name already exists ");
         } else {
             UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(name, userName, password, null, new DeliveryAdminRole());
-            DeliveryAdmin deliveryAdmin = system.getDeliveryAdminDirectory().createDeliveryAdmin(name, role, userName, password, email, phone, carrier, location, imgPath);
+            DeliveryAdmin deliveryAdmin = system.getDeliveryAdminDirectory().createDeliveryAdmin(name, role, userName, password);
 
             txtName.setText("");
             txtUserName.setText("");
             txtPassword.setText("");
-            cPasswordField.setText("");
-            txtEmail.setText("");
-            txtPhone.setText("");
-            populateCarrier();
-            populateLocation();
 
             populateDeliveryAdminTable();
         }
@@ -557,11 +316,6 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
             txtName.setText(deliveryAdmin.getName());
             txtUserName.setText(deliveryAdmin.getUserName());
             txtPassword.setText(deliveryAdmin.getPassword());
-            cPasswordField.setText(deliveryAdmin.getPassword());
-            txtEmail.setText(deliveryAdmin.getEmail());
-            txtPhone.setText(deliveryAdmin.getPhone());
-            comboCarrier.setSelectedItem(deliveryAdmin.getCarrier());
-            comboLocation.setSelectedItem(deliveryAdmin.getLocation());
             }
             }
         } else {
@@ -577,7 +331,7 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select a row to update");
             return;
         }
-        String name = txtPhone.getText();
+        String name = txtName.getText();
         String uname = txtUserName.getText();
         String password = String.valueOf(txtPassword.getPassword());
 
@@ -622,7 +376,7 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
         try {
 
             if (password == null || password.isEmpty()) {
-                throw new NullPointerException("Pwd field is Empty");
+                throw new NullPointerException("Password field is Empty");
             } else if (Pattern.matches("^(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{5,30}$", password) == false) {
                 throw new Exception("Invalid Password");
             }
@@ -638,7 +392,7 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
         }
         system.getUserAccountDirectory().updateUserAccount(user, name, uname, password);
         populateDeliveryAdminTable();
-        txtPhone.setText("");
+        txtName.setText("");
         txtUserName.setText("");
         txtPassword.setText("");
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -675,76 +429,27 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        // TODO add your handling code here:
-        populateDeliveryAdminTable();
-    }//GEN-LAST:event_btnRefreshActionPerformed
-
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserNameActionPerformed
-
-    private void btnUploadPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadPhotoActionPerformed
-
-        JFileChooser uploadImageFile = new JFileChooser();
-        //Filter image extension
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
-        uploadImageFile.addChoosableFileFilter(filter);
-        try {
-            int showOpenDialogue = uploadImageFile.showOpenDialog(null);
-            if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
-                File selectedImageFile = uploadImageFile.getSelectedFile();
-                String selectedImagePath = selectedImageFile.getAbsolutePath();
-                if (selectedImagePath == null) {
-                    JOptionPane.showMessageDialog(null, "Please upload a photo");
-                    return;
-                } else {
-                    imgPath = selectedImagePath;
-                }
-
-                JOptionPane.showMessageDialog(null, selectedImagePath);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error uploading photo");
-        }
-    }//GEN-LAST:event_btnUploadPhotoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JButton btnUploadPhoto;
     private javax.swing.JButton btnView;
-    private javax.swing.JPasswordField cPasswordField;
-    private javax.swing.JComboBox<String> comboCarrier;
-    private javax.swing.JComboBox<String> comboLocation;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblDeliveryAdmin;
-    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 
@@ -767,19 +472,5 @@ public class ManageDeliveryAdminJPanel extends javax.swing.JPanel {
             }
 
         }
-    }
-
-    private void populateCarrier() {
-        comboCarrier.removeAllItems();
-        comboCarrier.addItem("ATT");
-        comboCarrier.addItem("Sprint");
-        comboCarrier.addItem("TMobile");
-        comboCarrier.addItem("Verizon");
-    }
-
-    private void populateLocation() {
-        comboLocation.removeAllItems();
-        comboLocation.addItem("Back Bay");
-        comboLocation.addItem("Cambridge");
     }
 }

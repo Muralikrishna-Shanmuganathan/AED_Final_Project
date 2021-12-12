@@ -19,9 +19,17 @@ import Business.Role.VolunteerRole;
 import Business.UserAccount.UserAccount;
 import Business.Volunteer.Volunteer;
 import java.awt.CardLayout;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author murali
@@ -34,14 +42,14 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem system;
     private UserAccount user;
-    
+
     public ManageRegistrationsJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         this.user = user;
-        
+
         populateRegistrations();
     }
 
@@ -72,13 +80,13 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
 
         tblRegistrations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Role", "Name", "User Name", "Location", "Status"
+                "Role", "Name", "User Name", "Location", "Email", "Phone Number", "Carrier", "Status"
             }
         ));
         jScrollPane2.setViewportView(tblRegistrations);
@@ -101,33 +109,30 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(449, Short.MAX_VALUE)
+                .addComponent(btnApprove)
+                .addGap(37, 37, 37)
+                .addComponent(btnReject)
+                .addGap(196, 196, 196))
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(btnBack)
+                .addGap(270, 270, 270)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(238, 238, 238))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(92, 92, 92))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnApprove)
-                        .addGap(37, 37, 37)
-                        .addComponent(btnReject)
-                        .addGap(196, 196, 196))))
+                .addContainerGap()
+                .addComponent(jScrollPane2))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnBack)
+                    .addComponent(jLabel1))
+                .addGap(56, 56, 56)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -141,42 +146,85 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
 
         int selectedRowIndex = tblRegistrations.getSelectedRow();
 
-        if ( selectedRowIndex < 0 ){
-            JOptionPane.showMessageDialog(this,"Please select a row");
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a user");
             return;
         }
 
         DefaultTableModel model = (DefaultTableModel) tblRegistrations.getModel();
+
         String roleType = (String) model.getValueAt(selectedRowIndex, 0);
         String userName = (String) model.getValueAt(selectedRowIndex, 2);
-        String curStatus = (String) model.getValueAt(selectedRowIndex, 4);
+        String phone = (String) model.getValueAt(selectedRowIndex, 3);
+        String email = (String) model.getValueAt(selectedRowIndex, 4);
+        String carrier = (String) model.getValueAt(selectedRowIndex, 6);
+        String curStatus = (String) model.getValueAt(selectedRowIndex, 7);
 
-        for (Registration reg : system.getRegistrationDirectory().getRegistrationList()){
+        for (Registration reg : system.getRegistrationDirectory().getRegistrationList()) {
 
-            if( userName.equals(reg.getUserName())){
+            if (userName.equals(reg.getUserName())) {
 
-                if ( roleType.equals("Volunteer")){
+                if (roleType.equals("Volunteer")) {
                     UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(reg.getName(), reg.getUserName(), reg.getPassword(), null, new VolunteerRole());
                     Volunteer volunteer = system.getVolunteerDirectory().createVolunteer(reg.getName(), reg.getRole(), reg.getUserName(), reg.getPassword(), reg.getEmail(), reg.getPhone(), reg.getCarrier(), reg.getLocation(), reg.getPhoto());
-                }
-                else if ( roleType.equals("Contributor")){
+                } else if (roleType.equals("Contributor")) {
                     UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(reg.getName(), reg.getUserName(), reg.getPassword(), null, new ContributorRole());
                     Contributor contributor = system.getContributorDirectory().createContributor(reg.getName(), reg.getRole(), reg.getUserName(), reg.getPassword(), reg.getEmail(), reg.getPhone(), reg.getCarrier(), reg.getLocation(), reg.getPhoto());
-                }
-                else if ( roleType.equals("Distributor")){
-                    UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(reg.getName(), reg.getUserName(), reg.getPassword(), null, new DistributorRole());
-                    Distributor distributor = system.getDistributorDirectory().createDistributor(reg.getUserName());
-                }
-                else if(roleType.equals("Receiver")){
+                } else if (roleType.equals("Receiver")) {
                     UserAccount ua1 = system.getUserAccountDirectory().createUserAccount(reg.getName(), reg.getUserName(), reg.getPassword(), null, new ReceiverRole());
                     Receiver receiver = system.getReceiverDirectory().createReceiver(reg.getName(), reg.getRole(), reg.getUserName(), reg.getPassword(), reg.getEmail(), reg.getPhone(), reg.getCarrier(), reg.getLocation(), reg.getPhoto());
-                }
-                else{
+                } else {
                     JOptionPane.showMessageDialog(null, "No relevant role found");
                 }
-                if( curStatus.equals("Approved")){
+                if (curStatus.equals("Approved")) {
                     JOptionPane.showMessageDialog(null, "User already Approved");
                     return;
+                }
+                //Email and SMS Integration
+
+                String toEmail = email;
+                String fromEmail = "dummyprojectuser@gmail.com";
+                String fromEmailPassword = "Testpassword";
+                String subject = "Registration Approved";
+
+                String textSms = phone;
+                if (carrier.equals("ATT")) {
+                    textSms = textSms + "@txt.att.net";
+                } else if (carrier.equals("Verizon")) {
+                    textSms = textSms + "@vmobl.com";
+                } else if (carrier.equals("Sprint")) {
+                    textSms = textSms + "@messaging.sprintpcs.com";
+                } else if (carrier.equals("TMobile")) {
+                    textSms = textSms + "@tmomail.net";
+                }
+
+                Properties properties = new Properties();
+                properties.put("mail.smtp.auth", "true");
+                properties.put("mail.smtp.starttls.enable", "true");
+                properties.put("mail.smtp.host", "smtp.gmail.com");
+                properties.put("mail.smtp.port", "587");
+
+                properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+                properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+
+                Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication("dummyprojectuser@gmail.com", "Testpassword");
+                    }
+                });
+
+                try {
+                    MimeMessage message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress(fromEmail));
+                    message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+                    message.addRecipient(Message.RecipientType.TO, new InternetAddress(textSms));
+                    message.setSubject(subject);
+                    message.setText("Welome to the Team! Please log in to our portal and start making a difference :)");
+                    Transport.send(message);
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                    System.out.println(e);
                 }
                 reg.setStatus("Approved");
                 populateRegistrations();
@@ -195,24 +243,74 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRowIndex = tblRegistrations.getSelectedRow();
 
-        if ( selectedRowIndex < 0 ){
-            JOptionPane.showMessageDialog(this,"Please select a row");
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row");
             return;
         }
 
         DefaultTableModel model = (DefaultTableModel) tblRegistrations.getModel();
+        String roleType = (String) model.getValueAt(selectedRowIndex, 0);
         String userName = (String) model.getValueAt(selectedRowIndex, 2);
-        String curStatus = (String) model.getValueAt(selectedRowIndex, 4);
+        String phone = (String) model.getValueAt(selectedRowIndex, 3);
+        String email = (String) model.getValueAt(selectedRowIndex, 4);
+        String carrier = (String) model.getValueAt(selectedRowIndex, 6);
+        String curStatus = (String) model.getValueAt(selectedRowIndex, 7);
 
-        for (Registration reg : system.getRegistrationDirectory().getRegistrationList()){
+        for (Registration reg : system.getRegistrationDirectory().getRegistrationList()) {
 
-            if( userName.equals(reg.getUserName())){
-                if( curStatus.equals("Approved")){
+            if (userName.equals(reg.getUserName())) {
+                if (curStatus.equals("Approved")) {
                     JOptionPane.showMessageDialog(null, "User already Approved");
                     return;
+                } else {
+                    String toEmail = email;
+                    String fromEmail = "dummyprojectuser@gmail.com";
+                    String fromEmailPassword = "Testpassword";
+                    String subject = "Registration Rejected";
+
+                    String textSms = phone;
+                    if (carrier.equals("ATT")) {
+                        textSms = textSms + "@txt.att.net";
+                    } else if (carrier.equals("Verizon")) {
+                        textSms = textSms + "@vmobl.com";
+                    } else if (carrier.equals("Sprint")) {
+                        textSms = textSms + "@messaging.sprintpcs.com";
+                    } else if (carrier.equals("TMobile")) {
+                        textSms = textSms + "@tmomail.net";
+                    }
+
+                    Properties properties = new Properties();
+                    properties.put("mail.smtp.auth", "true");
+                    properties.put("mail.smtp.starttls.enable", "true");
+                    properties.put("mail.smtp.host", "smtp.gmail.com");
+                    properties.put("mail.smtp.port", "587");
+
+                    properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+                    properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+
+                    Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
+                        protected PasswordAuthentication getPasswordAuthentication() {
+                            return new PasswordAuthentication("dummyprojectuser@gmail.com", "Testpassword");
+                        }
+                    });
+
+                    try {
+                        MimeMessage message = new MimeMessage(session);
+                        message.setFrom(new InternetAddress(fromEmail));
+                        message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+                        message.addRecipient(Message.RecipientType.TO, new InternetAddress(textSms));
+                        message.setSubject(subject);
+                        message.setText("We regret to inform you that your application has been rejected. Please re-apply if you are still interested to join us.");
+                        Transport.send(message);
+
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, e);
+                        System.out.println(e);
+                    }
+
+                    reg.setStatus("Rejected");
+                    populateRegistrations();
                 }
-                reg.setStatus("Rejected");
-                populateRegistrations();
             }
         }
     }//GEN-LAST:event_btnRejectActionPerformed
@@ -228,23 +326,25 @@ public class ManageRegistrationsJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateRegistrations() {
-        
-        DefaultTableModel model = (DefaultTableModel) tblRegistrations.getModel();
-        
-        model.setRowCount(0);
-       
-        for (Registration reg : system.getRegistrationDirectory().getRegistrationList()){
-            
-                Object[] row = new Object[5];
-                row[0] = reg.getRole();
-                row[1] = reg.getName();
-                row[2] = reg.getUserName();
-                row[3] = reg.getLocation();
-                row[4] = reg.getStatus();
-                model.addRow(row);
-               }
-                
-            }
 
-    
+        DefaultTableModel model = (DefaultTableModel) tblRegistrations.getModel();
+
+        model.setRowCount(0);
+
+        for (Registration reg : system.getRegistrationDirectory().getRegistrationList()) {
+
+            Object[] row = new Object[8];
+            row[0] = reg.getRole();
+            row[1] = reg.getName();
+            row[2] = reg.getUserName();
+            row[3] = reg.getLocation();
+            row[4] = reg.getEmail();
+            row[5] = reg.getPhone();
+            row[6] = reg.getCarrier();
+            row[7] = reg.getStatus();
+            model.addRow(row);
+        }
+
+    }
+
 }

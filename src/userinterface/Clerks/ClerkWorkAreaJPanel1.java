@@ -47,37 +47,23 @@ public class ClerkWorkAreaJPanel1 extends javax.swing.JPanel {
     
     public void populateTable(){
         
-        System.out.println("reached populate table in clerk work area");
         
         DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
         
         model.setRowCount(0);
-        System.out.println(system.getWorkQueue().getWorkQueue().size()+" system work que size clerk work area");  
-        
-        System.out.println(userAccount.getClerkList().getClerkList().size()+" clerk account --clerk directory size");
-        System.out.println(system.getClerkDirectory().getClerkList().size()+" system account --clerk directory size");
 
-       // for(Clerk user : system.getClerkDirectory().getClerkList())
         for (int i=0;i<system.getClerkDirectory().getClerkList().size();i++)
         {
             Clerk user=system.getClerkDirectory().getClerkList().get(i);
-            System.out.println(user.getUserName()+ " "+userAccount.getUsername());
             if(user.getUserName().equals(userAccount.getUsername()))
             {
                 for(WorkRequest wr : user.getWorkQueue().getWorkQueue()){
-                System.out.println(user.getWorkQueue().getWorkQueue().size());   
-                Object[] row = new Object[8];
+                Object[] row = new Object[4];
 
-                row[0] = wr.getWorkRequestID();
-                row[1] = wr.getPickUptime();
-                row[2] = wr.getDropOfftime();
-                row[3] = wr.getPickUpLocation();
-                row[4] = wr.getDropOffLocation();
-
-                //row[5] = wr.getDriver().getFirstName();
-                //row[6] = wr.getClerk().getFirstName();
-                row[5] = wr.getStatus();
-                row[6]=wr;
+                row[0] = wr;
+                row[1] = wr.getPickUpLocation();
+                row[2] = wr.getDropOffLocation();
+                row[3] = wr.getStatus();
 
                 model.addRow(row);
 
@@ -109,20 +95,20 @@ public class ClerkWorkAreaJPanel1 extends javax.swing.JPanel {
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Work ID", "Pickup time", "Dropoff time", "Pickup Location", "Drop off Location", "Status", "object", "driver"
+                "Work ID", "Pickup Location", "Drop off Location", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, true
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -135,7 +121,7 @@ public class ClerkWorkAreaJPanel1 extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(workRequestJTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 780, 130));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 580, 130));
 
         btnProcess.setText("PROCESS ORDER");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +159,7 @@ public class ClerkWorkAreaJPanel1 extends javax.swing.JPanel {
             return;
         }
         
-        WorkRequest wr = (WorkRequest)workRequestJTable.getValueAt(selectedRowIndex, 6); 
+        WorkRequest wr = (WorkRequest)workRequestJTable.getValueAt(selectedRowIndex, 0); 
         
         if(wr.getStatus().equals("Inspected")){
             JOptionPane.showMessageDialog(null," Order Already Inspected","Warning",JOptionPane.WARNING_MESSAGE);

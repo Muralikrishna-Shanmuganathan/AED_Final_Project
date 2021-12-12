@@ -5,7 +5,6 @@
 package userinterface.Clerks;
 
 import userinterface.Driver.*;
-import Business.Customer.Customer;
 import Business.EcoSystem;
 import Business.Volunteer.Volunteer;
 import Business.WorkQueue.WorkRequest;

@@ -17,11 +17,16 @@ public class Store {
     private String Name;
     private String UserName;
     private String storeName;
+    private String location;
+    private String password;
     private ArrayList<Contribution> Contribution;
     
     //Constructor
-    public Store(String userName) {
-        this.UserName = userName;
+    public Store(String storeName, String uname, String password, String location) {
+        this.UserName = uname;
+        this.location = location;
+        this.storeName = storeName;
+        this.password = password;
         Contribution=new ArrayList<>();
     }
 
@@ -64,6 +69,15 @@ public class Store {
     public void setUserName(String UserName) {
         this.UserName = UserName;
     }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    
     
     public void addContribution(Contribution contribution){
         if (Contribution == null ){
@@ -73,6 +87,10 @@ public class Store {
             Contribution.add(contribution);
         }
         
+    }
+    @Override
+    public String toString(){
+        return storeName;
     }
     
 }

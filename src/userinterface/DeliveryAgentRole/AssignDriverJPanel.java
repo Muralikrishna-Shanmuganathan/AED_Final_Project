@@ -5,7 +5,6 @@
  */
 package userinterface.DeliveryAgentRole;
 
-import Business.Customer.Customer;
 import Business.DeliveryAgency.Driver;
 import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
@@ -75,18 +74,18 @@ public class AssignDriverJPanel extends javax.swing.JPanel {
 
         tblDeliveryPerson.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Devlivery Person Name", "Name", "Password"
+                "Name", "Password"
             }
         ));
         jScrollPane1.setViewportView(tblDeliveryPerson);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 210, 161));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 450, 161));
 
         btnAssign.setText("SELECT DELIVERY PERSON");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +93,7 @@ public class AssignDriverJPanel extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -122,9 +121,7 @@ public class AssignDriverJPanel extends javax.swing.JPanel {
             account.getDriverList().addWorkRequesttoDriver(driver, workRequest);
             //system.getWorkQueue().addWorkRequesttoQueue(workRequest);
             workRequest.setStatus("Assigned to Driver");
-            System.out.println("Added to driver workqueue");
-            System.out.println(driver.getWorkQueue().getWorkQueue().size()+" driver queue size in assign driver page " +driver.getUserName());
-
+            JOptionPane.showMessageDialog(null, "Contribution assigned to Driver");
 
             userProcessContainer.remove(this);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();

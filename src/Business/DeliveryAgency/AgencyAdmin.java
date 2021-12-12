@@ -18,7 +18,6 @@ public class AgencyAdmin extends Person {
     EmployeeDirectory employeeList;
     DriverDirectory driverList;
     ClerkDirectory clerkList;
-    VehicleDirectory vehicleList;
     WorkQueue workQueue;
     int workRequestCount=0;
     // add workRequestID
@@ -27,7 +26,6 @@ public class AgencyAdmin extends Person {
         employeeList=new EmployeeDirectory();
         driverList=new DriverDirectory();
         clerkList=new ClerkDirectory();
-        vehicleList=new VehicleDirectory();
         workQueue=new WorkQueue();
     }
 
@@ -69,14 +67,6 @@ public class AgencyAdmin extends Person {
 
     public void setClerkList(ClerkDirectory clerkList) {
         this.clerkList = clerkList;
-    }
-
-    public VehicleDirectory getVehicleList() {
-        return vehicleList;
-    }
-
-    public void setVehicleList(VehicleDirectory vehicleList) {
-        this.vehicleList = vehicleList;
     }
 
     public WorkQueue getWorkQueue() {

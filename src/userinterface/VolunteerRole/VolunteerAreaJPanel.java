@@ -28,6 +28,7 @@ public class VolunteerAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.ecosystem = ecosystem;
+        jLabel1.setText("Welcome "+account.getUsername());
 
     }
 

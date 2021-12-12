@@ -166,7 +166,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addGroup(loginJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnRegister)
                             .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         loginJPanelLayout.setVerticalGroup(
             loginJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,13 +181,13 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(loginJLabel)
                 .addGap(31, 31, 31)
                 .addComponent(btnRegister)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(loginJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, -1));
+        getContentPane().add(loginJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 530, 360));
 
         container.setLayout(new java.awt.CardLayout());
-        getContentPane().add(container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 59, 689, 370));
+        getContentPane().add(container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 59, 689, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

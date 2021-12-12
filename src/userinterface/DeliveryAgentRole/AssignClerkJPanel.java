@@ -5,7 +5,6 @@
  */
 package userinterface.DeliveryAgentRole;
 
-import Business.Customer.Customer;
 import Business.DeliveryAgency.Clerk;
 import Business.DeliveryAgency.Driver;
 import Business.DeliveryMan.DeliveryMan;
@@ -76,18 +75,18 @@ public class AssignClerkJPanel extends javax.swing.JPanel {
 
         tblClerkPerson.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Devlivery Person Name", "Name", "Status"
+                "Name", "Status"
             }
         ));
         jScrollPane1.setViewportView(tblClerkPerson);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 210, 161));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 460, 161));
 
         btnAssign.setText("SELECT CLERK PERSON");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +94,7 @@ public class AssignClerkJPanel extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -116,15 +115,13 @@ public class AssignClerkJPanel extends javax.swing.JPanel {
         {
             Clerk clerk  = (Clerk)tblClerkPerson.getValueAt(selectedRow, 0);   
             clerk.getWorkQueue().addWorkRequesttoQueue(workRequest);
-            System.out.println("checking if the work added to clerk in assign clerk page "+clerk.getWorkQueue().getWorkQueue().size());
             workRequest.setClerk(clerk);
             system.getClerkDirectory().addWorkRequesttoClerk(clerk, workRequest);
+            
+            JOptionPane.showMessageDialog(null, "Clerk has been assigned");
 
             account.getClerkList().addWorkRequesttoClerk(clerk, workRequest);
-            //system.getWorkQueue().addWorkRequesttoQueue(workRequest);
             workRequest.setStatus("Assigned to Clerk");
-            //System.out.println("Added to driver workqueue");
-            System.out.println(clerk.getWorkQueue().getWorkQueue().size()+" clerk queue size in assign clerk page " +clerk.getUserName());
             userProcessContainer.remove(this);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.previous(userProcessContainer);
@@ -148,20 +145,18 @@ public class AssignClerkJPanel extends javax.swing.JPanel {
           for (UserAccount admin : system.getUserAccountDirectory().getUserAccountList()) {
                
                if(admin.getUsername().equals(account.getUsername())) {
-                  //System.out.println(admin.getUsername()+" "+user.getUsername());
     
-                Object[] row = new Object[3];
+                Object[] row = new Object[2];
                 
-                System.out.println(account.getClerkList().getClerkList().size()+" account DRIVER LIST SIZE in assign clerk page");
                 for(Clerk clerk1: account.getClerkList().getClerkList())
 
                 {
-                //System.out.println(driver1.getFirstName());
+            
                 row[0] = clerk1;
-                row[1] = clerk1.getUserName();
-                row[2] = clerk1.getStatus();
+                row[1] = clerk1.getStatus();
 
                 model.addRow(row);
+                
                 
                 }
             }

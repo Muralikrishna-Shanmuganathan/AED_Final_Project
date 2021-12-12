@@ -149,6 +149,7 @@ public class AssignDeliveryAgencyJPanel extends javax.swing.JPanel {
                     workRequest.setStatus("Assigned to Agency");
                     workRequest.setDeliveryAgencyAdminName(ua1.getUsername());
                     ua1.getWorkQueue().addWorkRequesttoQueue(workRequest);
+                    JOptionPane.showMessageDialog(null, "Assigned to Delivery Agency");
                     
                 }
             }
@@ -161,13 +162,12 @@ public class AssignDeliveryAgencyJPanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
         for (DeliveryAgent admin : system.getDeliveryAgentDirectory().getDeliveryAgentDirectory()) {
-            JOptionPane.showMessageDialog(null, system.getDeliveryAgentDirectory().getDeliveryAgentDirectory().size());
 
-            for (DeliveryAgent deliveryAgent : system.getDeliveryAgentDirectory().getDeliveryAgentDirectory()) {
+//            for (DeliveryAgent deliveryAgent : system.getDeliveryAgentDirectory().getDeliveryAgentDirectory()) {
                 Object[] row = new Object[1];
-                row[0] = deliveryAgent.getUserName();
+                row[0] = admin.getUserName();
                 model.addRow(row);
-            }
+//            }
 
         }
     }//GEN-LAST:event_btnAssignDeliveryAgencyActionPerformed

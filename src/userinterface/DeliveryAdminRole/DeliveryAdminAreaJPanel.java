@@ -49,6 +49,7 @@ public class DeliveryAdminAreaJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblStoreContribution = new javax.swing.JTable();
         btnUpdate = new javax.swing.JButton();
+        btnMap = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -65,7 +66,7 @@ public class DeliveryAdminAreaJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblStoreContribution);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 580, 110));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 640, 130));
 
         btnUpdate.setText("Update Details");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +74,15 @@ public class DeliveryAdminAreaJPanel extends javax.swing.JPanel {
                 btnUpdateActionPerformed(evt);
             }
         });
-        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
+        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, -1, -1));
+
+        btnMap.setText("View on Map");
+        btnMap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMapActionPerformed(evt);
+            }
+        });
+        add(btnMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 120, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -98,8 +107,18 @@ public class DeliveryAdminAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+    private void btnMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapActionPerformed
+        // TODO add your handling code here:
+        MapJPanel mvjp = new MapJPanel(userProcessContainer, system);
+        userProcessContainer.add("Manage Volunteers", mvjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+    }//GEN-LAST:event_btnMapActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMap;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblStoreContribution;

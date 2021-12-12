@@ -46,12 +46,11 @@ public class StoreDirectory {
     //Constructor
         public StoreDirectory(){
         this.storeDirectory = new ArrayList<Store>();
-       
     }
     
     //Create Contributor
-    public Store createStore(String uName){
-        store = new Store(uName);
+    public Store createStore(String storeName, String uname, String password, String location){
+        store = new Store(storeName, uname, password, location);
         storeDirectory.add(store);
         return store;
     }
