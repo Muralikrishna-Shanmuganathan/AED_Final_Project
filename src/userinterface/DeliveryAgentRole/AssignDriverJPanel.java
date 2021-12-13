@@ -78,6 +78,7 @@ public class AssignDriverJPanel extends javax.swing.JPanel {
         btnAssign.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         btnAssign.setForeground(new java.awt.Color(255, 255, 255));
         btnAssign.setText("Assign Driver");
+        btnAssign.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);

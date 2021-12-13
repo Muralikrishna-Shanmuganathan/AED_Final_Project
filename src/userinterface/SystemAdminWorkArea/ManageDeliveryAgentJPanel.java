@@ -62,6 +62,7 @@ public class ManageDeliveryAgentJPanel extends javax.swing.JPanel {
         btnView = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(910, 560));
@@ -95,7 +96,7 @@ public class ManageDeliveryAgentJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblDeliveryAgents);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 404, 91));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 404, 91));
 
         btnBack.setBackground(new java.awt.Color(255, 255, 255));
         btnBack.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
@@ -121,7 +122,7 @@ public class ManageDeliveryAgentJPanel extends javax.swing.JPanel {
                 btnRefreshActionPerformed(evt);
             }
         });
-        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, -1));
+        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -148,7 +149,7 @@ public class ManageDeliveryAgentJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 210, 40));
+        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 210, 40));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -166,7 +167,7 @@ public class ManageDeliveryAgentJPanel extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 15, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -181,7 +182,7 @@ public class ManageDeliveryAgentJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 230, 40));
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, 230, 40));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -193,7 +194,7 @@ public class ManageDeliveryAgentJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 6, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(10, 10, 10)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,7 +210,7 @@ public class ManageDeliveryAgentJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 230, 40));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, 230, 40));
 
         btnCreate.setBackground(new java.awt.Color(255, 255, 255));
         btnCreate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -225,7 +226,7 @@ public class ManageDeliveryAgentJPanel extends javax.swing.JPanel {
                 btnCreateActionPerformed(evt);
             }
         });
-        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 110, -1));
+        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 110, -1));
 
         btnView.setBackground(new java.awt.Color(255, 255, 255));
         btnView.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -241,7 +242,7 @@ public class ManageDeliveryAgentJPanel extends javax.swing.JPanel {
                 btnViewActionPerformed(evt);
             }
         });
-        add(btnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 90, -1));
+        add(btnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 90, -1));
 
         btnUpdate.setBackground(new java.awt.Color(255, 255, 255));
         btnUpdate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -256,7 +257,7 @@ public class ManageDeliveryAgentJPanel extends javax.swing.JPanel {
                 btnUpdateActionPerformed(evt);
             }
         });
-        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 90, -1));
+        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 90, -1));
 
         btnDelete.setBackground(new java.awt.Color(255, 255, 255));
         btnDelete.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -272,7 +273,12 @@ public class ManageDeliveryAgentJPanel extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 100, -1));
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 100, -1));
+
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/contributors.png"))); // NOI18N
+        jLabel2.setText("Manage Delivery Agents");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -497,6 +503,7 @@ public class ManageDeliveryAgentJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnView;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;

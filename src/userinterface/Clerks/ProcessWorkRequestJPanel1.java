@@ -17,13 +17,12 @@ import javax.swing.JPanel;
  *
  * @author raunak
  */
-
-
 public class ProcessWorkRequestJPanel1 extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     WorkRequest workrequest;
     EcoSystem system;
+
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
@@ -32,7 +31,7 @@ public class ProcessWorkRequestJPanel1 extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.workrequest = workrequest;
         this.system = system;
-        
+
     }
 
     /**
@@ -47,72 +46,74 @@ public class ProcessWorkRequestJPanel1 extends javax.swing.JPanel {
         submitJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtResult = new javax.swing.JTextField();
-        backJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        btnBack1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        submitJButton.setBackground(new java.awt.Color(67, 0, 163));
+        submitJButton.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        submitJButton.setForeground(new java.awt.Color(255, 255, 255));
         submitJButton.setText("Submit Status");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 160, 40));
 
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel1.setText("Result");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
 
+        txtResult.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txtResult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtResultActionPerformed(evt);
             }
         });
-        add(txtResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 88, -1));
-
-        backJButton.setText("Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        add(txtResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 130, -1));
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel2.setText("DELIVERY STATUS");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, -1, -1));
+        jLabel2.setText("Delivery Status");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
+
+        btnBack1.setBackground(new java.awt.Color(255, 255, 255));
+        btnBack1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        btnBack1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/back.png"))); // NOI18N
+        btnBack1.setText("Back");
+        btnBack1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnBack1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack1ActionPerformed(evt);
+            }
+        });
+        add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 110, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/approve.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        ClerkWorkAreaJPanel1 dwjp = (ClerkWorkAreaJPanel1) component;
-        //dwjp.populateTable();
-        
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
-
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-       
-        String status=txtResult.getText();
-        
+
+        String status = txtResult.getText();
+
         try {
-             if(status==null || status.isEmpty()){
+            if (status == null || status.isEmpty()) {
                 throw new Exception(" Please enter Inspection status");
-             }        
-        } catch(Exception e){
+            }
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, " Please enter Inspection status");
             return;
         }
-        
-        workrequest.setStatus(status);        
-        for(Volunteer cust:system.getVolunteerDirectory().getVolunteerList()){
-            if(workrequest.getVolunteerUName().equals(cust.getUserName())){
-                for(WorkRequest wr : cust.getWorkqueue().getWorkQueue()){
+
+        workrequest.setStatus(status);
+        for (Volunteer cust : system.getVolunteerDirectory().getVolunteerList()) {
+            if (workrequest.getVolunteerUName().equals(cust.getUserName())) {
+                for (WorkRequest wr : cust.getWorkqueue().getWorkQueue()) {
                     wr.setStatus(status);
                 }
             }
@@ -127,10 +128,22 @@ public class ProcessWorkRequestJPanel1 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtResultActionPerformed
 
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ClerkWorkAreaJPanel1 dwjp = (ClerkWorkAreaJPanel1) component;
+        //dwjp.populateTable();
+
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBack1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
+    private javax.swing.JButton btnBack1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton submitJButton;
     private javax.swing.JTextField txtResult;
     // End of variables declaration//GEN-END:variables
