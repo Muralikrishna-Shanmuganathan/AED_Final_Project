@@ -79,10 +79,10 @@ public class DriverWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
         btnProcess = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
+        btnRefresh1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -117,32 +117,42 @@ public class DriverWorkAreaJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 580, 130));
 
-        btnProcess.setText("PROCESS ORDER");
+        btnProcess.setBackground(new java.awt.Color(67, 0, 163));
+        btnProcess.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        btnProcess.setForeground(new java.awt.Color(255, 255, 255));
+        btnProcess.setText("Process Order");
+        btnProcess.setToolTipText("");
+        btnProcess.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProcessActionPerformed(evt);
             }
         });
-        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, -1, -1));
+        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
 
-        btnRefresh.setText("Refresh");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
-        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel1.setText("DRIVER PORTAL");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel1.setText("Driver Work Requests");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, -1, -1));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel.setText("DRIVER:");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 140, 30));
+        enterpriseLabel.setText("Driver:");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 70, 30));
 
         valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 158, 26));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 158, 26));
+
+        btnRefresh1.setBackground(new java.awt.Color(67, 0, 163));
+        btnRefresh1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        btnRefresh1.setForeground(new java.awt.Color(255, 255, 255));
+        btnRefresh1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/refresh.png"))); // NOI18N
+        btnRefresh1.setText("Refresh");
+        btnRefresh1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRefresh1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefresh1ActionPerformed(evt);
+            }
+        });
+        add(btnRefresh1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
@@ -170,13 +180,14 @@ public class DriverWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnProcessActionPerformed
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+    private void btnRefresh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh1ActionPerformed
+        // TODO add your handling code here:
         populateDriverTable();
-    }//GEN-LAST:event_btnRefreshActionPerformed
+    }//GEN-LAST:event_btnRefresh1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProcess;
-    private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnRefresh1;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -60,7 +60,6 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
         btnView = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         comboLocation = new javax.swing.JComboBox<>();
@@ -69,7 +68,6 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
         txtPhone = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         cPasswordField = new javax.swing.JPasswordField();
-        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         btnUploadPhoto = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
@@ -81,6 +79,10 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblVolunteers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,52 +112,79 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblVolunteers);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 404, 91));
+
+        btnCreate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/plus.png"))); // NOI18N
         btnCreate.setText("Create");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
             }
         });
+        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
 
+        btnView.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/view.png"))); // NOI18N
         btnView.setText("View");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewActionPerformed(evt);
             }
         });
+        add(btnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, -1));
 
+        btnUpdate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/update.png"))); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
             }
         });
+        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
 
+        btnDelete.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/delete.png"))); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, -1, -1));
 
-        btnBack.setText("<< Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-
+        jLabel5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel5.setText("Confirm Password");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, -1, -1));
 
+        jLabel9.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel9.setText("Carrier");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, -1, -1));
 
+        comboLocation.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        add(comboLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 160, -1));
+
+        jLabel10.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel10.setText("Email");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, -1, -1));
 
+        txtEmail.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 162, -1));
+
+        txtPhone.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 160, -1));
+
+        jLabel11.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel11.setText("Phone Number");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, -1, -1));
 
-        jLabel12.setText("Location");
+        cPasswordField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        add(cPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 140, -1));
 
+        jLabel13.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel13.setText("Photo");
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, -1, -1));
 
         btnUploadPhoto.setText("Upload Image");
         btnUploadPhoto.addActionListener(new java.awt.event.ActionListener() {
@@ -163,154 +192,58 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
                 btnUploadPhotoActionPerformed(evt);
             }
         });
+        add(btnUploadPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, -1, -1));
 
+        jLabel14.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel14.setText("Location");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 440, -1, -1));
 
+        comboCarrier.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        add(comboCarrier, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 160, -1));
+
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel2.setText("Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, -1));
 
+        txtName.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 140, -1));
+
+        txtPassword.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 140, -1));
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel1.setText("Password");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel3.setText("UserName");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, -1, -1));
 
+        txtUserName.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserNameActionPerformed(evt);
             }
         });
+        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 140, -1));
 
-        jLabel4.setText("Manage Volunteer");
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/contributors.png"))); // NOI18N
+        jLabel4.setText("Volunteer Admin List");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(btnBack)
-                        .addGap(170, 170, 170)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(169, 169, 169)
-                                .addComponent(jLabel13)
-                                .addGap(4, 4, 4)
-                                .addComponent(btnUploadPhoto)
-                                .addGap(145, 145, 145))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(btnCreate)
-                                .addGap(26, 26, 26)
-                                .addComponent(btnView)
-                                .addGap(25, 25, 25)
-                                .addComponent(btnUpdate)
-                                .addGap(22, 22, 22)
-                                .addComponent(btnDelete))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(jLabel2)
-                                .addGap(14, 14, 14)
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(jLabel10)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel3)
-                                .addGap(6, 6, 6)
-                                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel11)
-                                .addGap(8, 8, 8)
-                                .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel1)
-                                .addGap(11, 11, 11)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43)
-                                .addComponent(jLabel9)
-                                .addGap(28, 28, 28)
-                                .addComponent(comboCarrier, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(6, 6, 6)
-                                .addComponent(cPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(23, 23, 23)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel14))
-                                .addGap(16, 16, 16)
-                                .addComponent(comboLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(116, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCreate)
-                    .addComponent(btnView)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnDelete))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel10)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel11))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel1))
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(comboCarrier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel5))
-                    .addComponent(cPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel14)
-                    .addComponent(comboLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel13))
-                    .addComponent(btnUploadPhoto))
-                .addGap(53, 53, 53))
-        );
+        btnBack.setBackground(new java.awt.Color(255, 255, 255));
+        btnBack.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/back.png"))); // NOI18N
+        btnBack.setText("Back");
+        btnBack.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 110, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -570,16 +503,6 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
-        sysAdminwjp.populateTree();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
-
     private void btnUploadPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadPhotoActionPerformed
 
         JFileChooser uploadImageFile = new JFileChooser();
@@ -608,6 +531,16 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserNameActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+       userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
+        sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -622,7 +555,6 @@ public class ManageVolunteerJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;

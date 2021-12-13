@@ -54,7 +54,6 @@ public class ManageDistributorJPanel extends javax.swing.JPanel {
         btnView = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -62,7 +61,9 @@ public class ManageDistributorJPanel extends javax.swing.JPanel {
         txtPassword = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        btnBack1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblDistributors.setModel(new javax.swing.table.DefaultTableModel(
@@ -93,74 +94,98 @@ public class ManageDistributorJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblDistributors);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 91, 404, 91));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 404, 91));
 
+        btnCreate.setBackground(new java.awt.Color(255, 255, 255));
+        btnCreate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/plus.png"))); // NOI18N
         btnCreate.setText("Create");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
             }
         });
-        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 201, -1, -1));
+        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, -1));
 
+        btnView.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/view.png"))); // NOI18N
         btnView.setText("View");
+        btnView.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewActionPerformed(evt);
             }
         });
-        add(btnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 201, -1, -1));
+        add(btnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, -1));
 
+        btnUpdate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/update.png"))); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
             }
         });
-        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 201, -1, -1));
+        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
 
+        btnDelete.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/delete.png"))); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 201, -1, -1));
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, -1, -1));
 
-        btnBack.setText("<< Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 41, -1, -1));
-
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel2.setText("Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 40, -1));
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 110, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 40, -1));
 
+        txtName.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 140, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("UserName");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, -1, -1));
 
+        txtUserName.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserNameActionPerformed(evt);
             }
         });
-        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 140, -1));
+        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 140, -1));
 
+        txtPassword.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
             }
         });
-        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 140, -1));
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, 140, -1));
 
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel1.setText("Password");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel4.setText("Manage Distributor");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, -1));
+
+        btnBack1.setBackground(new java.awt.Color(255, 255, 255));
+        btnBack1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        btnBack1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/images/back.png"))); // NOI18N
+        btnBack1.setText("Back");
+        btnBack1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnBack1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack1ActionPerformed(evt);
+            }
+        });
+        add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 110, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -363,16 +388,6 @@ public class ManageDistributorJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
-        sysAdminwjp.populateTree();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
-
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserNameActionPerformed
@@ -381,9 +396,19 @@ public class ManageDistributorJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
 
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
+        sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBack1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnBack1;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
